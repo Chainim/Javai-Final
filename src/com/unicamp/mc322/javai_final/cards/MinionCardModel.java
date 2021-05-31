@@ -8,4 +8,12 @@ public abstract class MinionCardModel extends CardModel {
 		this.baseDamage = baseDamage;
 		this.baseHealth = baseHealth;
 	}
+	
+	public int getBaseDamage() {
+		return baseDamage;
+	}
+	
+	public int getBaseHealth() {
+		return baseHealth;
+	}
 }
