@@ -1,9 +1,9 @@
 package com.unicamp.mc322.javai_final.cards;
 
 public abstract class CardModel {
-	private String unlocalizedName;
-	private String unlocalizedDescription;
-	private int manaCost;
+	private final String unlocalizedName;
+	private final String unlocalizedDescription;
+	private final int manaCost;
 	
 	protected CardModel(String unlocalizedName, String unlocalizedDescription, int manaCost) {
 		this.unlocalizedName = unlocalizedName;

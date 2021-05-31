@@ -57,4 +57,14 @@ public class Player {
 		
 		drawCardsFromPile(indices.length);
 	}
+	
+	public void summonCard(int indice, int fieldIndice) {
+		if(handCards.get(indice).getManaCost() > getMana())
+			return;
+		
+		Card c = handCards.remove(indice);
+		mana -= c.getManaCost();
+		fieldCards[fieldIndice] = c;
+		c.onSummon();
+	}
 }
