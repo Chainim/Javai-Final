@@ -1,5 +1,5 @@
 package com.unicamp.mc322.javai_final.gamestate;
 
-public class DrawState {
+public class DrawState extends GameState {
 
 }

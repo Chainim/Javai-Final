@@ -1,0 +1,5 @@
+package com.unicamp.mc322.javai_final.cards;
+
+public class Card {
+	private CardModel model;
+}
