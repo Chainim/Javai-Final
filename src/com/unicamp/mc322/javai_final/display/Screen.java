@@ -1,0 +1,6 @@
+package com.unicamp.mc322.javai_final.display;
+
+public abstract class Screen {
+	public abstract void drawCard(int posx, int posy, int c, int a, int d);
+	public abstract void render();
+}

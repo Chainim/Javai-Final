@@ -15,6 +15,12 @@ public class GameStateManager {
 	}
 	
 	public void init() {
+		for(int i = 0; i < players.length; i++) {
+			players[i] = new Player();
+		}
+		
+		
+		
 		currentState.onStateLoad();
 	}
 	

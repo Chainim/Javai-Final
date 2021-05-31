@@ -22,4 +22,8 @@ public abstract class GameState {
 	public void onStateUnload() {
 		
 	}
+	
+	public void onInput() {
+		
+	}
 }
