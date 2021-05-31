@@ -32,7 +32,8 @@ public class Game {
 		//g.start();
 		Screen d = new TextScreen();
 		for(int i = 0; i < 6; i++)
-			d.drawCard(14 * i, 0);
+			d.drawCard(30 + 14 * i, 5);
+		d.drawNexus(0, 0);
 		d.render();
 		
 	}

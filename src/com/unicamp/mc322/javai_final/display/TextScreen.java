@@ -5,7 +5,7 @@ public class TextScreen extends Screen{
 	char[][] screenbuff;
 	
 	public TextScreen() {
-		screenbuff = new char[10][120];
+		screenbuff = new char[16][120];
 	}
 	
 	@Override
@@ -39,6 +39,21 @@ public class TextScreen extends Screen{
 		auxx = posx + (cardWidth - secondName.length()) / 2;
 		for(int i = 0; i < secondName.length(); i++)
 			screenbuff[posy + cardHeight - 4][auxx + i] = secondName.charAt(i);
+	}
+	
+	public void drawNexus(int posx, int posy) {
+		screenbuff[posy][posx + 2] = '_';
+		screenbuff[posy][posx + 3] = '_';
+		screenbuff[posy + 1][posx + 1] = '/';
+		screenbuff[posy + 1][posx + 4] = '\\';
+		screenbuff[posy + 2][posx] = '|';
+		screenbuff[posy + 3][posx + 1] = '\\';
+		screenbuff[posy + 3][posx + 2] = '_';
+		screenbuff[posy + 3][posx + 3] = '_';
+		screenbuff[posy + 3][posx + 4] = '/';
+		screenbuff[posy + 2][posx + 5] = '|';
+		screenbuff[posy + 2][posx + 2] = 'h';
+		screenbuff[posy + 2][posx + 3] = 'h';
 	}
 
 	@Override
