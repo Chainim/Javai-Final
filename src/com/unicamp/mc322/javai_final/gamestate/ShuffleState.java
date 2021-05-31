@@ -10,8 +10,8 @@ public class ShuffleState extends GameState {
 	
 	@Override
 	public void onStateLoad() {
-		for(Player p : getManager().players) {
-			
+		for(Player p : getManager().getPlayers()) {
+			p.drawCardsFromPile(4);
 		}
 		getManager().setState(new SwapCardState(getManager()));
 	}

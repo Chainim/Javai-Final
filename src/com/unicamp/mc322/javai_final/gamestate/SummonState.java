@@ -5,5 +5,9 @@ public class SummonState extends GameState {
 	protected SummonState(GameStateManager manager) {
 		super(manager);
 	}
-
+	
+	@Override
+	public void update() {
+		
+	}
 }
