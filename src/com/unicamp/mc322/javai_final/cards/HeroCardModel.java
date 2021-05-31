@@ -1,5 +1,5 @@
 package com.unicamp.mc322.javai_final.cards;
 
-public class HeroCardModel extends MinionCardModel {
+public abstract class HeroCardModel extends MinionCardModel {
 
 }
