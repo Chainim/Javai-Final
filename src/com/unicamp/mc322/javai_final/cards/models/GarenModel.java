@@ -4,7 +4,7 @@ import com.unicamp.mc322.javai_final.cards.HeroCardModel;
 
 public class GarenModel extends HeroCardModel {
 
-	protected GarenModel() {
+	GarenModel() {
 		super("card.garen.name", "card.garen.desc", 5, 5, 5);
 	}
 

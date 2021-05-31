@@ -16,7 +16,7 @@ public class Game {
 	}
 	
 	public static void main(String[] args) {
-		Game g = new Game();
-		g.start();
+		//Game g = new Game();
+		//g.start();
 	}
 }
