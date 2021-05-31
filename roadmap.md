@@ -46,6 +46,7 @@
 18. [ ] [Deck base](#Deck-base)
 
 - [ ] Relatorio
+- [ ] Diagrama UML
 
 # Deck base
 - Campeões
