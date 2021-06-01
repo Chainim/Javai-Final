@@ -8,6 +8,8 @@ public class TianaModel extends MinionCardModel {
 	}
 	@Override
 	public void onSummon() {
+		// Uma das cartas sumonadas ataca o nexus inimigo
+		
 		super.onSummon();
 	}
 }

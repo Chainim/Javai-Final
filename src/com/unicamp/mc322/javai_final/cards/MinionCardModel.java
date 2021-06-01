@@ -16,4 +16,8 @@ public abstract class MinionCardModel extends CardModel {
 	public int getBaseHealth() {
 		return baseHealth;
 	}
+	
+	public void onDeath() {
+		
+	}
 }

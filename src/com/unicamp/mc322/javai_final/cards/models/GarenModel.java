@@ -7,5 +7,9 @@ public class GarenModel extends HeroCardModel {
 	GarenModel() {
 		super("card.garen.name", "card.garen.desc", 5, 5, 5);
 	}
-
+	
+	@Override
+	public void onTurnEnd() {
+		
+	}
 }
