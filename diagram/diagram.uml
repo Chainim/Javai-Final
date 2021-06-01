@@ -59,7 +59,7 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_zKVyEMKhEeu6yuIUXVYsAA" name="handCards" visibility="private" type="_Pbkv4MKeEeu6yuIUXVYsAA"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_9_gk0MKhEeu6yuIUXVYsAA" name="pileCards" visibility="private" type="_Pbkv4MKeEeu6yuIUXVYsAA"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_BELPsMKiEeu6yuIUXVYsAA" name="fieldCards" visibility="private" type="_Pbkv4MKeEeu6yuIUXVYsAA"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_JoAR8MKiEeu6yuIUXVYsAA" name="drawCards"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_JoAR8MKiEeu6yuIUXVYsAA" name="buyCards"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_L_9n0MKiEeu6yuIUXVYsAA" name="summonCard">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_BHHuoMKlEeu6yuIUXVYsAA" name="index">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
@@ -84,5 +84,10 @@
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_tWcHgMKmEeu1O7ji_yzigA" name="currentState" type="_Wp76YMKmEeu6yuIUXVYsAA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_Wp76YMKmEeu6yuIUXVYsAA" name="GameState" isAbstract="true"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Wp76YMKmEeu6yuIUXVYsAA" name="GameState" isAbstract="true">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCUm4MKnEeu1O7ji_yzigA" name="update"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_i-LdwMKnEeu1O7ji_yzigA" name="InitState"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_pX-RYMKnEeu1O7ji_yzigA" name="RoundStartState"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_s3H40MKnEeu1O7ji_yzigA" name="AttackState"/>
 </uml:Model>
