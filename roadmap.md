@@ -24,6 +24,24 @@
 - Guarda a mana que sobrou (num máximo de 3 de mana) para realizar feitiços na próxima rodada
 - Efeito das cartas do adversário é ativado
 
+##Responsabilidade de classes
+1. InitState
+	- Dá as 4 cartas iniciais e pergunta por substituição de cartas.
+2. SummonState
+	- Adiciona quantidade de mana referente à rodada atual
+	- Puxa uma carta da pilha
+	- Invocar criaturas na mão, desde que o custo de mana seja respeitado
+	- Jogar um feitiço
+2. AttackState
+	- O jogador da vez escolhe quais cartas do campo vão atacar
+3. DefendState
+	- O jogador defensor escolhe quais cartas do campo defendem e o pareamento com as cartas de ataque
+4. RoundEndState
+	- O dano é aplicado ao jogador defensor
+	- Os efeitos de fim de rodada do oponente são aplicados
+	- Checa se os campeões evoluiram
+	- Atualiza mana de feitiço
+
 # Funcionalidades
 
 1.  [ ] Embaralhar baralho

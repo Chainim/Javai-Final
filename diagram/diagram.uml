@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_FBUXgMKeEeuRNLxr0-u6Jw" name="diagram">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_FBUXgMKeEeuRNLxr0-u6Jw" name="diagram">
   <packageImport xmi:type="uml:PackageImport" xmi:id="_FH1PMMKeEeuRNLxr0-u6Jw">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
@@ -86,8 +86,33 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_Wp76YMKmEeu6yuIUXVYsAA" name="GameState" isAbstract="true">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_VCUm4MKnEeu1O7ji_yzigA" name="update"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_N9wZ4MNVEeuhTI8mFNXbHg" name="onStateLoad"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_XuIc4MNXEeuhTI8mFNXbHg" name="onInput"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_i-LdwMKnEeu1O7ji_yzigA" name="InitState"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_pX-RYMKnEeu1O7ji_yzigA" name="RoundStartState"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_s3H40MKnEeu1O7ji_yzigA" name="AttackState"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_i-LdwMKnEeu1O7ji_yzigA" name="InitState">
+    <generalization xmi:type="uml:Generalization" xmi:id="_fPL64MNUEeuhTI8mFNXbHg" general="_Wp76YMKmEeu6yuIUXVYsAA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_pX-RYMKnEeu1O7ji_yzigA" name="SummonState">
+    <generalization xmi:type="uml:Generalization" xmi:id="_g1nGIMNUEeuhTI8mFNXbHg" general="_Wp76YMKmEeu6yuIUXVYsAA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_s3H40MKnEeu1O7ji_yzigA" name="AttackState">
+    <generalization xmi:type="uml:Generalization" xmi:id="_hOp4QMNUEeuhTI8mFNXbHg" general="_Wp76YMKmEeu6yuIUXVYsAA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ZpbzUMNUEeuhTI8mFNXbHg" name="DefendState">
+    <generalization xmi:type="uml:Generalization" xmi:id="_hot-EMNUEeuhTI8mFNXbHg" general="_Wp76YMKmEeu6yuIUXVYsAA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_bTh9oMNUEeuhTI8mFNXbHg" name="RoundEndState">
+    <generalization xmi:type="uml:Generalization" xmi:id="_jmstsMNUEeuhTI8mFNXbHg" general="_Wp76YMKmEeu6yuIUXVYsAA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_xiFjIMNXEeuhTI8mFNXbHg" name="Game">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_0Un8MMNXEeuhTI8mFNXbHg" name="readInput"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_6kTKgMNXEeuhTI8mFNXbHg" name="start"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_72YdcMNXEeuhTI8mFNXbHg" name="loop"/>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_FGO_kMNVEeuhTI8mFNXbHg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FGPmoMNVEeuhTI8mFNXbHg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
 </uml:Model>
