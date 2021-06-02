@@ -38,6 +38,10 @@ public class Player {
 		return spellMana;
 	}
 	
+	public void shufflePile() {
+		
+	}
+	
 	public void drawCardsFromPile(int count) {
 		for(int i = 0; i < count; i++) {
 			Card top = drawPile.pop();
@@ -52,6 +56,7 @@ public class Player {
 	public void swapCards(int indices[]) {
 		Arrays.sort(indices);
 		for(int i = indices.length - 1; i >= 0; i--) {
+			drawPile.add(handCards.get(indices[i]));
 			handCards.remove(indices[i]);
 		}
 		

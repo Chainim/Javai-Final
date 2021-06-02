@@ -11,16 +11,14 @@ public class GameStateManager {
 		players = new Player[2];
 		currentPlayerIndex = 0;
 		
-		currentState = new ShuffleState(this);
+		currentState = new InitState(this);
 	}
 	
 	public void init() {
 		for(int i = 0; i < players.length; i++) {
 			players[i] = new Player();
 		}
-		
-		
-		
+	
 		currentState.onStateLoad();
 	}
 	
