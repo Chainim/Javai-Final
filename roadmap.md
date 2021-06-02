@@ -24,7 +24,7 @@
 - Guarda a mana que sobrou (num máximo de 3 de mana) para realizar feitiços na próxima rodada
 - Efeito das cartas do adversário é ativado
 
-##Responsabilidade de classes
+## Responsabilidade de classes
 1. InitState
 	- Dá as 4 cartas iniciais e pergunta por substituição de cartas.
 2. SummonState
