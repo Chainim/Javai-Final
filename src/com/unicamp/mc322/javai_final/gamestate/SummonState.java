@@ -21,11 +21,23 @@ public class SummonState extends GameState {
 	public void update() {
 		if(summonEnd) {
 			getManager().setState(new AttackState(getManager()));
+			return;
 		}
 		
 		if(summonConfirmed) {
 			getManager().getCurrentPlayer().summonCard(toSummonIndex, toSummonFieldIndex);
 			summonConfirmed = false;
 		}
+	}
+	
+	@Override
+	public void onInput(String input) {
+		if(input.equals("done")) {
+			summonEnd = true;
+			return;
+		}
+		
+		toSummonIndex = Integer.valueOf(input);
+		summonConfirmed = true;
 	}
 }

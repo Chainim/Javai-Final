@@ -38,19 +38,15 @@ public class InitState extends GameState{
 		
 	}
 	
-	@Override
+	// entrada tem que ser do tipo 0, 1, 2, ...
 	public void onInput(String input) {
-		if(input.equals("done")) {
-			selectionConfirmed = true;
-			return;
-		}
-		
 		String[] aux = input.split(", ");
 		int[] indices = new int[aux.length];
+		
 		for(int i = 0; i < aux.length; i++)
 			indices[i] = Integer.valueOf(aux[i]);
 		
 		askForCardsChanges(indices);
-		
+		selectionConfirmed = true;
 	}
 }
