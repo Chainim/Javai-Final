@@ -1,6 +1,8 @@
 package com.unicamp.mc322.javai_final.gamestate;
 
 public class InitState extends GameState{
+	private boolean selectionConfirmed;
+	
 	protected InitState(GameStateManager manager) {
 		super(manager);
 	}
@@ -15,22 +17,40 @@ public class InitState extends GameState{
 			getManager().getPlayers()[i].drawCardsFromPile(4);
 		}
 	}
-	private int[] askForIndices() {
-		return null;
-	}
-	private void askForCardsChanges() {
+
+	private void askForCardsChanges(int[] indices) {
 		for(int i = 0;i < getManager().getPlayers().length;i++) {
-			getManager().getPlayers()[i].swapCards(askForIndices());
+			getManager().getPlayers()[i].swapCards(indices);
 		}
 	}
 	
 	public void onStateLoad() {
+		selectionConfirmed = false;
 		shuffleCards();
 		giveCards();
 	}
 	
 	public void update() {
-		askForCardsChanges();
-		getManager().setState(new SummonState(getManager()));
+		if(selectionConfirmed) {
+			getManager().setState(new SummonState(getManager()));
+			return;
+		}
+		
+	}
+	
+	@Override
+	public void onInput(String input) {
+		if(input.equals("done")) {
+			selectionConfirmed = true;
+			return;
+		}
+		
+		String[] aux = input.split(", ");
+		int[] indices = new int[aux.length];
+		for(int i = 0; i < aux.length; i++)
+			indices[i] = Integer.valueOf(aux[i]);
+		
+		askForCardsChanges(indices);
+		
 	}
 }

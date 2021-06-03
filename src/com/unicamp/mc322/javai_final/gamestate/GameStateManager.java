@@ -43,4 +43,8 @@ public class GameStateManager {
 	void advancePlayer() {
 		currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
 	}
+	
+	void onInput(String input) {
+		currentState.onInput(input);
+	}
 }

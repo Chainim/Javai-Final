@@ -23,7 +23,7 @@ public abstract class GameState {
 		
 	}
 	
-	public void onInput() {
+	public void onInput(String input) {
 		
 	}
 }

@@ -30,11 +30,10 @@ public class Game {
 	public static void main(String[] args) {
 		//Game g = new Game();
 		//g.start();
-		Screen d = new TextScreen();
-		for(int i = 0; i < 6; i++)
-			d.drawCard(30 + 14 * i, 5);
-		d.drawNexus(0, 0);
-		d.render();
-		
+		//Screen d = new TextScreen();
+		//for(int i = 0; i < 6; i++)
+		//	d.drawCard(30 + 14 * i, 5);
+		//d.drawNexus(0, 0);
+		//d.render();
 	}
 }
