@@ -44,7 +44,7 @@ public class GameStateManager {
 		currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
 	}
 	
-	void onInput(String input) {
+	public void onInput(String input) {
 		currentState.onInput(input);
 	}
 }
