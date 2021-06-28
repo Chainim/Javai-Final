@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
-import com.unicamp.mc322.javai_final.cards.CardModel;
-import com.unicamp.mc322.javai_final.cards.models.PoroModel;
+import com.unicamp.mc322.javai_final.display.Screen;
+import com.unicamp.mc322.javai_final.display.TextScreen;
 import com.unicamp.mc322.javai_final.gamestate.GameStateManager;
 import com.unicamp.mc322.javai_final.lang.Lang;
 import com.unicamp.mc322.javai_final.lang.Localizer;
@@ -20,6 +20,7 @@ public class Game {
 	private JFrame window;
 	private JLabel label;
 	private JTextArea textArea;
+	private Screen screen;
 	
 	public Game() {
 		 stateManager = new GameStateManager();
@@ -35,10 +36,17 @@ public class Game {
 		 
 		 window.setLocationRelativeTo(null);
 		 
-		 
+		 screen = new TextScreen(label);
 	}
 	
 	public void start() {
+		
+		screen.render();
+		for(int i = 0; i < 6; i++)
+			screen.drawCard(30 + 14 * i, 5);
+			screen.drawNexus(0, 0);
+			screen.render();
+		
 		running = true;
 		
 		stateManager.init();
@@ -51,8 +59,9 @@ public class Game {
 	
 	void readInput() {
 		if(textArea.getText().endsWith("\n")) {
-			stateManager.onInput(textArea.getText().substring(0, textArea.getText().length() - 1));
+			String tex = textArea.getText();
 			textArea.setText("");
+			stateManager.onInput(tex.substring(0, textArea.getText().length() - 1));
 		}
 	}
 	
@@ -71,9 +80,10 @@ public class Game {
 	}
 	
 	public static void main(String[] args) {
-		//Game g = new Game();
-		//g.start();
+		Game g = new Game();
+		g.start();
 		
+
 		//Screen d = new TextScreen();
 		//for(int i = 0; i < 6; i++)
 		//	d.drawCard(30 + 14 * i, 5);

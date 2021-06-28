@@ -1,11 +1,18 @@
 package com.unicamp.mc322.javai_final.display;
 
+import javax.swing.JLabel;
+
 public class TextScreen extends Screen{
 
 	char[][] screenbuff;
+	private JLabel textLabel;
 	
-	public TextScreen() {
+	public TextScreen(JLabel label) {
 		screenbuff = new char[16][120];
+		for(int i = 0; i < screenbuff.length; i++)
+			for(int j = 0; j < screenbuff[i].length; j++)
+				screenbuff[i][j] = ' ';
+		this.textLabel = label;
 	}
 	
 	@Override
@@ -58,11 +65,20 @@ public class TextScreen extends Screen{
 
 	@Override
 	public void render() {
+		
+		String text = "<html>";
+		text += "<pre>";
 		for(int i = 0; i < screenbuff.length; i++) {
-			for(int j = 0; j < screenbuff[i].length; j++)
-				System.out.print(screenbuff[i][j]);
-			System.out.println();
+			for(int j = 0; j < screenbuff[i].length; j++) {
+				//System.out.print(screenbuff[i][j]);
+				text += screenbuff[i][j];
+			}
+			//System.out.println();
+			text += "<br/>";
 		}
+		text += "</pre>";
+		text += "</html>";
+		textLabel.setText(text);
 	}
 
 
