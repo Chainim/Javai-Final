@@ -1,5 +1,7 @@
 package com.unicamp.mc322.javai_final.cards;
 
+import com.unicamp.mc322.javai_final.lang.Localizer;
+
 public abstract class CardModel {
 	private final String unlocalizedName;
 	private final String unlocalizedDescription;
@@ -19,8 +21,16 @@ public abstract class CardModel {
 		return unlocalizedName;
 	}
 	
+	public String getLocalizedName() {
+		return Localizer.getInstance().getLocalization(getUnlocalizedName());
+	}
+	
 	public String getUnlocalizedDescription() {
 		return unlocalizedDescription;
+	}
+	
+	public String getLocalizedDescription() {
+		return Localizer.getInstance().getLocalization(getUnlocalizedDescription());
 	}
 	
 	public void onSummon() {
