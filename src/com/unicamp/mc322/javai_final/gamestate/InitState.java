@@ -1,10 +1,21 @@
 package com.unicamp.mc322.javai_final.gamestate;
+import com.unicamp.mc322.javai_final.cards.Card;
+import com.unicamp.mc322.javai_final.cards.models.PoroModel;
 
 public class InitState extends GameState{
 	private boolean selectionConfirmed;
 	
 	protected InitState(GameStateManager manager) {
 		super(manager);
+	}
+	
+	private void createDeck() {
+		for(int i = 0;i < getManager().getPlayers().length;i++) {
+			getManager().getPlayers()[i].addCardToPile(new Card(new PoroModel()));
+			getManager().getPlayers()[i].addCardToPile(new Card(new PoroModel()));
+			getManager().getPlayers()[i].addCardToPile(new Card(new PoroModel()));
+			getManager().getPlayers()[i].addCardToPile(new Card(new PoroModel()));
+		}
 	}
 	
 	private void shuffleCards() {
@@ -25,7 +36,10 @@ public class InitState extends GameState{
 	}
 	
 	public void onStateLoad() {
+		System.out.println("entrou loadInit");
 		selectionConfirmed = false;
+		
+		createDeck();
 		shuffleCards();
 		giveCards();
 	}
@@ -39,8 +53,10 @@ public class InitState extends GameState{
 	}
 	
 	// entrada tem que ser do tipo 0, 1, 2, ...
-	public void onInput(String input) {
-		String[] aux = input.split(", ");
+	public void onInput(String input) {	
+		input = input.replace(" ","");
+		
+		String[] aux = input.split(",");
 		int[] indices = new int[aux.length];
 		
 		for(int i = 0; i < aux.length; i++)

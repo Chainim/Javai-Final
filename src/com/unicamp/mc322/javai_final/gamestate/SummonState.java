@@ -13,6 +13,7 @@ public class SummonState extends GameState {
 	
 	@Override
 	public void onStateLoad() {
+		System.out.println("entrou loadSummon");
 		summonConfirmed = false;
 		summonEnd = false;
 	}

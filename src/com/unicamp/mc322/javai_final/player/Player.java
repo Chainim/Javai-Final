@@ -2,6 +2,7 @@ package com.unicamp.mc322.javai_final.player;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
@@ -39,11 +40,18 @@ public class Player {
 	}
 	
 	public void shufflePile() {
-		
+		Collections.shuffle(drawPile);
+	}
+	
+	public void addCardToPile(Card c) {
+		drawPile.add(c);
 	}
 	
 	public void drawCardsFromPile(int count) {
 		for(int i = 0; i < count; i++) {
+			if(drawPile.empty()) {
+				return;
+			}
 			Card top = drawPile.pop();
 			handCards.add(top);
 		}
