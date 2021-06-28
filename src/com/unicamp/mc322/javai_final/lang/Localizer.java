@@ -27,8 +27,8 @@ public class Localizer {
 			while(s.hasNext("[\\w\\.]+")) {
 				String key = s.next("[\\w\\.]+");
 				s.next("=");
-				String val = s.next("\"[\\w\\.]+\"");
-				val = val.substring(1, val.length() - 1);
+				String val = s.nextLine();
+				val = val.substring(2, val.length() - 1);
 				resolvedNames.put(key, val);
 			}
 				

@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
+import com.unicamp.mc322.javai_final.cards.models.PoroDefenderModel;
 import com.unicamp.mc322.javai_final.display.Screen;
 import com.unicamp.mc322.javai_final.display.TextScreen;
 import com.unicamp.mc322.javai_final.gamestate.GameStateManager;
@@ -26,6 +27,7 @@ public class Game {
 		 stateManager = new GameStateManager();
 		 
 		 window = new JFrame("Game");
+		 window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 window.setSize(800, 600);
 		 
 		 label = new JLabel();
@@ -40,17 +42,17 @@ public class Game {
 	}
 	
 	public void start() {
+		Localizer.localizerInit(Lang.PT_BR);
 		
 		screen.render();
 		for(int i = 0; i < 6; i++)
-			screen.drawCard(16 + 14 * i, 5);
+			screen.drawCard(16 + 14 * i, 5, new PoroDefenderModel());
 			screen.drawNexus(0, 0);
 			screen.render();
 		
 		running = true;
 		
 		stateManager.init();
-		Localizer.localizerInit(Lang.PT_BR);
 		
 		window.setVisible(true);
 		

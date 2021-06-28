@@ -2,6 +2,9 @@ package com.unicamp.mc322.javai_final.display;
 
 import javax.swing.JLabel;
 
+import com.unicamp.mc322.javai_final.cards.CardModel;
+import com.unicamp.mc322.javai_final.cards.MinionCardModel;
+
 public class TextScreen extends Screen{
 
 	char[][] screenbuff;
@@ -16,7 +19,9 @@ public class TextScreen extends Screen{
 	}
 	
 	@Override
-	public void drawCard(int posx, int posy) {
+	public void drawCard(int posx, int posy, CardModel m) {
+		//FIXME: Consertar essa merda
+		//FIXME: TA MUITO CAGADO
 		int cardWidth = 12;
 		int cardHeight = 10;
 		for(int i = 0; i < cardWidth; i++) {
@@ -32,20 +37,56 @@ public class TextScreen extends Screen{
 		screenbuff[posy + cardHeight - 1][posx + 0] = '+';
 		screenbuff[posy + cardHeight - 1][posx + cardWidth - 1] = '+';
 		
-		screenbuff[posy + 1][posx + 1] = 'c';
-		screenbuff[posy + cardHeight - 2][posx + 1] = 'a';
-		screenbuff[posy + cardHeight - 2][posx + cardWidth - 2] = 'd';
-		
-		
-		String firstName = "Card";
-		int auxx = posx + (cardWidth - firstName.length()) / 2;
-		for(int i = 0; i < firstName.length(); i++)
-			screenbuff[posy + cardHeight - 5][auxx + i] = firstName.charAt(i);
-		
-		String secondName = "Name";
-		auxx = posx + (cardWidth - secondName.length()) / 2;
-		for(int i = 0; i < secondName.length(); i++)
-			screenbuff[posy + cardHeight - 4][auxx + i] = secondName.charAt(i);
+		if(false) {
+			drawStringLeftAnchored(posy + 1, posx + 1, "c");
+			drawStringLeftAnchored(posy + cardHeight - 2, posx + 1, "a");
+			drawStringRightAnchored(posy + cardHeight - 2, posx + cardWidth - 2, "d");
+			
+			
+			String firstName = "Card";
+			int auxx = posx + (cardWidth - firstName.length()) / 2;
+			for(int i = 0; i < firstName.length(); i++)
+				screenbuff[posy + cardHeight - 5][auxx + i] = firstName.charAt(i);
+			
+			String secondName = "Name";
+			auxx = posx + (cardWidth - secondName.length()) / 2;
+			for(int i = 0; i < secondName.length(); i++)
+				screenbuff[posy + cardHeight - 4][auxx + i] = secondName.charAt(i);
+		} else {
+			String manaCostString = Integer.toString(m.getManaCost());
+			drawStringLeftAnchored(posy + 1, posx + 1, manaCostString);
+			if(m instanceof MinionCardModel) {
+				MinionCardModel mi = (MinionCardModel)m;
+				
+				String attackString = Integer.toString(mi.getBaseDamage());
+				String healthString = Integer.toString(mi.getBaseHealth());
+				
+				drawStringLeftAnchored(posy + cardHeight - 2, posx + 1, attackString);
+				drawStringRightAnchored(posy + cardHeight - 2, posx + cardWidth - 2, healthString);
+			}
+			
+			String[] fullName = m.getLocalizedName().split(" "); 
+			
+			for(int i = 0; i < fullName.length; i++)
+				drawStringCentered(posy + cardHeight - 5 + i, posx + cardWidth / 2, fullName[i]);
+			//drawStringCentered(posy + cardHeight - 4, posx + cardWidth / 2, "Name");
+		}
+	}
+	
+	public void drawStringLeftAnchored(int posy, int posx, String s) {
+		for(int i = 0; i < s.length(); i++)
+			screenbuff[posy][posx + i] = s.charAt(i);
+	}
+	
+	public void drawStringRightAnchored(int posy, int posx, String s) {
+		for(int i = 0; i < s.length(); i++)
+			screenbuff[posy][posx + i - s.length() + 1] = s.charAt(i);
+	}
+	
+	public void drawStringCentered(int posy, int posx, String s) {
+		int auxx = -s.length() / 2;
+		for(int i = 0; i < s.length(); i++)
+			screenbuff[posy][auxx + posx + i] = s.charAt(i);
 	}
 	
 	public void drawNexus(int posx, int posy) {
