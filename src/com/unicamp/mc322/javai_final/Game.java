@@ -26,7 +26,7 @@ public class Game {
 		 stateManager = new GameStateManager();
 		 
 		 window = new JFrame("Game");
-		 window.setSize(640, 480);
+		 window.setSize(800, 600);
 		 
 		 label = new JLabel();
 		 textArea = new JTextArea();
@@ -43,7 +43,7 @@ public class Game {
 		
 		screen.render();
 		for(int i = 0; i < 6; i++)
-			screen.drawCard(30 + 14 * i, 5);
+			screen.drawCard(16 + 14 * i, 5);
 			screen.drawNexus(0, 0);
 			screen.render();
 		
