@@ -1,12 +1,17 @@
 package com.unicamp.mc322.javai_final.gamestate;
+import java.util.ArrayList;
+
 import com.unicamp.mc322.javai_final.cards.Card;
 import com.unicamp.mc322.javai_final.cards.models.PoroModel;
 
+
 public class InitState extends GameState{
 	private boolean selectionConfirmed;
-	
+	private ArrayList<Integer> cardsIndices; 
+ 	
 	protected InitState(GameStateManager manager) {
 		super(manager);
+		cardsIndices = new ArrayList<Integer>();
 	}
 	
 	private void createDeck() {
@@ -45,24 +50,29 @@ public class InitState extends GameState{
 	}
 	
 	public void update() {
+		// render
 		if(selectionConfirmed) {
 			getManager().setState(new SummonState(getManager()));
 			return;
 		}
-		
+
 	}
 	
 	// entrada tem que ser do tipo 0, 1, 2, ...
+	// escrever done quando terminar
 	public void onInput(String input) {	
-		input = input.replace(" ","");
+		if(input == "done") {
+			int indices[] = new int[cardsIndices.size()];
+			
+			for(int i = 0;i < indices.length;i++) {
+				indices[i] = cardsIndices.get(i);
+			}
+			
+			askForCardsChanges(indices);
+			selectionConfirmed = true;
+			return;
+		}
 		
-		String[] aux = input.split(",");
-		int[] indices = new int[aux.length];
-		
-		for(int i = 0; i < aux.length; i++)
-			indices[i] = Integer.valueOf(aux[i]);
-		
-		askForCardsChanges(indices);
-		selectionConfirmed = true;
+		cardsIndices.add(Integer.parseInt(input) - Integer.parseInt("0"));
 	}
 }

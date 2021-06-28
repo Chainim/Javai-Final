@@ -63,7 +63,7 @@ public class Game {
 		if(textArea.getText().endsWith("\n")) {
 			String tex = textArea.getText();
 			textArea.setText("");
-			stateManager.onInput(tex.substring(0, textArea.getText().length() - 1));
+			stateManager.onInput(tex.substring(0, tex.length() - 1));
 		}
 	}
 	
