@@ -10,4 +10,5 @@ public abstract class Screen {
 	public abstract void drawStringLeftAnchored(int posy, int posx, String s);
 	public abstract void drawStringRightAnchored(int posy, int posx, String s);
 	public abstract void drawStringCentered(int posy, int posx, String s);
+	public abstract void drawProgressBarLeftAnchored(int posy, int posx, int count, int maxCount);
 }

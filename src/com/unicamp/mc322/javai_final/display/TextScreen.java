@@ -93,6 +93,13 @@ public class TextScreen extends Screen{
 			screenbuff[posy][auxx + posx + i] = s.charAt(i);
 	}
 	
+	public void drawProgressBarLeftAnchored(int posy, int posx, int count, int maxCount) {
+		screenbuff[posy][posx] = '[';
+		for(int i = 1; i <= count; i++)
+			screenbuff[posy][posx + i] = '=';
+		screenbuff[posy][posx + maxCount + 1] = ']';
+	}
+	
 	public void drawNexus(int posx, int posy) {
 		screenbuff[posy][posx + 2] = '_';
 		screenbuff[posy][posx + 3] = '_';
