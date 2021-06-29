@@ -2,8 +2,7 @@ package com.unicamp.mc322.javai_final.gamestate;
 
 public class SummonState extends GameState {
 
-	private int toSummonIndex;
-	private int toSummonFieldIndex;
+	private int toSummonIndex, toSummonFieldIndex;
 	private boolean summonConfirmed;
 	private boolean summonEnd;
 	
@@ -14,6 +13,7 @@ public class SummonState extends GameState {
 	@Override
 	public void onStateLoad() {
 		System.err.println("entrou loadSummon");
+		toSummonIndex = -1;
 		summonConfirmed = false;
 		summonEnd = false;
 		getManager().getCurrentPlayer().addMana();
@@ -32,18 +32,24 @@ public class SummonState extends GameState {
 			if(!summoned) {
 				System.err.println("Couldnt summon this monster");
 				summonEnd = false;
+				toSummonIndex = -1;
 			}
 			summonConfirmed = false;
 		}
 	}
 	
+	// Digite o indice do monstro da sua mao, enter, o numero do indice da mesa e done para sumonar
 	@Override
 	public void onInput(String input) {
 		if(input.equals("done")) {
 			summonEnd = true;
 		} else {
-			toSummonIndex = Integer.valueOf(input);
-			summonConfirmed = true;
+			if(toSummonIndex == -1)
+				toSummonIndex = Integer.valueOf(input);
+			else {				
+				toSummonFieldIndex = Integer.valueOf(input);
+				summonConfirmed = true;
+			}
 		}
 	}
 }

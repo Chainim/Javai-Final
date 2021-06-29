@@ -81,6 +81,7 @@ public class Player {
 			return false;
 		
 		Card c = handCards.remove(indice);
+		// Ver se o custo de substituicao eh o mesmo de sumonar em um local vazio
 		mana -= c.getManaCost();
 		fieldCards[fieldIndice] = c;
 		c.onSummon();
