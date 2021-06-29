@@ -58,7 +58,6 @@ public class GameStateManager {
 		//FIXME: Essa eh uma string de depuracao, lembrar de remover ao final do projeto
 		s.drawStringRightAnchored(16, 120, "Estado atual: " + currentState.getClass().getSimpleName());
 		
-		
 		final int xoffset = 18;
 		
 		for(int i = 0; i < players.length; i++) {
@@ -83,6 +82,14 @@ public class GameStateManager {
 					s.drawStringRightAnchored(yPos + 1, xoffset + 10 + (j + 1) * 8 - 3, Integer.toString(c.getHealth()));
 				}
 					
+			}
+			
+			if(i == 0) {
+				s.drawStringLeftAnchored(20 - 5, 100 - 8, "Mana (" + p.getMana() + "):");
+				s.drawProgressBarLeftAnchored(20 - 5, 100, p.getMana(), 10);
+			} else {
+				s.drawStringLeftAnchored(20 + 3, 100 - 8, "Mana (" + p.getMana() + "):");
+				s.drawProgressBarLeftAnchored(20 + 3, 100, p.getMana(), 10);
 			}
 		}
 	}
