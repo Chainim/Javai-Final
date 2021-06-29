@@ -42,6 +42,7 @@ public class Game {
 	
 	public void start() {
 		Localizer.localizerInit(Lang.PT_BR);
+		ModelRegisty.initModels();
 		
 		running = true;
 		

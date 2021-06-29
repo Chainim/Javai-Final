@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import com.unicamp.mc322.javai_final.cards.Card;
 import com.unicamp.mc322.javai_final.cards.models.DefenderModel;
+import com.unicamp.mc322.javai_final.cards.models.ModelRegistry;
 import com.unicamp.mc322.javai_final.cards.models.PoroModel;
 
 
@@ -17,14 +18,14 @@ public class InitState extends GameState{
 	
 	private void createDeck() {
 		for(int i = 0;i < getManager().getPlayers().length;i++) {
-			getManager().getPlayers()[i].addCardToPile(new Card(new PoroModel()));
-			getManager().getPlayers()[i].addCardToPile(new Card(new PoroModel()));
-			getManager().getPlayers()[i].addCardToPile(new Card(new PoroModel()));
-			getManager().getPlayers()[i].addCardToPile(new Card(new PoroModel()));
-			getManager().getPlayers()[i].addCardToPile(new Card(new DefenderModel()));
-			getManager().getPlayers()[i].addCardToPile(new Card(new DefenderModel()));
-			getManager().getPlayers()[i].addCardToPile(new Card(new DefenderModel()));
-			getManager().getPlayers()[i].addCardToPile(new Card(new DefenderModel()));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
 		}
 	}
 	
@@ -33,6 +34,7 @@ public class InitState extends GameState{
 			getManager().getPlayers()[i].shufflePile();
 		}
 	}
+	
 	private void giveCards() {
 		for(int i = 0;i < getManager().getPlayers().length;i++) {
 			getManager().getPlayers()[i].drawCardsFromPile(4);
