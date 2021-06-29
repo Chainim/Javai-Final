@@ -24,18 +24,7 @@ public class TextScreen extends Screen{
 		//FIXME: TA MUITO CAGADO
 		int cardWidth = 12;
 		int cardHeight = 10;
-		for(int i = 0; i < cardWidth; i++) {
-			screenbuff[posy][posx + i] = '-';
-			screenbuff[posy + cardHeight - 1][posx + i] = '-';
-		}
-		for(int i = 0; i < cardHeight; i++) {
-			screenbuff[posy + i][posx + 0] = '|';
-			screenbuff[posy + i][posx + cardWidth - 1] = '|';
-		}
-		screenbuff[posy + 0][posx + 0] = '+';
-		screenbuff[posy + 0][posx + cardWidth - 1] = '+';
-		screenbuff[posy + cardHeight - 1][posx + 0] = '+';
-		screenbuff[posy + cardHeight - 1][posx + cardWidth - 1] = '+';
+		drawBox(posy, posx, cardHeight, cardWidth);
 		
 		if(false) {
 			drawStringLeftAnchored(posy + 1, posx + 1, "c");
@@ -71,6 +60,21 @@ public class TextScreen extends Screen{
 				drawStringCentered(posy + cardHeight - 5 + i, posx + cardWidth / 2, fullName[i]);
 			//drawStringCentered(posy + cardHeight - 4, posx + cardWidth / 2, "Name");
 		}
+	}
+	
+	public void drawBox(int posy, int posx, int height, int width) {
+		for(int i = 0; i < width; i++) {
+			screenbuff[posy][posx + i] = '-';
+			screenbuff[posy + height - 1][posx + i] = '-';
+		}
+		for(int i = 0; i < height; i++) {
+			screenbuff[posy + i][posx + 0] = '|';
+			screenbuff[posy + i][posx + width - 1] = '|';
+		}
+		screenbuff[posy + 0][posx + 0] = '+';
+		screenbuff[posy + 0][posx + width - 1] = '+';
+		screenbuff[posy + height - 1][posx + 0] = '+';
+		screenbuff[posy + height - 1][posx + width - 1] = '+';
 	}
 	
 	public void drawStringLeftAnchored(int posy, int posx, String s) {
