@@ -8,12 +8,13 @@ import com.unicamp.mc322.javai_final.cards.models.PoroModel;
 
 
 public class InitState extends GameState{
-	private boolean selectionConfirmed;
+	private int switchingPlayer;
 	private ArrayList<Integer> cardsIndices; 
  	
 	protected InitState(GameStateManager manager) {
 		super(manager);
 		cardsIndices = new ArrayList<Integer>();
+		switchingPlayer = 0;
 	}
 	
 	private void createDeck() {
@@ -42,14 +43,13 @@ public class InitState extends GameState{
 	}
 
 	private void askForCardsChanges(int[] indices) {
-		for(int i = 0;i < getManager().getPlayers().length;i++) {
-			getManager().getPlayers()[i].swapCards(indices);
-		}
+		getManager().getPlayers()[switchingPlayer].swapCards(indices);
+//		System.err.printf("Troquei as cartas que o player %d escolheu, vez do proximo player\n", switchingPlayer);
 	}
 	
 	public void onStateLoad() {
-		System.out.println("entrou loadInit");
-		selectionConfirmed = false;
+		System.err.println("entrou loadInit");
+		switchingPlayer = 0;
 		
 		createDeck();
 		shuffleCards();
@@ -58,7 +58,7 @@ public class InitState extends GameState{
 	
 	public void update() {
 		// render
-		if(selectionConfirmed) {
+		if(switchingPlayer >= getManager().getPlayers().length) {
 			getManager().setState(new SummonState(getManager()));
 			return;
 		}
@@ -76,10 +76,10 @@ public class InitState extends GameState{
 			}
 			
 			askForCardsChanges(indices);
-			selectionConfirmed = true;
-			return;
+			switchingPlayer++;
+			cardsIndices.clear();
+		} else {
+			cardsIndices.add(Integer.parseInt(input) - Integer.parseInt("0"));			
 		}
-		
-		cardsIndices.add(Integer.parseInt(input) - Integer.parseInt("0"));
 	}
 }
