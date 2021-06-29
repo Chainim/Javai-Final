@@ -3,6 +3,7 @@ package com.unicamp.mc322.javai_final.gamestate;
 import java.util.List;
 
 import com.unicamp.mc322.javai_final.cards.Card;
+import com.unicamp.mc322.javai_final.cards.models.ModelRegistry;
 import com.unicamp.mc322.javai_final.display.Screen;
 import com.unicamp.mc322.javai_final.player.Player;
 
@@ -76,10 +77,10 @@ public class GameStateManager {
 				else
 					yPos = 20 - 5;
 				s.drawBox(yPos, xoffset + 10 + j * 8, 5, 7);
-				if(p.getFieldCards()[i] != null) {
-					Card c = p.getFieldCards()[i];
-					s.drawStringLeftAnchored(yPos - 1, xoffset + 10 + j * 8, Integer.toString(c.getDamage()));
-					s.drawStringRightAnchored(yPos + 1, xoffset + 10 + j * 8, Integer.toString(c.getHealth()));
+				if(p.getFieldCards()[j] != null) {
+					Card c = p.getFieldCards()[j];
+					s.drawStringLeftAnchored(yPos + 1, xoffset + 11 + j * 8, Integer.toString(c.getDamage()));
+					s.drawStringRightAnchored(yPos + 1, xoffset + 10 + (j + 1) * 8 - 3, Integer.toString(c.getHealth()));
 				}
 					
 			}
