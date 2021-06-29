@@ -44,7 +44,7 @@ public class DefendState extends GameState {
 	@Override
 	public void update() {
 		if(defendSelectionConfirmed == true && matchingSelectionConfirmed == true) {
-			getManager().setState(new RoundEndState(getManager(),defendSelection, attackSelection, matchingSelection));
+			getManager().setState(new RoundEndState(getManager(), defendSelection, attackSelection, matchingSelection));
 		}
 	}
 	
@@ -61,13 +61,21 @@ public class DefendState extends GameState {
 		cardsIndices.add(Integer.parseInt(input) - Integer.parseInt("0"));
 	}
 	
-	public void onInputDefendSelection() {	
+	public void onInputDefendSelection() {
+		if(cardsIndices.size() > attackSelection.length) {
+			System.err.println("Invalid selection for defendSelection");
+			return;
+		}
 		defendSelectionConfirmed = true;
 		setDefendSelection();
 		cardsIndices.clear();
 	}
 	
-	public void onInputMatchingSelection() {	
+	public void onInputMatchingSelection() {
+		if(cardsIndices.size() != attackSelection.length) {
+			System.err.println("Invalid selection for matchingSelection");
+			return;
+		}
 		matchingSelectionConfirmed = true;
 		setMatchingSelection();
 		cardsIndices.clear();
