@@ -27,6 +27,10 @@ public class Player {
 		this.drawPile = new Stack<Card>();
 	}
 	
+	public Card[] getFieldCards() {
+		return fieldCards;
+	}
+	
 	public int getNexusHealth() {
 		return nexusHealth;
 	}

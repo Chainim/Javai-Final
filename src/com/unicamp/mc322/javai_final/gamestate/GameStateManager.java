@@ -61,12 +61,27 @@ public class GameStateManager {
 		final int xoffset = 18;
 		
 		for(int i = 0; i < players.length; i++) {
-			List<Card> playerCards = players[i].getHandCards();
+			Player p = players[i];
+			List<Card> playerCards = p.getHandCards();
 			for(int j = 0; j < playerCards.size(); j++) {
 				if(i == 0)
 					s.drawCard(xoffset + j * 15, 40 - 10, playerCards.get(j).getModel());
 				else
 					s.drawCard(xoffset + j * 15, 0, playerCards.get(j).getModel());
+			}
+			for(int j = 0; j < 6; j++) {
+				int yPos;
+				if(i == 0)
+					yPos = 20;
+				else
+					yPos = 20 - 5;
+				s.drawBox(yPos, xoffset + 10 + j * 8, 5, 7);
+				if(p.getFieldCards()[i] != null) {
+					Card c = p.getFieldCards()[i];
+					s.drawStringLeftAnchored(yPos - 1, xoffset + 10 + j * 8, Integer.toString(c.getDamage()));
+					s.drawStringRightAnchored(yPos + 1, xoffset + 10 + j * 8, Integer.toString(c.getHealth()));
+				}
+					
 			}
 		}
 	}
