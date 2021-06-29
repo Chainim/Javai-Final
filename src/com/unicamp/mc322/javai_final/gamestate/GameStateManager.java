@@ -1,5 +1,9 @@
 package com.unicamp.mc322.javai_final.gamestate;
 
+import java.util.List;
+
+import com.unicamp.mc322.javai_final.cards.Card;
+import com.unicamp.mc322.javai_final.display.Screen;
 import com.unicamp.mc322.javai_final.player.Player;
 
 public class GameStateManager {
@@ -46,5 +50,24 @@ public class GameStateManager {
 	
 	public void onInput(String input) {
 		currentState.onInput(input);
+	}
+	
+	public void draw(Screen s) {
+		
+		//FIXME: Essa eh uma string de depuracao, lembrar de remover ao final do projeto
+		s.drawStringLeftAnchored(16, 0, "Estado atual: " + currentState.getClass().getSimpleName());
+		
+		
+		final int xoffset = 18;
+		
+		for(int i = 0; i < players.length; i++) {
+			List<Card> playerCards = players[i].getHandCards();
+			for(int j = 0; j < playerCards.size(); j++) {
+				if(i == 0)
+					s.drawCard(xoffset + j * 15, 32 - 10, playerCards.get(i).getModel());
+				else
+					s.drawCard(xoffset + j * 15, 0, playerCards.get(i).getModel());
+			}
+		}
 	}
 }

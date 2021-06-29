@@ -80,4 +80,8 @@ public class Player {
 		fieldCards[fieldIndice] = c;
 		c.onSummon();
 	}
+	
+	public List<Card> getHandCards() {
+		return handCards;
+	}
 }

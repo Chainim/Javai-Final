@@ -44,12 +44,6 @@ public class Game {
 	public void start() {
 		Localizer.localizerInit(Lang.PT_BR);
 		
-		screen.render();
-		for(int i = 0; i < 6; i++)
-			screen.drawCard(16 + 14 * i, 5, new PoroDefenderModel());
-			screen.drawNexus(0, 0);
-			screen.render();
-		
 		running = true;
 		
 		stateManager.init();
@@ -71,6 +65,8 @@ public class Game {
 		while(running) {
 			readInput();
 			stateManager.update();
+			stateManager.draw(screen);
+			screen.render();
 			
 			try {
 				Thread.sleep(100);

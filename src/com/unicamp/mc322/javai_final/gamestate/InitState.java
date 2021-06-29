@@ -2,6 +2,7 @@ package com.unicamp.mc322.javai_final.gamestate;
 import java.util.ArrayList;
 
 import com.unicamp.mc322.javai_final.cards.Card;
+import com.unicamp.mc322.javai_final.cards.models.DefenderModel;
 import com.unicamp.mc322.javai_final.cards.models.PoroModel;
 
 
@@ -20,6 +21,10 @@ public class InitState extends GameState{
 			getManager().getPlayers()[i].addCardToPile(new Card(new PoroModel()));
 			getManager().getPlayers()[i].addCardToPile(new Card(new PoroModel()));
 			getManager().getPlayers()[i].addCardToPile(new Card(new PoroModel()));
+			getManager().getPlayers()[i].addCardToPile(new Card(new DefenderModel()));
+			getManager().getPlayers()[i].addCardToPile(new Card(new DefenderModel()));
+			getManager().getPlayers()[i].addCardToPile(new Card(new DefenderModel()));
+			getManager().getPlayers()[i].addCardToPile(new Card(new DefenderModel()));
 		}
 	}
 	
@@ -61,7 +66,7 @@ public class InitState extends GameState{
 	// entrada tem que ser do tipo 0, 1, 2, ...
 	// escrever done quando terminar
 	public void onInput(String input) {	
-		if(input == "done") {
+		if(input.equals("done")) {
 			int indices[] = new int[cardsIndices.size()];
 			
 			for(int i = 0;i < indices.length;i++) {

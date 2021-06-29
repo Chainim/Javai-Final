@@ -18,6 +18,10 @@ public class Card {
 		}
 	}
 	
+	public CardModel getModel() {
+		return model;
+	}
+	
 	public int getManaCost() {
 		return model.getManaCost();
 	}
