@@ -64,9 +64,9 @@ public class GameStateManager {
 			List<Card> playerCards = players[i].getHandCards();
 			for(int j = 0; j < playerCards.size(); j++) {
 				if(i == 0)
-					s.drawCard(xoffset + j * 15, 32 - 10, playerCards.get(i).getModel());
+					s.drawCard(xoffset + j * 15, 32 - 10, playerCards.get(j).getModel());
 				else
-					s.drawCard(xoffset + j * 15, 0, playerCards.get(i).getModel());
+					s.drawCard(xoffset + j * 15, 0, playerCards.get(j).getModel());
 			}
 		}
 	}
