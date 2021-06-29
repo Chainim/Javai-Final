@@ -55,7 +55,7 @@ public class GameStateManager {
 	public void draw(Screen s) {
 		
 		//FIXME: Essa eh uma string de depuracao, lembrar de remover ao final do projeto
-		s.drawStringLeftAnchored(16, 0, "Estado atual: " + currentState.getClass().getSimpleName());
+		s.drawStringRightAnchored(16, 120, "Estado atual: " + currentState.getClass().getSimpleName());
 		
 		
 		final int xoffset = 18;
@@ -64,7 +64,7 @@ public class GameStateManager {
 			List<Card> playerCards = players[i].getHandCards();
 			for(int j = 0; j < playerCards.size(); j++) {
 				if(i == 0)
-					s.drawCard(xoffset + j * 15, 32 - 10, playerCards.get(j).getModel());
+					s.drawCard(xoffset + j * 15, 40 - 10, playerCards.get(j).getModel());
 				else
 					s.drawCard(xoffset + j * 15, 0, playerCards.get(j).getModel());
 			}

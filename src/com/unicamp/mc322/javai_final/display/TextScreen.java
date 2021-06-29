@@ -11,7 +11,7 @@ public class TextScreen extends Screen{
 	private JLabel textLabel;
 	
 	public TextScreen(JLabel label) {
-		screenbuff = new char[32][120];
+		screenbuff = new char[40][140];
 		for(int i = 0; i < screenbuff.length; i++)
 			for(int j = 0; j < screenbuff[i].length; j++)
 				screenbuff[i][j] = ' ';
@@ -120,6 +120,12 @@ public class TextScreen extends Screen{
 		text += "</pre>";
 		text += "</html>";
 		textLabel.setText(text);
+		
+		for(int i = 0; i < screenbuff.length; i++) {
+			for(int j = 0; j < screenbuff[i].length; j++) {
+				screenbuff[i][j] = ' ';
+			}
+		}
 	}
 
 

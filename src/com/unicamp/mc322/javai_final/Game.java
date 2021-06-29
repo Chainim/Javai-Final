@@ -6,7 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
-import com.unicamp.mc322.javai_final.cards.models.PoroDefenderModel;
 import com.unicamp.mc322.javai_final.display.Screen;
 import com.unicamp.mc322.javai_final.display.TextScreen;
 import com.unicamp.mc322.javai_final.gamestate.GameStateManager;
@@ -28,7 +27,7 @@ public class Game {
 		 
 		 window = new JFrame("Game");
 		 window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		 window.setSize(800, 600);
+		 window.setSize(960, 720);
 		 
 		 label = new JLabel();
 		 textArea = new JTextArea();
