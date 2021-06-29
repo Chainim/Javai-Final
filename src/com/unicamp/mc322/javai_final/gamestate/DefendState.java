@@ -1,25 +1,42 @@
 package com.unicamp.mc322.javai_final.gamestate;
 
+import java.util.ArrayList;
+
 public class DefendState extends GameState {
 	private boolean defendSelectionConfirmed;
 	private boolean matchingSelectionConfirmed;
 	private int[] defendSelection;
 	private int[] matchingSelection;
+	private int[] attackSelection;
+	private ArrayList<Integer> cardsIndices; 
+	
  	
-	protected DefendState(GameStateManager manager) {
+	protected DefendState(GameStateManager manager, int[] attackSelection) {
 		super(manager);
+		this.attackSelection = attackSelection;
+		cardsIndices = new ArrayList<Integer>();
 	}
 	
-	public int[] getDefendSelection() {
-		return defendSelection;
+	public void setDefendSelection() {
+		defendSelection = new int[cardsIndices.size()];
+		
+		for(int i = 0;i < defendSelection.length;i++) {
+			defendSelection[i] = cardsIndices.get(i);
+		}
 	}
 	
-	public int[] getMatchingSelection() {
-		return matchingSelection;
+	public void setMatchingSelection() {
+		matchingSelection = new int[cardsIndices.size()];
+		
+		for(int i = 0;i < matchingSelection.length;i++) {
+			matchingSelection[i] = cardsIndices.get(i);
+		}
 	}
 	
 	@Override
 	public void onStateLoad() {
+		// lembrar de printar attackSelection
+		
 		defendSelectionConfirmed = false;
 		matchingSelectionConfirmed = false;
 	}
@@ -27,32 +44,33 @@ public class DefendState extends GameState {
 	@Override
 	public void update() {
 		if(defendSelectionConfirmed == true && matchingSelectionConfirmed == true) {
-			getManager().setState(new RoundEndState(getManager()));
+			getManager().setState(new RoundEndState(getManager(),defendSelection, attackSelection, matchingSelection));
 		}
 	}
 	
-	// 0, 1, 2, ...
-	public void onInputMatching(String input) {
-		String[] aux = input.split(", ");
-		int[] indices = new int[aux.length];
-
-		for (int i = 0; i < aux.length; i++)
-			indices[i] = Integer.valueOf(aux[i]);
+	public void onInput(String input) {
+		if(input.equals("done")) {
+			if(defendSelectionConfirmed == true) {
+				onInputMatchingSelection();
+			}
+			else {
+				onInputDefendSelection();
+			}
+		}
 		
-		matchingSelection = indices;
-		matchingSelectionConfirmed = true;
+		cardsIndices.add(Integer.parseInt(input) - Integer.parseInt("0"));
 	}
 	
-	// 0, 1, 2, ...
-	public void onInputDefend(String input) {
-		String[] aux = input.split(", ");
-		int[] indices = new int[aux.length];
-
-		for (int i = 0; i < aux.length; i++)
-			indices[i] = Integer.valueOf(aux[i]);
-		
-		defendSelection = indices;
+	public void onInputDefendSelection() {	
 		defendSelectionConfirmed = true;
+		setDefendSelection();
+		cardsIndices.clear();
+	}
+	
+	public void onInputMatchingSelection() {	
+		matchingSelectionConfirmed = true;
+		setMatchingSelection();
+		cardsIndices.clear();
 	}
 
 }

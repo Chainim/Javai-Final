@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
+import com.unicamp.mc322.javai_final.cards.models.ModelRegistry;
 import com.unicamp.mc322.javai_final.display.Screen;
 import com.unicamp.mc322.javai_final.display.TextScreen;
 import com.unicamp.mc322.javai_final.gamestate.GameStateManager;
@@ -42,7 +43,7 @@ public class Game {
 	
 	public void start() {
 		Localizer.localizerInit(Lang.PT_BR);
-		ModelRegisty.initModels();
+		ModelRegistry.initModels();
 		
 		running = true;
 		
