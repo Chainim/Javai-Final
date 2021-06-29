@@ -65,7 +65,7 @@ public class InitState extends GameState{
 
 	}
 	
-	// entrada tem que ser do tipo 0, 1, 2, ...
+	// entrada tem que ser do tipo 0, enter, 1, enter, ...
 	// escrever done quando terminar
 	public void onInput(String input) {	
 		if(input.equals("done")) {

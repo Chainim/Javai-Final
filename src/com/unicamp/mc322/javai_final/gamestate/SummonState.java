@@ -13,9 +13,11 @@ public class SummonState extends GameState {
 	
 	@Override
 	public void onStateLoad() {
-		System.out.println("entrou loadSummon");
+		System.err.println("entrou loadSummon");
 		summonConfirmed = false;
 		summonEnd = false;
+		getManager().getCurrentPlayer().addMana();
+		getManager().getCurrentPlayer().drawCardsFromPile();
 	}
 	
 	@Override
@@ -26,7 +28,11 @@ public class SummonState extends GameState {
 		}
 		
 		if(summonConfirmed) {
-			getManager().getCurrentPlayer().summonCard(toSummonIndex, toSummonFieldIndex);
+			boolean summoned = getManager().getCurrentPlayer().summonCard(toSummonIndex, toSummonFieldIndex); 
+			if(!summoned) {
+				System.err.println("Couldnt summon this monster");
+				summonEnd = false;
+			}
 			summonConfirmed = false;
 		}
 	}
@@ -35,10 +41,9 @@ public class SummonState extends GameState {
 	public void onInput(String input) {
 		if(input.equals("done")) {
 			summonEnd = true;
-			return;
+		} else {
+			toSummonIndex = Integer.valueOf(input);
+			summonConfirmed = true;
 		}
-		
-		toSummonIndex = Integer.valueOf(input);
-		summonConfirmed = true;
 	}
 }
