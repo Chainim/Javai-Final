@@ -10,7 +10,7 @@ import com.unicamp.mc322.javai_final.cards.Card;
 
 public class Player {
 	private int nexusHealth;
-	private int mana;
+	private int mana, curManaBuffer;
 	private int spellMana;
 	private Card[] fieldCards;
 	private List<Card> handCards;
@@ -18,6 +18,7 @@ public class Player {
 	
 	public Player() {
 		
+		curManaBuffer = 1;
 		this.mana = 0;
 		this.spellMana = 0;
 		this.nexusHealth = 20;
@@ -75,14 +76,20 @@ public class Player {
 		drawCardsFromPile(indices.length);
 	}
 	
-	public void summonCard(int indice, int fieldIndice) {
+	public boolean summonCard(int indice, int fieldIndice) {
 		if(handCards.get(indice).getManaCost() > getMana())
-			return;
+			return false;
 		
 		Card c = handCards.remove(indice);
 		mana -= c.getManaCost();
 		fieldCards[fieldIndice] = c;
 		c.onSummon();
+		return true;
+	}
+	
+	public void addMana() { 
+		mana += curManaBuffer;
+		curManaBuffer++;
 	}
 	
 	public List<Card> getHandCards() {
