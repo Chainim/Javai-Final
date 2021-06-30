@@ -12,16 +12,6 @@ public class AttackState extends GameState {
 		cardsIndices = new ArrayList<Integer>();
 	}
 	
-	public int[] getAttackSelection() {
-		int selection[] = new int[cardsIndices.size()];
-		
-		for(int i = 0;i < selection.length;i++) {
-			selection[i] = cardsIndices.get(i);
-		}
-		
-		return selection;
-	}
-	
 	@Override
 	public void onStateLoad() {
 		selectionConfirmed = false;
@@ -30,7 +20,7 @@ public class AttackState extends GameState {
 	@Override
 	public void update() {
 		if(selectionConfirmed) {
-			getManager().setState(new DefendState(getManager(), getAttackSelection()));
+			getManager().setState(new DefendState(getManager(), cardsIndices));
 		}
 	}
 	
@@ -40,7 +30,13 @@ public class AttackState extends GameState {
 			selectionConfirmed = true;
 			return;
 		}
+		int id = Integer.parseInt(input);
 		
-		cardsIndices.add(Integer.parseInt(input) - Integer.parseInt("0"));
+		if(cardsIndices.contains(id) == true || getManager().getCurrentPlayer().getFieldCards()[id] == null) {
+			System.out.println("Nao foi possivel selecionar monstro para ataque");
+			return;
+		}
+		
+		cardsIndices.add(id);
 	}
 }

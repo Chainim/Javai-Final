@@ -81,6 +81,10 @@ public class Player {
 	}
 	
 	public boolean summonCard(int indice, int fieldIndice) {
+		if(fieldIndice > fieldCards.length)
+			return false;
+		if(indice > handCards.size())
+			return false;
 		if(handCards.get(indice).getManaCost() > getMana())
 			return false;
 		
