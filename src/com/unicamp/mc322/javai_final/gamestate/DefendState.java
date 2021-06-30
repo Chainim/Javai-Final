@@ -36,6 +36,7 @@ public class DefendState extends GameState {
 	// colocar (carta de defesa carta de ataque)
 	public void onInput(String input) {
 		if(input.equals("done")) {
+			defendSelectionConfirmed = true;
 			return;
 		}
 		
