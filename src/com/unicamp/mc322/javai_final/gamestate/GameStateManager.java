@@ -34,6 +34,14 @@ public class GameStateManager {
 		for(int i = 0; i < players.length; i++) {
 			players[i] = new Player();
 		}
+		
+		players[0].getFieldCards()[1] = new Card(ModelRegistry.PORO);
+		players[0].getFieldCards()[2] = new Card(ModelRegistry.PORO);
+		players[0].getFieldCards()[4] = new Card(ModelRegistry.DEFENDER);
+		
+		players[1].getFieldCards()[2] = new Card(ModelRegistry.DEFENDER);
+		players[1].getFieldCards()[3] = new Card(ModelRegistry.DEFENDER);
+		players[1].getFieldCards()[5] = new Card(ModelRegistry.PORO);
 	
 		currentState.onStateLoad();
 	}
