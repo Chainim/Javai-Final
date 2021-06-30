@@ -7,15 +7,14 @@ import com.unicamp.mc322.javai_final.cards.Card;
 public class RoundEndState extends GameState {
 	private List<Integer> defendSelection;
 	private List<Integer> attackSelection;
-  	private DefendState defendState;
 	
-	protected RoundEndState(GameStateManager manager, DefendState defendState) {
+	protected RoundEndState(GameStateManager manager) {
 		super(manager);
-		this.defendState = defendState;
 	}
 
 	@Override
 	public void onStateLoad() {
+		DefendState defendState = getManager().defendState;
 		defendSelection = defendState.getDefendSelection();
 		attackSelection = defendState.getAttackSelection();
 		

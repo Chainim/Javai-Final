@@ -8,18 +8,16 @@ public class DefendState extends GameState {
 	private boolean defendSelectionConfirmed;
 	private ArrayList<Integer> defendSelection;
 	private ArrayList<Integer> attackSelection;
-	private AttackState attackState;
  	
-	protected DefendState(GameStateManager manager, AttackState attackState) {
+	protected DefendState(GameStateManager manager) {
 		super(manager);
-		this.attackState = attackState;
 		this.defendSelection = new ArrayList<Integer>();
 	}
 	
 	@Override
 	public void onStateLoad() {
 		// lembrar de printar attackSelection
-		attackSelection = attackState.getCardsIndices();
+		attackSelection = getManager().attackState.getCardsIndices();
 		defendSelection.clear();
 		
 		for(int i = 0;i < attackSelection.size();i++) {

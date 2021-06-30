@@ -25,8 +25,8 @@ public class GameStateManager {
 		initState = new InitState(this);
 		summonState = new SummonState(this);
 		attackState = new AttackState(this);
-		defendState = new DefendState(this, attackState);
-		roundEndState = new RoundEndState(this, defendState);
+		defendState = new DefendState(this);
+		roundEndState = new RoundEndState(this);
 		
 		currentState = initState;
 	}
