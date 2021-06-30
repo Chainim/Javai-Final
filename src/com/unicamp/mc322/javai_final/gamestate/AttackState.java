@@ -34,6 +34,8 @@ public class AttackState extends GameState {
 			return;
 		}
 		
+		cardsIndices.clear();
+		
 		String[] s = input.split(" ");
 		
 		for(int i = 0;i < s.length;i++) {
@@ -41,7 +43,7 @@ public class AttackState extends GameState {
 			
 			if(cardsIndices.contains(id) == true || id > 5 || getManager().getCurrentPlayer().getFieldCards()[id] == null) {
 				System.out.println("Nao foi possivel selecionar monstro para ataque");
-				return;
+				continue;
 			}
 			cardsIndices.add(id);
 		}
