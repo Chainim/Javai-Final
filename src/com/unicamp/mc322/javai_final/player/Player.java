@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Stack;
 
 import com.unicamp.mc322.javai_final.cards.Card;
+import com.unicamp.mc322.javai_final.cards.MinionCardModel;
 
 public class Player {
 	private int nexusHealth;
@@ -91,7 +92,8 @@ public class Player {
 		Card c = handCards.remove(indice);
 		// Ver se o custo de substituicao eh o mesmo de sumonar em um local vazio
 		mana -= c.getManaCost();
-		fieldCards[fieldIndice] = c;
+		if(c.getModel() instanceof MinionCardModel)
+			fieldCards[fieldIndice] = c;
 		c.onSummon();
 		return true;
 	}

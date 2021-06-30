@@ -1,6 +1,7 @@
 package com.unicamp.mc322.javai_final;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,6 +30,7 @@ public class Game {
 		 window = new JFrame("Game");
 		 window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 window.setSize(960, 720);
+		 window.setResizable(false);
 		 
 		 label = new JLabel();
 		 textArea = new JTextArea();

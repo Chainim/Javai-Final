@@ -18,6 +18,14 @@ public class Card {
 		}
 	}
 	
+	public void setHealth(int health) {
+		this.health = health;
+	}
+	
+	public void setDamage(int damage) {
+		this.damage = damage;
+	}
+	
 	public CardModel getModel() {
 		return model;
 	}

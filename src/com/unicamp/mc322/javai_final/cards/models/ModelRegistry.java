@@ -9,6 +9,7 @@ public class ModelRegistry {
 	public static CardModel TIANA;
 	public static CardModel PORO_DEFENDER;
 	public static CardModel SMITE;
+	public static CardModel DOUBLED_VALUE;
 	
 	public static void initModels() {
 		DEFENDER = new DefenderModel();
@@ -17,5 +18,6 @@ public class ModelRegistry {
 		TIANA = new TianaModel();
 		PORO_DEFENDER = new TianaModel();
 		SMITE = new SmiteModel();
+		DOUBLED_VALUE = new DoubledValueModel();
 	}
 }
