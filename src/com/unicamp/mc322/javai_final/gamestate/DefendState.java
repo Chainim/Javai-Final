@@ -11,6 +11,7 @@ public class DefendState extends GameState {
 	protected DefendState(GameStateManager manager, ArrayList<Integer> attackSelection) {
 		super(manager);
 		this.attackSelection = attackSelection;
+		this.defendSelection = new ArrayList<Integer>();
 	}
 	
 	@Override
