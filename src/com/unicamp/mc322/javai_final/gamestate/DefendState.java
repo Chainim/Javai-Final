@@ -20,6 +20,7 @@ public class DefendState extends GameState {
 	public void onStateLoad() {
 		// lembrar de printar attackSelection
 		attackSelection = attackState.getCardsIndices();
+		defendSelection.clear();
 		
 		for(int i = 0;i < attackSelection.size();i++) {
 			defendSelection.add(-1);
