@@ -47,6 +47,7 @@ public class SummonState extends GameState {
 			String[] s = input.split(" ");
 			if(s.length < 2) {
 				System.err.println("Invalid input for summoning. Expected two integers.");
+				return;
 			}
 			toSummonIndex = Integer.valueOf(s[0]);
 			toSummonFieldIndex = Integer.valueOf(s[1]);
