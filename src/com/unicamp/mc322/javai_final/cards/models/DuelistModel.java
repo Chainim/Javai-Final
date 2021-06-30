@@ -4,7 +4,7 @@ import com.unicamp.mc322.javai_final.cards.MinionCardModel;
 
 public class DuelistModel extends MinionCardModel {
 
-	protected DuelistModel() {
+	DuelistModel() {
 		super("card.duelist.name", "card.duelist.desc", 3, 3, 2);
 		// TODO Auto-generated constructor stub
 	}
