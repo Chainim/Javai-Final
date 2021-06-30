@@ -43,7 +43,7 @@ public class DefendState extends GameState {
 		int id1 = Integer.parseInt(l[0]);
 		int id2 = Integer.parseInt(l[1]);
 		
-		if(getManager().getCurrentPlayer().getFieldCards()[id1] == null || attackSelection.contains(id2) == false) {
+		if(getManager().getOpponentPlayer().getFieldCards()[id1] == null || attackSelection.contains(id2) == false) {
 			System.out.println("Não foi possivel selecionar monstro para defesa");
 			return;
 		}
