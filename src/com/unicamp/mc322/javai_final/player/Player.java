@@ -36,6 +36,10 @@ public class Player {
 		return nexusHealth;
 	}
 	
+	public void takeNexusDamage(int damage) {
+		nexusHealth -= damage;
+	}
+	
 	public int getMana() {
 		return mana;
 	}

@@ -38,11 +38,20 @@ public class Card {
 		model.onSummon();
 	}
 	
+	public void onDeath() {
+		if(model instanceof MinionCardModel)
+			((MinionCardModel)model).onDeath();
+	}
+	
 	public int getHealth() {
 		return health;
 	}
 	
 	public int getDamage() {
 		return damage;
+	}
+	
+	public void takeDamage(int damage) {
+		health -= damage;
 	}
 }

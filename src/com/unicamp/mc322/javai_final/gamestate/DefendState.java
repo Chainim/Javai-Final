@@ -56,6 +56,7 @@ public class DefendState extends GameState {
 			else {
 				onInputDefendSelection();
 			}
+			return;
 		}
 		
 		cardsIndices.add(Integer.parseInt(input) - Integer.parseInt("0"));
