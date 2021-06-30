@@ -32,14 +32,18 @@ public class AttackState extends GameState {
 			selectionConfirmed = true;
 			return;
 		}
-		int id = Integer.parseInt(input);
 		
-		if(cardsIndices.contains(id) == true || getManager().getCurrentPlayer().getFieldCards()[id] == null) {
-			System.out.println("Nao foi possivel selecionar monstro para ataque");
-			return;
+		String[] s = input.split(" ");
+		
+		for(int i = 0;i < s.length;i++) {
+			int id = Integer.parseInt(s[i]);
+			
+			if(cardsIndices.contains(id) == true || id > 5 || getManager().getCurrentPlayer().getFieldCards()[id] == null) {
+				System.out.println("Nao foi possivel selecionar monstro para ataque");
+				return;
+			}
+			cardsIndices.add(id);
 		}
-		
-		cardsIndices.add(id);
 	}
 	
 	@Override
