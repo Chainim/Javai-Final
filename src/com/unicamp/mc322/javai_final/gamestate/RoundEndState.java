@@ -30,12 +30,15 @@ public class RoundEndState extends GameState {
 			
 			if(attacking.getHealth() <= 0) {
 				attacking.onDeath();
-				attacking = null;
+				getManager().getCurrentPlayer().getFieldCards()[attackSelection.get(i)] = null;
 			}
 			if(defending.getHealth() <= 0) {
 				defending.onDeath();
-				defending = null;
+				getManager().getOpponentPlayer().getFieldCards()[defendSelection.get(i)] = null;
 			}
 		}
+		
+		getManager().advancePlayer();
+		getManager().setState(new InitState(getManager()));
 	}
 }
