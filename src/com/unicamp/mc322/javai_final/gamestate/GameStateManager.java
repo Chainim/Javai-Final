@@ -44,6 +44,10 @@ public class GameStateManager {
 		return players[currentPlayerIndex];
 	}
 	
+	Player getOpponentPlayer() {
+		return players[(currentPlayerIndex + 1) % 2];
+	}
+	
 	void advancePlayer() {
 		currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
 	}

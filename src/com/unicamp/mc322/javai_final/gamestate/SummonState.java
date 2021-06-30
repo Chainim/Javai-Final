@@ -31,9 +31,9 @@ public class SummonState extends GameState {
 			boolean summoned = getManager().getCurrentPlayer().summonCard(toSummonIndex, toSummonFieldIndex); 
 			if(!summoned) {
 				System.err.println("Couldnt summon this monster");
-				summonEnd = false;
-				toSummonIndex = -1;
 			}
+			summonEnd = false;
+			toSummonIndex = -1;
 			summonConfirmed = false;
 		}
 	}

@@ -32,7 +32,7 @@ public class DefendState extends GameState {
 	}
 	
 	// colocar -1 caso não queira defender ataque
-	
+	// colocar (carta de defesa carta de ataque)
 	public void onInput(String input) {
 		if(input.equals("done")) {
 			return;
@@ -48,9 +48,7 @@ public class DefendState extends GameState {
 			return;
 		}
 		
-		defendSelection[0] = id1; 
-		
-		cardsIndices.add(id);
+		defendSelection.set(attackSelection.indexOf(id2), id1); 
 	}
 
 }
