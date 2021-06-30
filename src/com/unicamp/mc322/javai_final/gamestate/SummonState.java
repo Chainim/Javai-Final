@@ -44,12 +44,13 @@ public class SummonState extends GameState {
 		if(input.equals("done")) {
 			summonEnd = true;
 		} else {
-			if(toSummonIndex == -1)
-				toSummonIndex = Integer.valueOf(input);
-			else {				
-				toSummonFieldIndex = Integer.valueOf(input);
-				summonConfirmed = true;
+			String[] s = input.split(" ");
+			if(s.length < 2) {
+				System.err.println("Invalid input for summoning. Expected two integers.");
 			}
+			toSummonIndex = Integer.valueOf(s[0]);
+			toSummonFieldIndex = Integer.valueOf(s[1]);
+			summonConfirmed = true;
 		}
 	}
 }
