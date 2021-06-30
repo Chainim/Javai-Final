@@ -18,7 +18,7 @@ public class DefendState extends GameState {
 		// lembrar de printar attackSelection
 		
 		for(int i = 0;i < attackSelection.size();i++) {
-			attackSelection.add(-1);
+			defendSelection.add(-1);
 		}
 		
 		defendSelectionConfirmed = false;
