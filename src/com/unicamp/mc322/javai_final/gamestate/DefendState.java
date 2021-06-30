@@ -8,17 +8,18 @@ public class DefendState extends GameState {
 	private boolean defendSelectionConfirmed;
 	private ArrayList<Integer> defendSelection;
 	private ArrayList<Integer> attackSelection;
-	
+	private AttackState attackState;
  	
-	protected DefendState(GameStateManager manager, ArrayList<Integer> attackSelection) {
+	protected DefendState(GameStateManager manager, AttackState attackState) {
 		super(manager);
-		this.attackSelection = attackSelection;
+		this.attackState = attackState;
 		this.defendSelection = new ArrayList<Integer>();
 	}
 	
 	@Override
 	public void onStateLoad() {
 		// lembrar de printar attackSelection
+		attackSelection = attackState.getCardsIndices();
 		
 		for(int i = 0;i < attackSelection.size();i++) {
 			defendSelection.add(-1);
@@ -30,7 +31,7 @@ public class DefendState extends GameState {
 	@Override
 	public void update() {
 		if(defendSelectionConfirmed == true) {
-			getManager().setState(new RoundEndState(getManager(), defendSelection, attackSelection));
+			getManager().setState(getManager().roundEndState);
 		}
 	}
 	
@@ -53,6 +54,14 @@ public class DefendState extends GameState {
 		}
 		
 		defendSelection.set(attackSelection.indexOf(id2), id1); 
+	}
+	
+	public ArrayList<Integer> getAttackSelection() {
+		return attackSelection;
+	}
+	
+	public ArrayList<Integer> getDefendSelection() {
+		return defendSelection;
 	}
 	
 	@Override

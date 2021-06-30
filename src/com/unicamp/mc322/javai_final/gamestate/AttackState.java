@@ -16,13 +16,14 @@ public class AttackState extends GameState {
 	
 	@Override
 	public void onStateLoad() {
+		cardsIndices.clear();
 		selectionConfirmed = false;
 	}
 	
 	@Override
 	public void update() {
 		if(selectionConfirmed) {
-			getManager().setState(new DefendState(getManager(), cardsIndices));
+			getManager().setState(getManager().defendState);
 		}
 	}
 	
@@ -40,6 +41,10 @@ public class AttackState extends GameState {
 		}
 		
 		cardsIndices.add(id);
+	}
+	
+	public ArrayList<Integer> getCardsIndices(){
+		return cardsIndices;
 	}
 	
 	@Override

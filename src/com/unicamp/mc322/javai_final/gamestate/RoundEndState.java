@@ -7,20 +7,23 @@ import com.unicamp.mc322.javai_final.cards.Card;
 public class RoundEndState extends GameState {
 	private List<Integer> defendSelection;
 	private List<Integer> attackSelection;
-  	
-	protected RoundEndState(GameStateManager manager, List<Integer> defendSelection, List<Integer> attackSelection) {
+  	private DefendState defendState;
+	
+	protected RoundEndState(GameStateManager manager, DefendState defendState) {
 		super(manager);
-		this.defendSelection = defendSelection;
-		this.attackSelection = attackSelection;
+		this.defendState = defendState;
 	}
 
 	@Override
 	public void onStateLoad() {
+		defendSelection = defendState.getDefendSelection();
+		attackSelection = defendState.getAttackSelection();
+		
 		for(int i = 0;i < attackSelection.size();i++) {
 			Card attacking = getManager().getCurrentPlayer().getFieldCards()[attackSelection.get(i)];
 			if(defendSelection.get(i) == -1) {
 				getManager().getOpponentPlayer().takeNexusDamage(attacking.getDamage());
-				return;
+				continue;
 			}
 			
 			Card defending = getManager().getOpponentPlayer().getFieldCards()[defendSelection.get(i)];
@@ -38,7 +41,8 @@ public class RoundEndState extends GameState {
 			}
 		}
 		
+		System.err.println("Avancei player e mudei de turno");
 		getManager().advancePlayer();
-		getManager().setState(new InitState(getManager()));
+		getManager().setState(getManager().summonState);
 	}
 }

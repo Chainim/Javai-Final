@@ -59,7 +59,7 @@ public class InitState extends GameState{
 	public void update() {
 		// render
 		if(switchingPlayer >= getManager().getPlayers().length) {
-			getManager().setState(new SummonState(getManager()));
+			getManager().setState(getManager().summonState);
 			return;
 		}
 
