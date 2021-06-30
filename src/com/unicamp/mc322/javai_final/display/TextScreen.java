@@ -100,7 +100,7 @@ public class TextScreen extends Screen{
 		screenbuff[posy][posx + maxCount + 1] = ']';
 	}
 	
-	public void drawNexus(int posx, int posy) {
+	public void drawNexus(int posx, int posy, int health) {
 		screenbuff[posy][posx + 2] = '_';
 		screenbuff[posy][posx + 3] = '_';
 		screenbuff[posy + 1][posx + 1] = '/';
@@ -111,8 +111,7 @@ public class TextScreen extends Screen{
 		screenbuff[posy + 3][posx + 3] = '_';
 		screenbuff[posy + 3][posx + 4] = '/';
 		screenbuff[posy + 2][posx + 5] = '|';
-		screenbuff[posy + 2][posx + 2] = 'h';
-		screenbuff[posy + 2][posx + 3] = 'h';
+		drawStringCentered(posy + 2, posx + 3, Integer.toString(health));
 	}
 
 	@Override

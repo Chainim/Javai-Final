@@ -86,9 +86,13 @@ public class GameStateManager {
 			if(i == 0) {
 				s.drawStringLeftAnchored(20 + 3, 100 - 8, "Mana (" + p.getMana() + "):");
 				s.drawProgressBarLeftAnchored(20 + 3, 100, p.getMana(), 10);
+				
+				s.drawNexus(5, 20 + 3, p.getNexusHealth());
 			} else {
 				s.drawStringLeftAnchored(20 - 5, 100 - 8, "Mana (" + p.getMana() + "):");
 				s.drawProgressBarLeftAnchored(20 - 5, 100, p.getMana(), 10);
+				
+				s.drawNexus(5, 20 - 5, p.getNexusHealth());
 			}
 		}
 	}
