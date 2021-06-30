@@ -12,20 +12,21 @@ public class GameStateManager {
 	private Player[] players;
 	int currentPlayerIndex;
 	
-	GameState initState;
-	GameState summonState;
-	GameState attackState;
-	GameState defendState;
-	GameState roundEndState;
+	InitState initState;
+	SummonState summonState;
+	AttackState attackState;
+	DefendState defendState;
+	RoundEndState roundEndState;
 	
 	public GameStateManager() {
 		players = new Player[2];
 		currentPlayerIndex = 0;
 		
 		initState = new InitState(this);
-//		summonState = new SummonState(this);
-//		attackState = new AttackState(this);
-//		defendState = new DefendState(this);
+		summonState = new SummonState(this);
+		attackState = new AttackState(this);
+		defendState = new DefendState(this, attackState);
+		roundEndState = new RoundEndState(this, defendState);
 		
 		currentState = initState;
 	}

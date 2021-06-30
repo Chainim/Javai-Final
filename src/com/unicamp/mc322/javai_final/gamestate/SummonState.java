@@ -23,7 +23,7 @@ public class SummonState extends GameState {
 	@Override
 	public void update() {
 		if(summonEnd) {
-			getManager().setState(new AttackState(getManager()));
+			getManager().setState(getManager().attackState);
 			return;
 		}
 		
