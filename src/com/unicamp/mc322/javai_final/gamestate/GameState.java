@@ -1,5 +1,7 @@
 package com.unicamp.mc322.javai_final.gamestate;
 
+import com.unicamp.mc322.javai_final.display.Screen;
+
 public abstract class GameState {
 	private GameStateManager manager;
 	
@@ -24,6 +26,10 @@ public abstract class GameState {
 	}
 	
 	public void onInput(String input) {
+		
+	}
+	
+	public void onRender(Screen s) {
 		
 	}
 }

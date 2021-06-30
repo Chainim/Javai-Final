@@ -30,6 +30,7 @@ public class RoundEndState extends GameState {
 			
 			if(attacking.getHealth() <= 0) {
 				attacking.onDeath();
+				//FIXME: ESSA LINHA TEM UM ERRO: \/
 				attacking = null;
 			}
 			if(defending.getHealth() <= 0) {

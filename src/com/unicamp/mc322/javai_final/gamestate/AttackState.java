@@ -2,6 +2,8 @@ package com.unicamp.mc322.javai_final.gamestate;
 
 import java.util.ArrayList;
 
+import com.unicamp.mc322.javai_final.display.Screen;
+
 public class AttackState extends GameState {
 
 	private boolean selectionConfirmed;
@@ -38,5 +40,19 @@ public class AttackState extends GameState {
 		}
 		
 		cardsIndices.add(id);
+	}
+	
+	@Override
+	public void onRender(Screen s) {
+		final int xoffset = 18;
+		for(Integer i : cardsIndices) {
+			int yPos;
+			if(getManager().currentPlayerIndex == 0) {
+				yPos = 20;
+			} else {
+				yPos = 20 - 5;
+			}
+			s.drawStringCentered(yPos + 1, xoffset + 10 + i * 8 + 3, "*");
+		}
 	}
 }
