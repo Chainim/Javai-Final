@@ -99,11 +99,18 @@ public class Player {
 	}
 	
 	public void addMana() { 
-		mana += curManaBuffer;
+		mana = curManaBuffer;
 		curManaBuffer++;
+		curManaBuffer = Math.min(10, curManaBuffer);
 	}
 	
 	public List<Card> getHandCards() {
 		return handCards;
+	}
+
+		
+	public void calcSpellMana() {
+		spellMana = Math.min(3, mana);
+		mana = 0;
 	}
 }

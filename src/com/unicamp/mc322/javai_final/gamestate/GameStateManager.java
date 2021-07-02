@@ -109,17 +109,18 @@ public class GameStateManager {
 			}
 			
 			if(i == 0) {
-				s.drawStringLeftAnchored(20 + 3, 100 - 8, "Mana (" + p.getMana() + "):");
-				s.drawProgressBarLeftAnchored(20 + 3, 102, p.getMana(), 10);
+				s.drawStringLeftAnchored(20 + 3, 100 - 18, "Mana (" + p.getMana() + "):");
+				s.drawProgressBarLeftAnchored(20 + 3, 102 - 10, p.getMana(), 10);
 				
+				s.drawStringLeftAnchored(20 + 3, 100 + 5, "Spell Mana (" + p.getSpellMana() + "):");
 				s.drawProgressBarLeftAnchored(20 + 3, 100 + 20, p.getSpellMana(), 3);
 				
 				s.drawNexus(5, 20 + 0, p.getNexusHealth());
 			} else {
-				s.drawStringLeftAnchored(20 - 5, 100 - 8, "Mana (" + p.getMana() + "):");
-				s.drawProgressBarLeftAnchored(20 - 5, 102, p.getMana(), 10);
+				s.drawStringLeftAnchored(20 - 5, 100 - 18, "Mana (" + p.getMana() + "):");
+				s.drawProgressBarLeftAnchored(20 - 5, 102 - 10, p.getMana(), 10);
 				
-				//s.drawStringLeftAnchored(20 - 5, 100 + 5, "Spell Mana (" + p.getSpellMana() + "):");
+				s.drawStringLeftAnchored(20 - 5, 100 + 5, "Spell Mana (" + p.getSpellMana() + "):");
 				s.drawProgressBarLeftAnchored(20 - 5, 100 + 20, p.getSpellMana(), 3);
 				
 				s.drawNexus(5, 20 - 5, p.getNexusHealth());

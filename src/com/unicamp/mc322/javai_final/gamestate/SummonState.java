@@ -23,6 +23,7 @@ public class SummonState extends GameState {
 	@Override
 	public void update() {
 		if(summonEnd) {
+			getManager().getCurrentPlayer().calcSpellMana();
 			getManager().setState(getManager().attackState);
 			return;
 		}
