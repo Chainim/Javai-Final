@@ -14,7 +14,7 @@ public class DoubledValueModel extends SpellCardModel {
 	}
 	
 	@Override
-	public void onSummon() {
+	public void onSummon(Card card) {
 		//– Nome: Valor Redobrado. Custo: 6. Efeito: Cure inteiramente um
 		//aliado; Dobre o ataque e defesa deste aliado.
 		GameStateManager manager = GameStateManager.getInstance();

@@ -1,7 +1,6 @@
 package com.unicamp.mc322.javai_final.cards.models;
 
 import com.unicamp.mc322.javai_final.cards.Card;
-import com.unicamp.mc322.javai_final.cards.MinionCardModel;
 import com.unicamp.mc322.javai_final.cards.SpellCardModel;
 import com.unicamp.mc322.javai_final.gamestate.GameStateManager;
 import com.unicamp.mc322.javai_final.gamestate.InputListener;
@@ -14,7 +13,7 @@ public class SmiteModel extends SpellCardModel {
 	}
 	
 	@Override
-	public void onSummon() {
+	public void onSummon(Card c) {
 		//Efeito: Um aliado atacante golpeia todos os oponentes defensores
 		//Como ele 'golpeia', nao eh um embate?
 		

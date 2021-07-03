@@ -1,7 +1,7 @@
 package com.unicamp.mc322.javai_final.cards.models;
 
+import com.unicamp.mc322.javai_final.cards.Card;
 import com.unicamp.mc322.javai_final.cards.MinionCardModel;
-import com.unicamp.mc322.javai_final.gamestate.GameStateManager;
 import com.unicamp.mc322.javai_final.player.Player;
 
 public class PoroDefenderModel extends MinionCardModel {
@@ -11,11 +11,8 @@ public class PoroDefenderModel extends MinionCardModel {
 	}
 
 	@Override
-	public void onDeath() {
-		// puxa uma carta do deck
-		//TODO: Precisa saber quem é o dono dessa carta
-		GameStateManager g = GameStateManager.getInstance();
-		Player p = null;
+	public void onDeath(Card c) {
+		Player p = c.getOwner();
 		p.drawCardsFromPile();
 	}
 }

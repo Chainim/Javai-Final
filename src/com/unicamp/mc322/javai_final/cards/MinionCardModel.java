@@ -17,11 +17,11 @@ public abstract class MinionCardModel extends CardModel {
 		return baseHealth;
 	}
 	
-	public void onDeath() {
+	public void onDeath(Card c) {
 		
 	}
 	
-	public void onKill() {
+	public void onKill(Card c) {
 		
 	}
 }

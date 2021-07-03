@@ -1,5 +1,6 @@
 package com.unicamp.mc322.javai_final.cards.models;
 
+import com.unicamp.mc322.javai_final.cards.Card;
 import com.unicamp.mc322.javai_final.cards.MinionCardModel;
 import com.unicamp.mc322.javai_final.player.Player;
 
@@ -11,10 +12,9 @@ public class DuelistModel extends MinionCardModel {
 	}
 	
 	@Override
-	public void onKill() {
+	public void onKill(Card c) {
 		 //Se a carta destruir um seguidor do inimigo nesta rodada, uma carta “Poro” e colocada em sua mao.
-		//TODO: pegar o player correto
-		Player p = null;
+		Player p = c.getOwner();
 		p.getHandCards().add(new Card(ModelRegistry.PORO));
 	}
 }

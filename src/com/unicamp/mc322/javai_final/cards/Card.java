@@ -1,9 +1,12 @@
 package com.unicamp.mc322.javai_final.cards;
 
+import com.unicamp.mc322.javai_final.player.Player;
+
 public class Card {
 	private CardModel model;
 	private int health;
 	private int damage;
+	private Player owner;
 	
 	public Card(CardModel model) {
 		//TODO: Consertar isso aqui
@@ -44,12 +47,12 @@ public class Card {
 	}
 	
 	public void onSummon() {
-		model.onSummon();
+		model.onSummon(this);
 	}
 	
 	public void onDeath() {
 		if(model instanceof MinionCardModel)
-			((MinionCardModel)model).onDeath();
+			((MinionCardModel)model).onDeath(this);
 	}
 	
 	public int getHealth() {
@@ -66,6 +69,14 @@ public class Card {
 	
 	public void onKill() {
 		if(model instanceof MinionCardModel)
-			((MinionCardModel)model).onKill();
+			((MinionCardModel)model).onKill(this);
+	}
+	
+	public void setOwner(Player p) {
+		this.owner = p;
+	}
+	
+	public Player getOwner() {
+		return owner;
 	}
 }

@@ -63,6 +63,7 @@ public class Player {
 				return;
 			}
 			Card top = drawPile.pop();
+			top.setOwner(this);
 			handCards.add(top);
 		}
 	}

@@ -33,11 +33,11 @@ public abstract class CardModel {
 		return Localizer.getInstance().getLocalization(getUnlocalizedDescription());
 	}
 	
-	public void onSummon() {
+	public void onSummon(Card c) {
 		
 	}
 	
-	public void onTurnEnd() {
+	public void onTurnEnd(Card c) {
 		
 	}
 }
