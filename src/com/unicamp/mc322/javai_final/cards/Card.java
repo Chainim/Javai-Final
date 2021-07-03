@@ -6,6 +6,7 @@ public class Card {
 	private int damage;
 	
 	public Card(CardModel model) {
+		//TODO: Consertar isso aqui
 		this.model = model;
 		if(model instanceof MinionCardModel) {
 			MinionCardModel mmodel = (MinionCardModel)model;
@@ -61,5 +62,10 @@ public class Card {
 	
 	public void takeDamage(int damage) {
 		health -= damage;
+	}
+	
+	public void onKill() {
+		if(model instanceof MinionCardModel)
+			((MinionCardModel)model).onKill();
 	}
 }

@@ -20,4 +20,8 @@ public abstract class MinionCardModel extends CardModel {
 	public void onDeath() {
 		
 	}
+	
+	public void onKill() {
+		
+	}
 }

@@ -31,6 +31,10 @@ public class SmiteModel extends SpellCardModel {
 					if(manager.getOpponentPlayer().getFieldCards()[i] != null) {
 						Card defending = manager.getOpponentPlayer().getFieldCards()[i];
 						defending.takeDamage(attacking.getDamage());
+						if(defending.getHealth() <= 0) {
+							defending.onDeath();
+							manager.getOpponentPlayer().getFieldCards()[i] = null;
+						}
 					}
 						
 				

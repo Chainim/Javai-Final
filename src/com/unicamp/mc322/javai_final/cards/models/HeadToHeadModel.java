@@ -33,10 +33,12 @@ public class HeadToHeadModel extends SpellCardModel {
 				
 				if(attacking.getHealth() <= 0) {
 					attacking.onDeath();
+					defending.onKill();
 					manager.getCurrentPlayer().getFieldCards()[indices[0]] = null;
 				}
 				if(defending.getHealth() <= 0) {
 					defending.onDeath();
+					attacking.onKill();
 					manager.getOpponentPlayer().getFieldCards()[indices[1]] = null;
 				}
 				
