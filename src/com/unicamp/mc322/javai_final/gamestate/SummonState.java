@@ -1,13 +1,19 @@
 package com.unicamp.mc322.javai_final.gamestate;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class SummonState extends GameState {
 
 	private int toSummonIndex, toSummonFieldIndex;
 	private boolean summonConfirmed;
 	private boolean summonEnd;
 	
+	private List<InputListener> listeners;
+	
 	protected SummonState(GameStateManager manager) {
 		super(manager);
+		listeners = new LinkedList<InputListener>();
 	}
 	
 	@Override
@@ -42,6 +48,11 @@ public class SummonState extends GameState {
 	// Digite o indice do monstro da sua mao, enter, o numero do indice da mesa e done para sumonar
 	@Override
 	public void onInput(String input) {
+		if(!listeners.isEmpty()) {
+			InputListener i = listeners.remove(0);
+			i.onInput(input);
+			return;
+		}
 		if(input.equals("done")) {
 			summonEnd = true;
 		} else {
@@ -54,5 +65,9 @@ public class SummonState extends GameState {
 			toSummonFieldIndex = Integer.valueOf(s[1]);
 			summonConfirmed = true;
 		}
+	}
+	
+	public void addListener(InputListener i) {
+		listeners.add(i);
 	}
 }

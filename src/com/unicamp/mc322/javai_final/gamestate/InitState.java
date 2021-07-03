@@ -27,6 +27,10 @@ public class InitState extends GameState{
 			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
 			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
 			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DOUBLED_VALUE));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DOUBLED_VALUE));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DOUBLED_VALUE));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DOUBLED_VALUE));
 		}
 	}
 	

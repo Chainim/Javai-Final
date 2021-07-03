@@ -8,6 +8,9 @@ import com.unicamp.mc322.javai_final.display.Screen;
 import com.unicamp.mc322.javai_final.player.Player;
 
 public class GameStateManager {
+	
+	private static GameStateManager instance;
+	
 	private GameState currentState;
 	private Player[] players;
 	int currentPlayerIndex;
@@ -19,6 +22,8 @@ public class GameStateManager {
 	RoundEndState roundEndState;
 	
 	public GameStateManager() {
+		instance = this;
+		
 		players = new Player[2];
 		currentPlayerIndex = 0;
 		
@@ -36,6 +41,20 @@ public class GameStateManager {
 			players[i] = new Player();
 		}
 		
+		//TODO: Lembrar de tirar esse trecho de codigo
+		players[0].addMana();
+		players[0].addMana();
+		players[0].addMana();
+		players[0].addMana();
+		players[0].addMana();
+		players[0].addMana();
+		players[1].addMana();
+		players[1].addMana();
+		players[1].addMana();
+		players[1].addMana();
+		players[1].addMana();
+		players[1].addMana();
+		
 		players[0].getFieldCards()[1] = new Card(ModelRegistry.PORO);
 		players[0].getFieldCards()[2] = new Card(ModelRegistry.PORO);
 		players[0].getFieldCards()[4] = new Card(ModelRegistry.DEFENDER);
@@ -45,6 +64,10 @@ public class GameStateManager {
 		players[1].getFieldCards()[5] = new Card(ModelRegistry.PORO);
 	
 		currentState.onStateLoad();
+	}
+	
+	public GameState getCurrentState() {
+		return currentState;
 	}
 	
 	public void setState(GameState state) {
@@ -61,11 +84,11 @@ public class GameStateManager {
 		return players;
 	}
 	
-	Player getCurrentPlayer() {
+	public Player getCurrentPlayer() {
 		return players[currentPlayerIndex];
 	}
 	
-	Player getOpponentPlayer() {
+	public Player getOpponentPlayer() {
 		return players[(currentPlayerIndex + 1) % 2];
 	}
 	
@@ -128,6 +151,10 @@ public class GameStateManager {
 		}
 		
 		currentState.onRender(s);
+	}
+	
+	public static GameStateManager getInstance() {
+		return instance;
 	}
 
 }
