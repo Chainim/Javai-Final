@@ -19,7 +19,7 @@ public class VanguardModel extends MinionCardModel {
 			if(c.getOwner().getFieldCards()[i] != null) {
 				Card fc = c.getOwner().getFieldCards()[i];
 				fc.setDamage(fc.getDamage() + 1);
-				fc.setDamage(fc.getHealth() + 1);
+				fc.setHealth(fc.getHealth() + 1);
 			}
 		}
 	}
