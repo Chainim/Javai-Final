@@ -50,8 +50,6 @@ public class SmiteModel extends SpellCardModel {
 							manager.getOpponentPlayer().getFieldCards()[i] = null;
 						}
 					}
-						
-				
 			}
 		});
 	}

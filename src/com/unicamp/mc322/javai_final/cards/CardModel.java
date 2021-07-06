@@ -40,4 +40,8 @@ public abstract class CardModel {
 	public void onTurnEnd(Card c) {
 		
 	}
+
+	public void onDraw(Card c) {
+		
+	}
 }
