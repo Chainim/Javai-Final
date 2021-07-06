@@ -28,20 +28,7 @@ public class HeadToHeadModel extends SpellCardModel {
 				Card attacking = manager.getCurrentPlayer().getFieldCards()[indices[0]];
 				Card defending = manager.getOpponentPlayer().getFieldCards()[indices[1]];
 
-				defending.takeDamage(attacking.getDamage());
-				attacking.takeDamage(defending.getDamage());
-
-				if (attacking.getHealth() <= 0) {
-					attacking.onDeath();
-					defending.onKill();
-					manager.getCurrentPlayer().getFieldCards()[indices[0]] = null;
-				}
-				if (defending.getHealth() <= 0) {
-					defending.onDeath();
-					attacking.onKill();
-					manager.getOpponentPlayer().getFieldCards()[indices[1]] = null;
-				}
-
+				manager.doCombat(attacking, defending);
 			}
 		});
 	}

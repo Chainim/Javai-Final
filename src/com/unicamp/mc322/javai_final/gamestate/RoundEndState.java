@@ -27,19 +27,7 @@ public class RoundEndState extends GameState {
 			
 			Card defending = getManager().getOpponentPlayer().getFieldCards()[defendSelection.get(i)];
 			
-			defending.takeDamage(attacking.getDamage());
-			attacking.takeDamage(defending.getDamage());
-			
-			if(attacking.getHealth() <= 0) {
-				attacking.onDeath();
-				defending.onKill();
-				getManager().getCurrentPlayer().getFieldCards()[attackSelection.get(i)] = null;
-			}
-			if(defending.getHealth() <= 0) {
-				defending.onDeath();
-				attacking.onKill();
-				getManager().getOpponentPlayer().getFieldCards()[defendSelection.get(i)] = null;
-			}
+			getManager().doCombat(attacking, defending);
 		}
 		
 		System.err.println("Avancei player e mudei de turno");

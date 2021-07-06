@@ -157,4 +157,19 @@ public class GameStateManager {
 		return instance;
 	}
 
+	public void doCombat(Card attacking, Card defending) {
+		defending.takeDamage(attacking.getDamage());
+		attacking.takeDamage(defending.getDamage());
+		
+		if(attacking.getHealth() <= 0) {
+			attacking.onDeath();
+			defending.onKill();
+			this.getCurrentPlayer().getFieldCards()[attacking.getFieldIndex()] = null;
+		}
+		if(defending.getHealth() <= 0) {
+			defending.onDeath();
+			attacking.onKill();
+			this.getOpponentPlayer().getFieldCards()[defending.getFieldIndex()] = null;
+		}
+	}
 }
