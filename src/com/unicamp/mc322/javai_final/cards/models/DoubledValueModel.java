@@ -23,7 +23,20 @@ public class DoubledValueModel extends SpellCardModel {
 		g.addListener(new InputListener() {
 			@Override
 			public void onInput(String input) {
-				int index = Integer.parseInt(input);
+				int index;
+				try {
+					index = Integer.parseInt(input);
+				} catch (NumberFormatException e)  {
+					System.err.println("Invalid input");
+					onSummon(card);
+					return;
+				}
+				
+				if(index > 5 || manager.getCurrentPlayer().getFieldCards()[index] == null) {
+					System.err.println("Invalid input");
+					onSummon(card);
+					return;
+				}
 				
 				Card c = manager.getCurrentPlayer().getFieldCards()[index];
 				
