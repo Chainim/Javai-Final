@@ -23,7 +23,21 @@ public class SmiteModel extends SpellCardModel {
 		g.addListener(new InputListener() {
 			@Override
 			public void onInput(String input) {
-				int index = Integer.parseInt(input);
+				int index;
+				try {
+					index = Integer.parseInt(input);
+				} catch (NumberFormatException e)  {
+					System.err.println("Invalid input");
+					onSummon(c);
+					return;
+				}
+				
+				if(index > 5 || manager.getCurrentPlayer().getFieldCards()[index] == null) {
+					System.err.println("Invalid input");
+					onSummon(c);
+					return;
+				}
+				
 				Card attacking = manager.getCurrentPlayer().getFieldCards()[index];
 				
 				for(int i = 0; i < 6; i++)
