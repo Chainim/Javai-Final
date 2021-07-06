@@ -165,11 +165,14 @@ public class GameStateManager {
 			attacking.onDeath();
 			defending.onKill();
 			this.getCurrentPlayer().getFieldCards()[attacking.getFieldIndex()] = null;
+		} else {
+			attacking.onAttack();			
 		}
 		if(defending.getHealth() <= 0) {
 			defending.onDeath();
 			attacking.onKill();
 			this.getOpponentPlayer().getFieldCards()[defending.getFieldIndex()] = null;
 		}
+		
 	}
 }

@@ -121,4 +121,9 @@ public class Card {
 	public boolean isLeveldUp() {
 		return level_up;
 	}
+	
+	public void onAttack() {
+		if(model instanceof MinionCardModel)
+			((MinionCardModel) model).onAttack(this);
+	}
 }
