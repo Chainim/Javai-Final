@@ -26,9 +26,18 @@ public abstract class MinionCardModel extends CardModel {
 	public void onKill(Card c) {
 		
 	}
-
 	
 	public void onAttack(Card c) {
-		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public boolean isMinion() {
+		return true;
+	}
+	
+	@Override
+	public boolean isSpell() {
+		return false;
 	}
 }

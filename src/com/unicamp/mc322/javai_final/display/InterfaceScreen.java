@@ -24,6 +24,7 @@ public class InterfaceScreen {
 	private List<JButton> handCards, fieldCards;
 	private JProgressBar[] manaBars;
 	private static InterfaceScreen instance;
+	private JTextArea textArea;
 	
 	public InterfaceScreen(JFrame window) {
 		this.frame = window;
@@ -31,6 +32,10 @@ public class InterfaceScreen {
 		fieldCards = new ArrayList<JButton>();
 		manaBars = new JProgressBar[2];
 		instance = this;
+	}
+	
+	public JTextArea getTextArea() {
+		return textArea;
 	}
 	
 	public static InterfaceScreen getInterfaceScreen() {
@@ -57,12 +62,12 @@ public class InterfaceScreen {
 		buildFieldCards();
 		frame.setVisible(true);
 		
-		((JLabel) handCards.get(0).getComponent(1)).setText("ola");
+		//((JLabel) handCards.get(0).getComponent(1)).setText("ola");
 		
 		// frame.getContentPane().getComponent(1).setVisible(false);
 
 		
-		 JTextArea textArea = new JTextArea(); textArea.setLocation(4,
+		 textArea = new JTextArea(); textArea.setLocation(4,
 		 frame.getHeight() - 60); textArea.setPreferredSize(new
 		 Dimension(frame.getWidth() - 24, 20));
 		 textArea.setSize(textArea.getPreferredSize()); frame.add(textArea);
@@ -85,7 +90,7 @@ public class InterfaceScreen {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.out.println("Clicou na carta: " + cardIndex);
-						GameStateManager.getInstance().onInput("Hand " + Integer.toString(cardIndex));
+						//GameStateManager.getInstance().onInput("Hand " + Integer.toString(cardIndex));
 					}
 
 					public ActionListener setIndex(int index) {
@@ -189,7 +194,7 @@ public class InterfaceScreen {
 
 		for (int j = 0; j < 2; j++) {
 			JProgressBar manaBar = new JProgressBar(0, 10);
-			manaBar.setLocation(frame.getWidth() - 200, frame.getHeight() / 2 + 10 + (1 - j) * (-100));
+			manaBar.setLocation(frame.getWidth() - 200, frame.getHeight() / 2 + 10 + j * (-100));
 			manaBar.setSize(100, 20);
 			manaBar.setValue(0);
 			manaBar.setString("Mana: " + 0);

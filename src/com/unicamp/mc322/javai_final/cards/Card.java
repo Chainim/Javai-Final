@@ -14,7 +14,7 @@ public class Card {
 	public Card(CardModel model) {
 		//TODO: Consertar isso aqui
 		this.model = model;
-		if(model instanceof MinionCardModel) {
+		if(model.isMinion()) {
 			MinionCardModel mmodel = (MinionCardModel)model;
 			this.health = mmodel.getBaseHealth();
 			this.damage = mmodel.getBaseDamage();
@@ -26,6 +26,14 @@ public class Card {
 		this.attack_count = 0;
 		this.isElusive = false;
 		this.level_up = false;
+	}
+	
+	public boolean isSpell() {
+		return model.isSpell();
+	}
+	
+	public boolean isMinion() {
+		return model.isMinion();
 	}
 	
 	public void setHealth(int health) {

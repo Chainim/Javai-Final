@@ -44,4 +44,7 @@ public abstract class CardModel {
 	public void onDraw(Card c) {
 		
 	}
+	
+	public abstract boolean isSpell();
+	public abstract boolean isMinion();
 }
