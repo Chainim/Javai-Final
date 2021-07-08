@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 import com.unicamp.mc322.javai_final.cards.Card;
 import com.unicamp.mc322.javai_final.cards.models.ModelRegistry;
 import com.unicamp.mc322.javai_final.display.InterfaceScreen;
-import com.unicamp.mc322.javai_final.display.Screen;
 import com.unicamp.mc322.javai_final.player.Player;
 
 public class GameStateManager {
@@ -137,9 +136,16 @@ public class GameStateManager {
 				JButton button = InterfaceScreen.getInterfaceScreen().getHandCards().get(j + i * 10);
 				Card c = players[i].getHandCards().get(j);
 				button.setVisible(true);
+				
+				if(c.isMinion()) {
+					((JLabel) button.getComponent(1)).setText(Integer.toString(c.getDamage()));
+					((JLabel) button.getComponent(2)).setText(Integer.toString(c.getHealth()));
+				}
+				else {
+					((JLabel) button.getComponent(1)).setVisible(false);
+					((JLabel) button.getComponent(2)).setVisible(false);
+				}
 				((JLabel) button.getComponent(0)).setText(Integer.toString(c.getManaCost()));
-				((JLabel) button.getComponent(1)).setText(Integer.toString(c.getDamage()));
-				((JLabel) button.getComponent(2)).setText(Integer.toString(c.getHealth()));
 				((JLabel) button.getComponent(3)).setText(c.getLocalizedName());
 			}
 		}

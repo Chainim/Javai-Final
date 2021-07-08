@@ -6,4 +6,13 @@ public abstract class SpellCardModel extends CardModel {
 		super(unlocalizedName, unlocalizedDescription, manaCost);
 	}
 	
+	@Override
+	public boolean isSpell() {
+		return true;
+	}
+	
+	@Override
+	public boolean isMinion() {
+		return false;
+	}
 }

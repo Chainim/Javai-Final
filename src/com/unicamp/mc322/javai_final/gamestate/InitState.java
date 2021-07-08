@@ -2,9 +2,7 @@ package com.unicamp.mc322.javai_final.gamestate;
 import java.util.ArrayList;
 
 import com.unicamp.mc322.javai_final.cards.Card;
-import com.unicamp.mc322.javai_final.cards.models.DefenderModel;
 import com.unicamp.mc322.javai_final.cards.models.ModelRegistry;
-import com.unicamp.mc322.javai_final.cards.models.PoroModel;
 
 
 public class InitState extends GameState{
