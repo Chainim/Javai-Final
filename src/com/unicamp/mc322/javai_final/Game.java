@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -139,6 +140,10 @@ public class Game {
 			frame.add(field);
 		}
 		
+		//
+		buildButton(frame);
+		//
+		
 		//frame.getContentPane().getComponent(1).setVisible(false);
 		
 		JTextArea textArea = new JTextArea();
@@ -161,6 +166,26 @@ public class Game {
 			manaBar.setValue(i);
 			manaBar.setString("Mana: " + i);
 		}
+	}
+	
+	public static void buildButton(JFrame frame) {
+		JButton button = new JButton();
+		
+		ActionListener buttonEvents = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Clicou em Done");
+			}
+		};
+		
+		button.setLocation(frame.getWidth() / 2 + 150, frame.getHeight() / 2 - 55);
+		button.setSize(100,50);
+		button.setContentAreaFilled(true);
+		button.setBackground(Color.green);
+		button.setText("Done");
+		button.addActionListener(buttonEvents);
+		
+		frame.add(button);
 	}
 	
 	public static JPanel buildField() {
@@ -201,8 +226,8 @@ public class Game {
 	
 	public static void main(String[] args) {
 		Game g = new Game();
-		g.start();
+		//g.start();
 		
-		//teste();
+		teste();
 	}
 }
