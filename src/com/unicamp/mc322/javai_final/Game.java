@@ -19,6 +19,7 @@ import com.unicamp.mc322.javai_final.cards.models.ModelRegistry;
 import com.unicamp.mc322.javai_final.display.Screen;
 import com.unicamp.mc322.javai_final.display.SwingScreen;
 import com.unicamp.mc322.javai_final.display.TextScreen;
+import com.unicamp.mc322.javai_final.gamestate.DefendState;
 import com.unicamp.mc322.javai_final.gamestate.GameStateManager;
 import com.unicamp.mc322.javai_final.lang.Lang;
 import com.unicamp.mc322.javai_final.lang.Localizer;
@@ -66,6 +67,10 @@ public class Game {
 	}
 	
 	void readInput() {
+		if((stateManager.getCurrentPlayer().isAI() && !(stateManager.getCurrentState() instanceof DefendState)) || (stateManager.getOpponentPlayer().isAI() && stateManager.getCurrentState() instanceof DefendState)) {
+			stateManager.onInput("souia");
+			return;
+		} 
 		if(textArea.getText().endsWith("\n")) {
 			String tex = textArea.getText();
 			textArea.setText("");
@@ -75,6 +80,7 @@ public class Game {
 	
 	public void loop() {
 		while(running) {
+			
 			readInput();
 			stateManager.update();
 			stateManager.draw(screen);
@@ -226,8 +232,8 @@ public class Game {
 	
 	public static void main(String[] args) {
 		Game g = new Game();
-		//g.start();
+		g.start();
 		
-		teste();
+//		teste();
 	}
 }

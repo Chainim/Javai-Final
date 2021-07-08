@@ -29,6 +29,16 @@ public class AttackState extends GameState {
 	
 	// colocar done no final
 	public void onInput(String input) {	
+		if(getManager().getCurrentPlayer().isAI()) {
+			for(int i = 0;i < getManager().getCurrentPlayer().getFieldCards().length;i++) {
+				if(getManager().getCurrentPlayer().getFieldCards()[i] != null) {
+					cardsIndices.add(i);
+				}
+			}
+			selectionConfirmed = true;
+			return;
+		}
+		
 		if(input.equals("done")) {
 			selectionConfirmed = true;
 			return;

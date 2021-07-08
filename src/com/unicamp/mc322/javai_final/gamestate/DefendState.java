@@ -37,6 +37,21 @@ public class DefendState extends GameState {
 	// colocar -1 caso não queira defender ataque
 	// colocar (carta de defesa carta de ataque)
 	public void onInput(String input) {
+		if(getManager().getOpponentPlayer().isAI()) {
+			
+			for(int i : attackSelection) {
+				for(int j = 0;j < getManager().getOpponentPlayer().getFieldCards().length;j++) { // j defende i
+					if(getManager().getOpponentPlayer().getFieldCards()[j] != null && 
+					   defendSelection.contains(j) == false && 
+					  (getManager().getCurrentPlayer().getFieldCards()[i].getElusiveStatus() == false || getManager().getOpponentPlayer().getFieldCards()[j].getElusiveStatus() == true)) {
+						defendSelection.set(attackSelection.indexOf(i), j);
+					}
+				}
+			}
+			defendSelectionConfirmed = true;
+			return;
+		}
+		
 		if(input.equals("done")) {
 			defendSelectionConfirmed = true;
 			return;
@@ -44,11 +59,12 @@ public class DefendState extends GameState {
 		
 		String[] l = input.split(" ");
 		
-		int id1 = Integer.parseInt(l[0]);
-		int id2 = Integer.parseInt(l[1]);
+		int id1 = Integer.parseInt(l[0]); // carta da defesa
+		int id2 = Integer.parseInt(l[1]); // carta do ataque
 		
 		if(getManager().getOpponentPlayer().getFieldCards()[id1] == null || 
 		  (attackSelection.contains(id2) == false ) ||
+		  (defendSelection.contains(id1) == true) ||
 		  (getManager().getOpponentPlayer().getFieldCards()[id1].getElusiveStatus() == false && getManager().getCurrentPlayer().getFieldCards()[id2].getElusiveStatus() == true)) { 
 			System.out.println("Não foi possivel selecionar monstro para defesa");
 			return;

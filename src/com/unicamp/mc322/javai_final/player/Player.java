@@ -16,8 +16,9 @@ public class Player {
 	private Card[] fieldCards;
 	private List<Card> handCards;
 	private Stack<Card> drawPile;
+	private boolean AI; 
 	
-	public Player() {
+	public Player(boolean isAI) {
 		
 		curManaBuffer = 1;
 		this.mana = 0;
@@ -27,6 +28,7 @@ public class Player {
 		this.fieldCards = new Card[6];
 		this.handCards = new ArrayList<Card>();
 		this.drawPile = new Stack<Card>();
+		this.AI = isAI;
 	}
 	
 	public Card[] getFieldCards() {
@@ -109,9 +111,12 @@ public class Player {
 		return handCards;
 	}
 
-		
 	public void calcSpellMana() {
 		spellMana = Math.min(3, mana);
 		mana = 0;
+	}
+
+	public boolean isAI() {
+		return AI;
 	}
 }
