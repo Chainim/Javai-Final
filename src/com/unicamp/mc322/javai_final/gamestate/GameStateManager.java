@@ -42,7 +42,7 @@ public class GameStateManager {
 			if(i == 0)
 				players[i] = new Player(false);
 			else
-				players[i] = new Player(true);
+				players[i] = new Player(false);
 		}
 		
 		//TODO: Lembrar de tirar esse trecho de codigo
@@ -81,6 +81,7 @@ public class GameStateManager {
 	}
 	
 	public void setState(GameState state) {
+		System.err.println("Trocando para o estado: " + state.getClass().toString());
 		currentState.onStateUnload();
 		currentState = state;
 		currentState.onStateLoad();

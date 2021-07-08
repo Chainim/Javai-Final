@@ -1,24 +1,12 @@
 package com.unicamp.mc322.javai_final;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
-import javax.swing.SpringLayout;
 
 import com.unicamp.mc322.javai_final.cards.models.ModelRegistry;
 import com.unicamp.mc322.javai_final.display.InterfaceScreen;
-import com.unicamp.mc322.javai_final.display.Screen;
-import com.unicamp.mc322.javai_final.display.TextScreen;
 import com.unicamp.mc322.javai_final.gamestate.DefendState;
 import com.unicamp.mc322.javai_final.gamestate.GameStateManager;
 import com.unicamp.mc322.javai_final.lang.Lang;
@@ -30,9 +18,7 @@ public class Game {
 	private boolean running;
 
 	private JFrame window;
-	private JLabel label;
 	private JTextArea textArea;
-	private Screen screen;
 	private InterfaceScreen iScreen;
 
 	public Game() {
@@ -60,6 +46,7 @@ public class Game {
 		window.setLayout(null);
 		
 		iScreen = new InterfaceScreen(window);
+		
 	}
 
 	public void start() {
@@ -73,6 +60,7 @@ public class Game {
 		window.setVisible(true);
 		
 		iScreen.show();
+		textArea = iScreen.getTextArea();
 		
 		loop();
 	}
@@ -93,6 +81,7 @@ public class Game {
 		
 		while(running) {
 	
+			readInput();
 			stateManager.update();
 			stateManager.draw();
 			
