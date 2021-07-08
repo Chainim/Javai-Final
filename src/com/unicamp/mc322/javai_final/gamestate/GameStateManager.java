@@ -1,9 +1,11 @@
 package com.unicamp.mc322.javai_final.gamestate;
 
-import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 import com.unicamp.mc322.javai_final.cards.Card;
 import com.unicamp.mc322.javai_final.cards.models.ModelRegistry;
+import com.unicamp.mc322.javai_final.display.InterfaceScreen;
 import com.unicamp.mc322.javai_final.display.Screen;
 import com.unicamp.mc322.javai_final.player.Player;
 
@@ -100,9 +102,40 @@ public class GameStateManager {
 		currentState.onInput(input);
 	}
 	
+	public void drawInterface() {
+		
+	}
+	
 	public void draw(Screen s) {
 		
-		//FIXME: Essa eh uma string de depuracao, lembrar de remover ao final do projeto
+		//card.add(costLabel);
+		//card.add(attackLabel);
+		//card.add(healthLabel);
+		//card.add(nameLabel);
+		
+		
+		
+		for(int i = 0;i < players.length;i++) {
+			InterfaceScreen.getInterfaceScreen().getManaBars()[i].setValue(players[i].getMana());
+			InterfaceScreen.getInterfaceScreen().getManaBars()[i].setString("Mana: " + players[i].getMana());
+			
+			for(int j = players[i].getHandCards().size();j < 10;j++) {
+				JButton button = InterfaceScreen.getInterfaceScreen().getHandCards().get(j + i * 10);
+				button.setVisible(false);
+			}
+			
+			for(int j = 0;j < players[i].getHandCards().size();j++) {
+				JButton button = InterfaceScreen.getInterfaceScreen().getHandCards().get(j + i * 10);
+				Card c = players[i].getHandCards().get(j);
+				button.setVisible(true);
+				((JLabel) button.getComponent(0)).setText(Integer.toString(c.getManaCost()));
+				((JLabel) button.getComponent(1)).setText(Integer.toString(c.getDamage()));
+				((JLabel) button.getComponent(2)).setText(Integer.toString(c.getHealth()));
+				((JLabel) button.getComponent(3)).setText(c.getLocalizedName());
+			}
+		}
+		
+		/*//FIXME: Essa eh uma string de depuracao, lembrar de remover ao final do projeto
 		s.drawStringRightAnchored(16, 120, "Estado atual: " + currentState.getClass().getSimpleName());
 		
 		final int xoffset = 18;
@@ -150,7 +183,7 @@ public class GameStateManager {
 			}
 		}
 		
-		currentState.onRender(s);
+		currentState.onRender(s);*/
 	}
 	
 	public static GameStateManager getInstance() {

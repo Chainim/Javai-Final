@@ -69,6 +69,14 @@ public class Card {
 		return damage;
 	}
 	
+	public String getLocalizedName() {
+		return model.getLocalizedName();
+	}
+	
+	public String getLocalizedDescription() {
+		return model.getLocalizedDescription();
+	}
+	
 	public void takeDamage(int damage) {
 		health -= damage;
 	}
