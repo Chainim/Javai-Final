@@ -19,6 +19,7 @@ import com.unicamp.mc322.javai_final.cards.models.ModelRegistry;
 import com.unicamp.mc322.javai_final.display.InterfaceScreen;
 import com.unicamp.mc322.javai_final.display.Screen;
 import com.unicamp.mc322.javai_final.display.TextScreen;
+import com.unicamp.mc322.javai_final.gamestate.DefendState;
 import com.unicamp.mc322.javai_final.gamestate.GameStateManager;
 import com.unicamp.mc322.javai_final.lang.Lang;
 import com.unicamp.mc322.javai_final.lang.Localizer;
@@ -70,12 +71,18 @@ public class Game {
 		stateManager.init();
 
 		window.setVisible(true);
-
+		
+		iScreen.show();
+		
 		loop();
 	}
 
 	void readInput() {
-		if (textArea.getText().endsWith("\n")) {
+		if((stateManager.getCurrentPlayer().isAI() && !(stateManager.getCurrentState() instanceof DefendState)) || (stateManager.getOpponentPlayer().isAI() && stateManager.getCurrentState() instanceof DefendState)) {
+			stateManager.onInput("souia");
+			return;
+		} 
+		if(textArea.getText().endsWith("\n")) {
 			String tex = textArea.getText();
 			textArea.setText("");
 			stateManager.onInput(tex.substring(0, tex.length() - 1));
@@ -84,14 +91,11 @@ public class Game {
 
 	public void loop() {
 		
-		iScreen.show();
-		
-		while (running) {
-			//readInput();
+		while(running) {
+	
 			stateManager.update();
-			stateManager.draw(screen);
-			//screen.render();
-
+			stateManager.draw();
+			
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
@@ -104,5 +108,6 @@ public class Game {
 	public static void main(String[] args) {
 		Game g = new Game();
 		g.start();
+
 	}
 }

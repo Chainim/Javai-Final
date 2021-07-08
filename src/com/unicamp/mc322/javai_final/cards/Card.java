@@ -97,7 +97,7 @@ public class Card {
 	public int getFieldIndex() {
 		for(int i = 0;i < owner.getFieldCards().length;i++) {
 			if(owner.getFieldCards()[i] == this) {
-				return i; 				
+				return i;
 			}
 		}
 		return -1;

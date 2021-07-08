@@ -40,7 +40,10 @@ public class GameStateManager {
 	
 	public void init() {
 		for(int i = 0; i < players.length; i++) {
-			players[i] = new Player();
+			if(i == 0)
+				players[i] = new Player(false);
+			else
+				players[i] = new Player(true);
 		}
 		
 		//TODO: Lembrar de tirar esse trecho de codigo
@@ -58,12 +61,18 @@ public class GameStateManager {
 		players[1].addMana();
 		
 		players[0].getFieldCards()[1] = new Card(ModelRegistry.PORO);
+		players[0].getFieldCards()[1].setOwner(players[0]);
 		players[0].getFieldCards()[2] = new Card(ModelRegistry.PORO);
+		players[0].getFieldCards()[2].setOwner(players[0]);
 		players[0].getFieldCards()[4] = new Card(ModelRegistry.DEFENDER);
+		players[0].getFieldCards()[4].setOwner(players[0]);
 		
 		players[1].getFieldCards()[2] = new Card(ModelRegistry.DEFENDER);
+		players[1].getFieldCards()[2].setOwner(players[1]);
 		players[1].getFieldCards()[3] = new Card(ModelRegistry.DEFENDER);
+		players[1].getFieldCards()[3].setOwner(players[1]);
 		players[1].getFieldCards()[5] = new Card(ModelRegistry.PORO);
+		players[1].getFieldCards()[5].setOwner(players[1]);
 	
 		currentState.onStateLoad();
 	}
@@ -106,7 +115,7 @@ public class GameStateManager {
 		
 	}
 	
-	public void draw(Screen s) {
+	public void draw() {
 		
 		//card.add(costLabel);
 		//card.add(attackLabel);

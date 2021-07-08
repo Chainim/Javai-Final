@@ -48,6 +48,34 @@ public class SummonState extends GameState {
 	// Digite o indice do monstro da sua mao, enter, o numero do indice da mesa e done para sumonar
 	@Override
 	public void onInput(String input) {
+		if(getManager().getCurrentPlayer().isAI()) {
+			while(true) {
+				
+				int idx = -1;
+				for(int i = 0;i < getManager().getCurrentPlayer().getFieldCards().length;i++) {
+					if(getManager().getCurrentPlayer().getFieldCards()[i] == null) {
+						idx = i;
+						break;
+					}
+				}
+				
+				if(idx == -1)
+					break;
+				
+				for(int i = 0;i < getManager().getCurrentPlayer().getHandCards().size();i++) {
+					if(getManager().getCurrentPlayer().summonCard(i, idx)) {
+						idx = -1;
+						break;
+					}
+				}
+				
+				if(idx != -1)
+					break;
+			}
+			summonEnd = true;
+			return;
+		}
+		
 		if(!listeners.isEmpty()) {
 			InputListener i = listeners.remove(0);
 			i.onInput(input);
