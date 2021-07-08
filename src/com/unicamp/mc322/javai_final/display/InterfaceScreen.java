@@ -111,7 +111,9 @@ public class InterfaceScreen {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Clicou em Done");
+				GameStateManager.getInstance().onInput("Done");
 			}
+			
 		};
 
 		button.setPreferredSize(new Dimension(100, 50));
@@ -134,8 +136,22 @@ public class InterfaceScreen {
 			field.setLayout(f);
 
 			for (int i = 0; i < 6; i++) {
-
+				ActionListener buttonEvents = new ActionListener() {
+					private int cardIndex;
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						System.out.println("Clicou em FieldCard");
+						GameStateManager.getInstance().onInput("Field " + Integer.toString(cardIndex));
+					}
+					public ActionListener setIndex(int index) {
+						cardIndex = index;
+						return this;
+					}
+				}.setIndex(i);
+				
 				JButton p = new JButton();
+				p.addActionListener(buttonEvents);
 				p.setMargin(new Insets(0, 0, 0, 0));
 				p.setPreferredSize(new Dimension(50, 50));
 				p.setSize(p.getPreferredSize());
@@ -147,8 +163,6 @@ public class InterfaceScreen {
 				JLabel attackLabel = new JLabel("A");
 				JLabel healthLabel = new JLabel("D");
 
-				p.add(attackLabel);
-				p.add(healthLabel);
 
 				s.putConstraint(SpringLayout.WEST, attackLabel, 1, SpringLayout.WEST, p);
 				s.putConstraint(SpringLayout.SOUTH, attackLabel, 0, SpringLayout.SOUTH, p);
@@ -156,10 +170,13 @@ public class InterfaceScreen {
 				s.putConstraint(SpringLayout.EAST, healthLabel, -1, SpringLayout.EAST, p);
 				s.putConstraint(SpringLayout.SOUTH, healthLabel, 0, SpringLayout.SOUTH, p);
 				
+				p.add(attackLabel);
+				p.add(healthLabel);
+				
 				fieldCards.add(p);
 				field.add(p);
 			}
-
+		
 			field.setSize(field.getPreferredSize());
 
 			field.setLocation((frame.getWidth() - field.getWidth() - 70) / 2, frame.getHeight() / 2 - 30 + (1 - j) * -60);

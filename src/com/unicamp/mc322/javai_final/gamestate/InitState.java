@@ -89,7 +89,7 @@ public class InitState extends GameState{
 	// entrada tem que ser do tipo 0, enter, 1, enter, ...
 	// escrever done quando terminar
 	public void onInput(String input) {	
-		if(input.equals("done") || getManager().getCurrentPlayer().isAI()) {
+		if(input.equals("Done") || getManager().getCurrentPlayer().isAI()) {
 			int indices[] = new int[cardsIndices.size()];
 			
 			for(int i = 0;i < indices.length;i++) {

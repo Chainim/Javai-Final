@@ -142,6 +142,22 @@ public class GameStateManager {
 				((JLabel) button.getComponent(2)).setText(Integer.toString(c.getHealth()));
 				((JLabel) button.getComponent(3)).setText(c.getLocalizedName());
 			}
+			
+			for(int j = 0;j < players[i].getFieldCards().length;j++) {
+				JButton button = InterfaceScreen.getInterfaceScreen().getFieldCards().get(j + 6*i);
+				
+				Card c = players[i].getFieldCards()[j];
+				
+				if(c == null) {
+					((JLabel) button.getComponent(0)).setText("");
+					((JLabel) button.getComponent(1)).setText("");
+					continue;
+				}	
+				
+				
+				((JLabel) button.getComponent(0)).setText(Integer.toString(c.getDamage()));
+				((JLabel) button.getComponent(1)).setText(Integer.toString(c.getHealth()));
+			}
 		}
 		
 		/*//FIXME: Essa eh uma string de depuracao, lembrar de remover ao final do projeto

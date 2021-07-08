@@ -37,20 +37,6 @@ public class Game {
 
 	public Game() {
 		stateManager = new GameStateManager();
-
-		/*
-		 * window = new JFrame("Game");
-		 * window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); window.setSize(960,
-		 * 720); window.setResizable(false);
-		 * 
-		 * label = new JLabel(); textArea = new JTextArea();
-		 * 
-		 * window.add(label); window.add(textArea, BorderLayout.SOUTH);
-		 * 
-		 * window.setLocationRelativeTo(null);
-		 * 
-		 * screen = new TextScreen(label);
-		 */
 		
 		// interface grafica
 		window = new JFrame("Game");
@@ -92,7 +78,7 @@ public class Game {
 	public void loop() {
 		
 		while(running) {
-	
+			
 			stateManager.update();
 			stateManager.draw();
 			
