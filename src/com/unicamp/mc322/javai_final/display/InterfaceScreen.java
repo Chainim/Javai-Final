@@ -3,6 +3,7 @@ package com.unicamp.mc322.javai_final.display;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -248,8 +249,11 @@ public class InterfaceScreen {
 		JLabel healthLabel = new JLabel("D");
 		
 		JLabel nameLabel = new JLabel("Name");
+		JLabel descLabel = new JLabel("Description");
 		//System.out.println(nameLabel.getFont().getName());
-		//nameLabel.setFont(new Font("Dialog", Font.BOLD, 12));
+		descLabel.setFont(new Font("Dialog", Font.PLAIN, 8));
+		descLabel.setPreferredSize(new Dimension(70, 70));
+		descLabel.setSize(descLabel.getPreferredSize());
 		
 		s.putConstraint(SpringLayout.WEST, costLabel, 1, SpringLayout.WEST, card);
 		s.putConstraint(SpringLayout.NORTH, costLabel, 0, SpringLayout.NORTH, card);
@@ -263,10 +267,14 @@ public class InterfaceScreen {
 		s.putConstraint(SpringLayout.HORIZONTAL_CENTER, nameLabel, 0, SpringLayout.HORIZONTAL_CENTER, card);
 		s.putConstraint(SpringLayout.VERTICAL_CENTER, nameLabel, 0, SpringLayout.VERTICAL_CENTER, card);
 		
+		s.putConstraint(SpringLayout.HORIZONTAL_CENTER, descLabel, 0, SpringLayout.HORIZONTAL_CENTER, card);
+		s.putConstraint(SpringLayout.VERTICAL_CENTER, descLabel, 40, SpringLayout.VERTICAL_CENTER, card);
+		
 		card.add(costLabel);
 		card.add(attackLabel);
 		card.add(healthLabel);
 		card.add(nameLabel);
+		card.add(descLabel);
 		
 		return card;
 	}

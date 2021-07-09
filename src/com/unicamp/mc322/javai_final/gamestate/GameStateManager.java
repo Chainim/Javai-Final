@@ -159,6 +159,7 @@ public class GameStateManager {
 				}
 				((JLabel) button.getComponent(0)).setText(Integer.toString(c.getManaCost()));
 				((JLabel) button.getComponent(3)).setText(c.getLocalizedName());
+				((JLabel) button.getComponent(4)).setText("<html>" + c.getLocalizedDescription() + "</html>");
 			}
 			
 			for(int j = 0;j < players[i].getFieldCards().length;j++) {
