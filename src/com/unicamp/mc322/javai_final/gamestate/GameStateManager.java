@@ -150,6 +150,8 @@ public class GameStateManager {
 				button.setVisible(true);
 				
 				if(c.isMinion()) {
+					((JLabel) button.getComponent(1)).setVisible(true);
+					((JLabel) button.getComponent(2)).setVisible(true);
 					((JLabel) button.getComponent(1)).setText(Integer.toString(c.getDamage()));
 					((JLabel) button.getComponent(2)).setText(Integer.toString(c.getHealth()));
 				}
