@@ -1,17 +1,22 @@
 package com.unicamp.mc322.javai_final.gamestate;
 
+import java.awt.Color;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
-import com.unicamp.mc322.javai_final.display.Screen;
+import javax.swing.JButton;
+
+import com.unicamp.mc322.javai_final.display.InterfaceScreen;
 
 public class AttackState extends GameState {
 
 	private boolean selectionConfirmed;
-	private ArrayList<Integer> cardsIndices; 
+	private Set<Integer> cardsIndices; 
  	
 	protected AttackState(GameStateManager manager) {
 		super(manager);
-		cardsIndices = new ArrayList<Integer>();
+		cardsIndices = new HashSet<Integer>();
 	}
 	
 	@Override
@@ -43,37 +48,34 @@ public class AttackState extends GameState {
 			selectionConfirmed = true;
 			return;
 		}
-		
-		cardsIndices.clear();
-		
+				
 		String[] s = input.split(" ");
 		
-		for(int i = 0;i < s.length;i++) {
-			int id = Integer.parseInt(s[i]);
-			
-			if(cardsIndices.contains(id) == true || id > 5 || getManager().getCurrentPlayer().getFieldCards()[id] == null) {
-				System.out.println("Nao foi possivel selecionar monstro para ataque");
-				continue;
-			}
-			cardsIndices.add(id);
+		if(Integer.parseInt(s[2]) != (getManager().getCurrentPlayerIndex()) || s[0].equals("hand") || getManager().getCurrentPlayer().getFieldCards()[Integer.parseInt(s[1])] == null) {
+			System.err.println("Escolha as cartas do seu campo válidas");
+		} else {
+			if(cardsIndices.contains(Integer.parseInt(s[1])))
+				cardsIndices.remove(Integer.parseInt(s[1]));
+			else
+				cardsIndices.add(Integer.parseInt(s[1]));
 		}
 	}
 	
 	public ArrayList<Integer> getCardsIndices(){
-		return cardsIndices;
+		ArrayList<Integer> ret = new ArrayList<Integer>();
+		ret.addAll(cardsIndices);
+		return ret;
 	}
 	
 	@Override
-	public void onRender(Screen s) {
-		final int xoffset = 18;
-		for(Integer i : cardsIndices) {
-			int yPos;
-			if(getManager().currentPlayerIndex == 0) {
-				yPos = 20;
+	public void onRender() {
+		for(int i = 0;i < 6;i++) {
+			JButton button = InterfaceScreen.getInterfaceScreen().getFieldCards().get(i + 6*getManager().getCurrentPlayerIndex());
+			if(cardsIndices.contains(i)) {
+				button.setBackground(Color.RED);	
 			} else {
-				yPos = 20 - 5;
+				button.setBackground(Color.GRAY);
 			}
-			s.drawStringCentered(yPos + 1, xoffset + 10 + i * 8 + 3, "*");
 		}
 	}
 }

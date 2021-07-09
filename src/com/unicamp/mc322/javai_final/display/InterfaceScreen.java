@@ -90,7 +90,7 @@ public class InterfaceScreen {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.err.println("Clicou na carta: " + cardIndex);
-						GameStateManager.getInstance().onInput("hand " + Integer.toString(cardIndex) + ":" + playerId);
+						GameStateManager.getInstance().onInput("hand " + Integer.toString(cardIndex) + " " + playerId);
 					}
 
 					public ActionListener setData(int index, int playerId) {
@@ -149,7 +149,7 @@ public class InterfaceScreen {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.err.println("Clicou em FieldCard " + cardIndex);
-						GameStateManager.getInstance().onInput("field " + Integer.toString(cardIndex) + ":" + playerId);
+						GameStateManager.getInstance().onInput("field " + Integer.toString(cardIndex) + " " + playerId);
 					}
 					public ActionListener setData(int index, int playerId) {
 						cardIndex = index;

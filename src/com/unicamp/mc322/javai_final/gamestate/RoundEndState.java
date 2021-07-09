@@ -1,8 +1,12 @@
 package com.unicamp.mc322.javai_final.gamestate;
 
+import java.awt.Color;
 import java.util.List;
 
+import javax.swing.JButton;
+
 import com.unicamp.mc322.javai_final.cards.Card;
+import com.unicamp.mc322.javai_final.display.InterfaceScreen;
 
 public class RoundEndState extends GameState {
 	private List<Integer> defendSelection;
@@ -31,6 +35,13 @@ public class RoundEndState extends GameState {
 		}
 		
 		System.err.println("Avancei player e mudei de turno");
+		for(int i = 0;i < 6;i++) {
+			for(int j = 0;j < 2;j++) {
+				JButton button = InterfaceScreen.getInterfaceScreen().getFieldCards().get(i + 6*j);
+				button.setBackground(Color.GRAY);
+			}
+		}
+		
 		getManager().advancePlayer();
 		getManager().setState(getManager().summonState);
 	}

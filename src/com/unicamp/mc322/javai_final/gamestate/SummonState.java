@@ -1,9 +1,13 @@
 package com.unicamp.mc322.javai_final.gamestate;
 
+import java.awt.Color;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.JButton;
+
 import com.unicamp.mc322.javai_final.cards.SpellCardModel;
+import com.unicamp.mc322.javai_final.display.InterfaceScreen;
 
 public class SummonState extends GameState {
 
@@ -86,31 +90,58 @@ public class SummonState extends GameState {
 			return;
 		}
 		if(input.equals("done")) {
-			summonEnd = true;
+			if(toSummonFieldIndex == -1 && toSummonIndex == -1) {
+				summonEnd = true;				
+			} else if(toSummonFieldIndex != -1 && toSummonIndex != -1) {
+				summonConfirmed = true;
+			} else {
+				if(getManager().getCurrentPlayer().getHandCards().get(toSummonIndex).getModel() instanceof SpellCardModel) {
+					summonConfirmed = true;					
+				}
+				else {
+					System.err.println("Seleção invalida para sumonar");					
+				}
+			}
 		} else {
 			String[] s = input.split(" ");
-			if(toSummonIndex == -1) {
-				if(s[0].equals("hand")) {
-					toSummonIndex = Integer.valueOf(s[1]);
-					if(getManager().getCurrentPlayer().getHandCards().get(toSummonIndex).getModel() instanceof SpellCardModel) {
-						summonConfirmed = true;
-					}
+			if(Integer.parseInt(s[2]) != (getManager().getCurrentPlayerIndex())) {
+				System.err.println("Selecione as suas coisas somente");
+			} else if(s[0].equals("hand")) {
+				if(toSummonIndex == Integer.parseInt(s[1])) {
+					toSummonIndex = -1;
 				} else {
-					System.err.println("Selecione uma carta da mao");
+					toSummonIndex = Integer.parseInt(s[1]);
 				}
-			} else if(toSummonFieldIndex == -1) {
-				if(s[0].equals("field")) {
-					toSummonFieldIndex = Integer.valueOf(s[1]);
-					summonConfirmed = true;
+			} else if(s[0].equals("field")) {
+				if(toSummonFieldIndex == Integer.parseInt(s[1])) {
+					toSummonFieldIndex = -1;
 				} else {
-					System.err.println("Selecione uma posição do campo");
+					toSummonFieldIndex = Integer.parseInt(s[1]);
 				}
-			} else {
-				summonConfirmed = true;		
 			}
 		}
 	}
 	
+	@Override
+	public void onRender() {
+		for(int i = 0;i < getManager().getCurrentPlayer().getHandCards().size();i++) {
+			JButton button = InterfaceScreen.getInterfaceScreen().getHandCards().get(i + getManager().getCurrentPlayerIndex() * 10);
+			if(i == toSummonIndex) {
+				button.setBackground(Color.YELLOW);				
+			} else {
+				button.setBackground(Color.LIGHT_GRAY);	
+			}
+		}
+		for(int i = 0;i < 6;i++) {
+			JButton button = InterfaceScreen.getInterfaceScreen().getFieldCards().get(i + 6*getManager().getCurrentPlayerIndex());
+			if(i == toSummonFieldIndex) {
+				button.setBackground(Color.YELLOW);	
+			} else {
+				button.setBackground(Color.GRAY);	
+			}
+		}
+	}
+
 	public void addListener(InputListener i) {
 		listeners.add(i);
 	}

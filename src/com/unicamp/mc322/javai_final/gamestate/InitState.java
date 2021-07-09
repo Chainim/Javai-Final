@@ -1,8 +1,12 @@
 package com.unicamp.mc322.javai_final.gamestate;
+import java.awt.Color;
 import java.util.ArrayList;
+
+import javax.swing.JButton;
 
 import com.unicamp.mc322.javai_final.cards.Card;
 import com.unicamp.mc322.javai_final.cards.models.ModelRegistry;
+import com.unicamp.mc322.javai_final.display.InterfaceScreen;
 
 
 public class InitState extends GameState{
@@ -89,29 +93,40 @@ public class InitState extends GameState{
 	// escrever done quando terminar
 	public void onInput(String input) {	
 		if(input.equals("done") || getManager().getCurrentPlayer().isAI()) {
-			int[] freq = new int[]{0, 0, 0, 0, 0, 0};
-			int sz = 0;
-			for(int i : cardsIndices) {
-				freq[i]++;
-				if(freq[i] == 1)
-					sz++;
-			}
-			int indices[] = new int[sz];
-			
-			int i = 0;
-			int x = 0;
-			while(i < sz) {
-				while(freq[x] == 0)
-					x++;
-				indices[i] = x;
-				i++;
+			int[] indices = new int[cardsIndices.size()];
+			for(int i = 0;i < indices.length;i++) {
+				indices[i] = cardsIndices.get(i);
 			}
 			
 			askForCardsChanges(indices);
-			switchingPlayer++;
 			cardsIndices.clear();
+			onRender();
+			switchingPlayer++;
 		} else {
-			cardsIndices.add(Integer.parseInt(input) - Integer.parseInt("0"));			
+			String[] s = input.split(" ");
+			if(Integer.parseInt(s[2]) != (switchingPlayer) || s[0].equals("field")) {
+				System.err.println("Selecione cartas da sua mão para troca!");
+			} else {
+				int idx = Integer.parseInt(s[1]) - Integer.parseInt("0");
+				if(cardsIndices.contains(idx)) {
+					cardsIndices.remove(cardsIndices.indexOf(idx));
+				}
+				else {					
+					cardsIndices.add(idx);	
+				}
+			}
+		}
+	}
+	
+	@Override
+	public void onRender() {
+		for(int i = 0;i < getManager().getCurrentPlayer().getHandCards().size();i++) {
+			JButton button = InterfaceScreen.getInterfaceScreen().getHandCards().get(i + switchingPlayer * 10);
+			if(cardsIndices.contains(i)) {
+				button.setBackground(Color.YELLOW);				
+			} else {
+				button.setBackground(Color.LIGHT_GRAY);	
+			}
 		}
 	}
 }

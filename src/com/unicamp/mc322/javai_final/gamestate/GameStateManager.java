@@ -103,7 +103,16 @@ public class GameStateManager {
 		return players[(currentPlayerIndex + 1) % 2];
 	}
 	
-	void advancePlayer() {
+	public int getCurrentPlayerIndex() {
+		return currentPlayerIndex;
+	}
+	
+	public int getOpponentPlayerIndex() {
+		return (currentPlayerIndex + 1) % 2;
+	}
+	
+	
+	public void advancePlayer() {
 		currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
 	}
 	
@@ -213,8 +222,9 @@ public class GameStateManager {
 				s.drawNexus(5, 20 - 5, p.getNexusHealth());
 			}
 		}
+		*/
 		
-		currentState.onRender(s);*/
+		currentState.onRender();
 	}
 	
 	public static GameStateManager getInstance() {

@@ -1,17 +1,25 @@
 package com.unicamp.mc322.javai_final.gamestate;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
-import com.unicamp.mc322.javai_final.display.Screen;
+import javax.swing.JButton;
+
+import com.unicamp.mc322.javai_final.display.InterfaceScreen;
 
 public class DefendState extends GameState {
+	private int defendID, attackID;
 	private boolean defendSelectionConfirmed;
 	private ArrayList<Integer> defendSelection;
 	private ArrayList<Integer> attackSelection;
+	private ArrayList<Integer> toRenderAttack;
+	private ArrayList<Integer> toRenderDefend;
  	
 	protected DefendState(GameStateManager manager) {
 		super(manager);
 		this.defendSelection = new ArrayList<Integer>();
+		toRenderAttack = new ArrayList<Integer>();
+		toRenderDefend = new ArrayList<Integer>();
 	}
 	
 	@Override
@@ -19,12 +27,17 @@ public class DefendState extends GameState {
 		// lembrar de printar attackSelection
 		attackSelection = getManager().attackState.getCardsIndices();
 		defendSelection.clear();
+		toRenderAttack.clear();
+		toRenderDefend.clear();
 		
 		for(int i = 0;i < attackSelection.size();i++) {
 			defendSelection.add(-1);
 		}
 		
+		defendID = -1;
+		attackID = -1;
 		defendSelectionConfirmed = false;
+		
 	}
 	
 	@Override
@@ -52,25 +65,50 @@ public class DefendState extends GameState {
 			return;
 		}
 		
+		String[] s = input.split(" ");
 		if(input.equals("done")) {
-			defendSelectionConfirmed = true;
-			return;
+			if(attackID != -1 && defendID != -1) {
+				toRenderAttack.add(attackID);
+				toRenderDefend.add(defendID);
+				
+				defendSelection.set(attackSelection.indexOf(attackID), defendID);	
+				defendID = -1;
+				attackID = -1;
+			} else if(attackID == -1 && defendID == -1) {
+				defendSelectionConfirmed = true;				
+			} else {
+				System.err.println("Seleção de defesa invalida");
+			}
+		} else if(s[0].equals("hand")) {
+			System.err.println("Escolha as cartas do campo");
+		} else if(Integer.parseInt(s[2]) == getManager().getOpponentPlayerIndex()) {
+			if(defendID == Integer.parseInt(s[1]))
+				defendID = -1;
+			else {
+				defendID = Integer.parseInt(s[1]);
+				if(getManager().getOpponentPlayer().getFieldCards()[defendID] == null) {
+					System.err.println("Selecione um campo com aliado para defesa");
+					defendID = -1;
+				} else if(toRenderDefend.contains(defendID)) {
+					System.err.println("Carta já foi pareada para defender");
+					defendID = -1;
+				}
+			}
+		} else if(Integer.parseInt(s[2]) == getManager().getCurrentPlayerIndex()) {
+			if(attackID == Integer.parseInt(s[1]))
+				attackID = -1;
+			else {
+				attackID = Integer.parseInt(s[1]);
+				if(getManager().getCurrentPlayer().getFieldCards()[attackID] == null || !attackSelection.contains(attackID)) {
+					System.err.println("Selecione um campo com inimigo para defesa");
+					attackID = -1;
+				} else if(toRenderAttack.contains(attackID)) {
+					System.err.println("Carta já foi pareada para ser defendida");
+					attackID = -1;
+				}
+			}		
 		}
 		
-		String[] l = input.split(" ");
-		
-		int id1 = Integer.parseInt(l[0]); // carta da defesa
-		int id2 = Integer.parseInt(l[1]); // carta do ataque
-		
-		if(getManager().getOpponentPlayer().getFieldCards()[id1] == null || 
-		  (attackSelection.contains(id2) == false ) ||
-		  (defendSelection.contains(id1) == true) ||
-		  (getManager().getOpponentPlayer().getFieldCards()[id1].getElusiveStatus() == false && getManager().getCurrentPlayer().getFieldCards()[id2].getElusiveStatus() == true)) { 
-			System.out.println("Não foi possivel selecionar monstro para defesa");
-			return;
-		}
-		
-		defendSelection.set(attackSelection.indexOf(id2), id1); 
 	}
 	
 	public ArrayList<Integer> getAttackSelection() {
@@ -82,16 +120,49 @@ public class DefendState extends GameState {
 	}
 	
 	@Override
-	public void onRender(Screen s) {
-		final int xoffset = 18;
-		for(Integer i : attackSelection) {
-			int yPos;
-			if(getManager().currentPlayerIndex == 0) {
-				yPos = 20;
+	public void onRender() {
+		Color[] colors = new Color[] {
+			(Color.GREEN),
+			(Color.CYAN),
+			(Color.LIGHT_GRAY),
+			(Color.MAGENTA),
+			(Color.ORANGE),
+			(Color.PINK)
+		};
+			
+		int j = 0;
+		for(int i : toRenderAttack) {
+			JButton button = InterfaceScreen.getInterfaceScreen().getFieldCards().get(i + 6*getManager().getCurrentPlayerIndex());
+			button.setBackground(colors[j]);
+			j++;
+		}
+		j = 0;
+		for(int i : toRenderDefend) {
+			JButton button = InterfaceScreen.getInterfaceScreen().getFieldCards().get(i + 6*getManager().getOpponentPlayerIndex());
+			button.setBackground(colors[j]);
+			j++;
+		}
+		
+		for(int i = 0;i < 6;i++) {
+			if(toRenderDefend.contains(i))
+				continue;
+			JButton defendButton = InterfaceScreen.getInterfaceScreen().getFieldCards().get(i + 6*getManager().getOpponentPlayerIndex());
+			if(defendID == i) {
+				defendButton.setBackground(Color.BLUE);
 			} else {
-				yPos = 20 - 5;
+				defendButton.setBackground(Color.GRAY);
 			}
-			s.drawStringCentered(yPos + 1, xoffset + 10 + i * 8 + 3, "*");
+			
+			if(toRenderAttack.contains(i))
+				continue;
+			JButton attackButton = InterfaceScreen.getInterfaceScreen().getFieldCards().get(i + 6*getManager().getCurrentPlayerIndex());
+			if(attackID == i) {
+				attackButton.setBackground(Color.BLUE);
+			} else if(attackSelection.contains(i)) {
+				attackButton.setBackground(Color.RED);
+			} else {
+				attackButton.setBackground(Color.GRAY);
+			}
 		}
 	}
 }

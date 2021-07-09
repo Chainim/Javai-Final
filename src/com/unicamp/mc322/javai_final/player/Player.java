@@ -82,13 +82,12 @@ public class Player {
 			handCards.remove(indices[i]);
 		}
 		
+		shufflePile();
 		drawCardsFromPile(indices.length);
 	}
 	
 	public boolean summonCard(int indice, int fieldIndice) {
 		if(handCards.get(indice).getManaCost() > getMana())
-			return false;
-		if(fieldIndice == -1 && !(handCards.get(indice).getModel() instanceof SpellCardModel))
 			return false;
 		
 		Card c = handCards.remove(indice);
