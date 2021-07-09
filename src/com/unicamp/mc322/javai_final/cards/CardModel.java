@@ -47,4 +47,7 @@ public abstract class CardModel {
 	
 	public abstract boolean isSpell();
 	public abstract boolean isMinion();
+	public boolean isHero() {
+		return isMinion();
+	}
 }

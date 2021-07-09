@@ -65,7 +65,7 @@ public class Card {
 	}
 	
 	public void onDeath() {
-		if(model instanceof MinionCardModel)
+		if(model.isMinion())
 			((MinionCardModel)model).onDeath(this);
 	}
 	
@@ -90,7 +90,7 @@ public class Card {
 	}
 	
 	public void onKill() {
-		if(model instanceof MinionCardModel)
+		if(model.isMinion())
 			((MinionCardModel)model).onKill(this);
 	}
 	
@@ -120,7 +120,7 @@ public class Card {
 	}
 	
 	public void levelUp() {
-		if(model instanceof HeroCardModel) {
+		if(model.isHero()) {
 			level_up = true;
 			((HeroCardModel) model).levelUp(this);
 		}
@@ -139,7 +139,7 @@ public class Card {
 	}
 	
 	public void onAttack() {
-		if(model instanceof MinionCardModel)
+		if(model.isMinion())
 			((MinionCardModel) model).onAttack(this);
 	}
 }

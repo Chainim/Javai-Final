@@ -40,4 +40,9 @@ public abstract class MinionCardModel extends CardModel {
 	public boolean isSpell() {
 		return false;
 	}
+	
+	@Override
+	public boolean isHero() {
+		return false;
+	}
 }

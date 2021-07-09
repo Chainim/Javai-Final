@@ -13,4 +13,9 @@ public abstract class HeroCardModel extends MinionCardModel {
 	public abstract int getLeveldUpDamage();
 	
 	public abstract int getLeveldUpHealth();
+	
+	@Override
+	public boolean isHero() {
+		return true;
+	}
 }
