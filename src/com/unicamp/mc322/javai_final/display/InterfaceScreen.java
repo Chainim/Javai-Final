@@ -85,19 +85,21 @@ public class InterfaceScreen {
 			for (int i = 0; i < 10; i++) {
 				JButton button = buildCard(new ActionListener() {
 					
-					private int cardIndex;
+					private int cardIndex, playerId;
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.err.println("Clicou na carta: " + cardIndex);
-						GameStateManager.getInstance().onInput("hand " + Integer.toString(cardIndex));
+						GameStateManager.getInstance().onInput("hand " + Integer.toString(cardIndex) + ":" + playerId);
 					}
 
-					public ActionListener setIndex(int index) {
+					public ActionListener setData(int index, int playerId) {
 						cardIndex = index;
+						this.playerId = playerId;
 						return this;
 					}
-				}.setIndex(i));
+					
+				}.setData(i, j));
 				
 				handCards.add(button);
 				cardsPanel.add(button);
