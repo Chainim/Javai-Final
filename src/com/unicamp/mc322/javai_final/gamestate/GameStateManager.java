@@ -81,7 +81,7 @@ public class GameStateManager {
 	}
 	
 	public void setState(GameState state) {
-		System.err.println("Trocando para o estado: " + state.getClass().toString());
+		System.err.println("Trocando para o estado: " + state.getClass().getSimpleName());
 		currentState.onStateUnload();
 		currentState = state;
 		currentState.onStateLoad();
@@ -136,6 +136,8 @@ public class GameStateManager {
 		for(int i = 0;i < players.length;i++) {
 			InterfaceScreen.getInterfaceScreen().getManaBars()[i].setValue(players[i].getMana());
 			InterfaceScreen.getInterfaceScreen().getManaBars()[i].setString("Mana: " + players[i].getMana());
+			
+			InterfaceScreen.getInterfaceScreen().getNexusHealth()[i].setText("Nexus: " + players[i].getNexusHealth());
 			
 			for(int j = players[i].getHandCards().size();j < 10;j++) {
 				JButton button = InterfaceScreen.getInterfaceScreen().getHandCards().get(j + i * 10);

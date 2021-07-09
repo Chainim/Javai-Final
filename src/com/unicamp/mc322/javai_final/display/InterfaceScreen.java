@@ -26,11 +26,14 @@ public class InterfaceScreen {
 	private static InterfaceScreen instance;
 	private JTextArea textArea;
 	
+	private JLabel nexusHealth[];
+	
 	public InterfaceScreen(JFrame window) {
 		this.frame = window;
 		handCards = new ArrayList<JButton>();
 		fieldCards = new ArrayList<JButton>();
 		manaBars = new JProgressBar[2];
+		nexusHealth = new JLabel[2];
 		instance = this;
 	}
 	
@@ -53,13 +56,19 @@ public class InterfaceScreen {
 	public JProgressBar[] getManaBars() {
 		return manaBars;
 	}
+	
+	public JLabel[] getNexusHealth() {
+		return nexusHealth;
+	}
 
 	public void show() {
 
+		buildNexus();
 		buildManaBar();
 		buildButton();
 		buildHandCards();
 		buildFieldCards();
+		
 		frame.setVisible(true);
 		
 		//((JLabel) handCards.get(0).getComponent(1)).setText("ola");
@@ -72,6 +81,18 @@ public class InterfaceScreen {
 		 Dimension(frame.getWidth() - 24, 20));
 		 textArea.setSize(textArea.getPreferredSize()); frame.add(textArea);
 		 
+	}
+	
+	public void buildNexus() {
+		
+		for(int j = 0; j < 2; j++) {
+			JLabel health = new JLabel("Nexus: " + 0);
+			health.setPreferredSize(new Dimension(60, 20));
+			health.setSize(health.getPreferredSize());
+			health.setLocation(50, frame.getHeight() / 2 + 10 + (j) * -100);
+			nexusHealth[j] = health;
+			frame.add(health);
+		}
 	}
 
 	public void buildHandCards() {
