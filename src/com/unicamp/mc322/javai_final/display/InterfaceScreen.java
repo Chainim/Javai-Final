@@ -144,18 +144,19 @@ public class InterfaceScreen {
 
 			for (int i = 0; i < 6; i++) {
 				ActionListener buttonEvents = new ActionListener() {
-					private int cardIndex;
+					private int cardIndex, playerId;
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.err.println("Clicou em FieldCard " + cardIndex);
-						GameStateManager.getInstance().onInput("field " + Integer.toString(cardIndex));
+						GameStateManager.getInstance().onInput("field " + Integer.toString(cardIndex) + ":" + playerId);
 					}
-					public ActionListener setIndex(int index) {
+					public ActionListener setData(int index, int playerId) {
 						cardIndex = index;
+						this.playerId = playerId;
 						return this;
 					}
-				}.setIndex(i);
+				}.setData(i, j);
 				
 				JButton p = new JButton();
 				p.addActionListener(buttonEvents);
