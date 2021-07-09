@@ -3,6 +3,8 @@ package com.unicamp.mc322.javai_final.gamestate;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.unicamp.mc322.javai_final.cards.SpellCardModel;
+
 public class SummonState extends GameState {
 
 	private int toSummonIndex, toSummonFieldIndex;
@@ -20,6 +22,7 @@ public class SummonState extends GameState {
 	public void onStateLoad() {
 		System.err.println("entrou loadSummon");
 		toSummonIndex = -1;
+		toSummonFieldIndex = -1;
 		summonConfirmed = false;
 		summonEnd = false;
 		getManager().getCurrentPlayer().addMana();
@@ -41,6 +44,7 @@ public class SummonState extends GameState {
 			}
 			summonEnd = false;
 			toSummonIndex = -1;
+			toSummonFieldIndex = -1;
 			summonConfirmed = false;
 		}
 	}
@@ -85,13 +89,25 @@ public class SummonState extends GameState {
 			summonEnd = true;
 		} else {
 			String[] s = input.split(" ");
-			if(s.length < 2) {
-				System.err.println("Invalid input for summoning. Expected two integers.");
-				return;
+			if(toSummonIndex == -1) {
+				if(s[0].equals("hand")) {
+					toSummonIndex = Integer.valueOf(s[1]);
+					if(getManager().getCurrentPlayer().getHandCards().get(toSummonIndex).getModel() instanceof SpellCardModel) {
+						summonConfirmed = true;
+					}
+				} else {
+					System.err.println("Selecione uma carta da mao");
+				}
+			} else if(toSummonFieldIndex == -1) {
+				if(s[0].equals("field")) {
+					toSummonFieldIndex = Integer.valueOf(s[1]);
+					summonConfirmed = true;
+				} else {
+					System.err.println("Selecione uma posição do campo");
+				}
+			} else {
+				summonConfirmed = true;		
 			}
-			toSummonIndex = Integer.valueOf(s[0]);
-			toSummonFieldIndex = Integer.valueOf(s[1]);
-			summonConfirmed = true;
 		}
 	}
 	

@@ -62,6 +62,7 @@ public class InitState extends GameState{
 	}
 
 	private void askForCardsChanges(int[] indices) {
+		
 		getManager().getPlayers()[switchingPlayer].swapCards(indices);
 //		System.err.printf("Troquei as cartas que o player %d escolheu, vez do proximo player\n", switchingPlayer);
 	}
@@ -87,11 +88,23 @@ public class InitState extends GameState{
 	// entrada tem que ser do tipo 0, enter, 1, enter, ...
 	// escrever done quando terminar
 	public void onInput(String input) {	
-		if(input.equals("Done") || getManager().getCurrentPlayer().isAI()) {
-			int indices[] = new int[cardsIndices.size()];
+		if(input.equals("done") || getManager().getCurrentPlayer().isAI()) {
+			int[] freq = new int[]{0, 0, 0, 0, 0, 0};
+			int sz = 0;
+			for(int i : cardsIndices) {
+				freq[i]++;
+				if(freq[i] == 1)
+					sz++;
+			}
+			int indices[] = new int[sz];
 			
-			for(int i = 0;i < indices.length;i++) {
-				indices[i] = cardsIndices.get(i);
+			int i = 0;
+			int x = 0;
+			while(i < sz) {
+				while(freq[x] == 0)
+					x++;
+				indices[i] = x;
+				i++;
 			}
 			
 			askForCardsChanges(indices);

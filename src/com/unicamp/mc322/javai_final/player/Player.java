@@ -8,6 +8,7 @@ import java.util.Stack;
 
 import com.unicamp.mc322.javai_final.cards.Card;
 import com.unicamp.mc322.javai_final.cards.MinionCardModel;
+import com.unicamp.mc322.javai_final.cards.SpellCardModel;
 
 public class Player {
 	private int nexusHealth;
@@ -85,11 +86,9 @@ public class Player {
 	}
 	
 	public boolean summonCard(int indice, int fieldIndice) {
-		if(fieldIndice > fieldCards.length)
-			return false;
-		if(indice > handCards.size())
-			return false;
 		if(handCards.get(indice).getManaCost() > getMana())
+			return false;
+		if(fieldIndice == -1 && !(handCards.get(indice).getModel() instanceof SpellCardModel))
 			return false;
 		
 		Card c = handCards.remove(indice);

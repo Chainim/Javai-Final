@@ -89,8 +89,8 @@ public class InterfaceScreen {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("Clicou na carta: " + cardIndex);
-						//GameStateManager.getInstance().onInput("Hand " + Integer.toString(cardIndex));
+						System.err.println("Clicou na carta: " + cardIndex);
+						GameStateManager.getInstance().onInput("hand " + Integer.toString(cardIndex));
 					}
 
 					public ActionListener setIndex(int index) {
@@ -115,8 +115,8 @@ public class InterfaceScreen {
 		ActionListener buttonEvents = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Clicou em Done");
-				GameStateManager.getInstance().onInput("Done");
+				System.err.println("Clicou em Done");
+				GameStateManager.getInstance().onInput("done");
 			}
 			
 		};
@@ -146,8 +146,8 @@ public class InterfaceScreen {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("Clicou em FieldCard");
-						GameStateManager.getInstance().onInput("Field " + Integer.toString(cardIndex));
+						System.err.println("Clicou em FieldCard " + cardIndex);
+						GameStateManager.getInstance().onInput("field " + Integer.toString(cardIndex));
 					}
 					public ActionListener setIndex(int index) {
 						cardIndex = index;
@@ -184,7 +184,7 @@ public class InterfaceScreen {
 		
 			field.setSize(field.getPreferredSize());
 
-			field.setLocation((frame.getWidth() - field.getWidth() - 70) / 2, frame.getHeight() / 2 - 30 + (1 - j) * -60);
+			field.setLocation((frame.getWidth() - field.getWidth() - 70) / 2, frame.getHeight() / 2 - 30 + (j) * -60);
 			frame.add(field);
 		}
 
