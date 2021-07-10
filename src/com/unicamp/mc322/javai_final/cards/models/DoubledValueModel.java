@@ -45,15 +45,26 @@ public class DoubledValueModel extends SpellCardModel {
 						}
 					}
 				} else {
+					if(input.equals("done")) {
+						System.err.println("Clique em alguma carta do campo para aplicar o valor redobrado");
+						onSummon(card);
+						return;
+					}
 					String[] s = input.split(" ");
 					if(Integer.parseInt(s[2]) != manager.getCurrentPlayerIndex()) {
 						System.err.println("Selecione somente suas coisas");
+						onSummon(card);
+						return;
 					} else if(s[0].equals("hand")) {
 						System.err.println("Selecione alguma carta do campo");
+						onSummon(card);
+						return;
 					} else {
 						int index = Integer.parseInt(s[1]);
 						if(manager.getCurrentPlayer().getFieldCards()[index] == null) {
 							System.err.println("Campo vazio");
+							onSummon(card);
+							return;
 						} else {
 							c = manager.getCurrentPlayer().getFieldCards()[index];							
 						}

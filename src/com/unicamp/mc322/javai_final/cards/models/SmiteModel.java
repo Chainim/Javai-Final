@@ -13,7 +13,7 @@ public class SmiteModel extends SpellCardModel {
 	}
 	
 	@Override
-	public void onSummon(Card c) {
+	public void onSummon(Card card) {
 		//Efeito: Um aliado atacante golpeia todos os oponentes defensores
 		//Como ele 'golpeia', nao eh um embate?
 		
@@ -23,22 +23,55 @@ public class SmiteModel extends SpellCardModel {
 		g.addListener(new InputListener() {
 			@Override
 			public void onInput(String input) {
-				int index;
-				try {
-					index = Integer.parseInt(input);
-				} catch (NumberFormatException e)  {
-					System.err.println("Invalid input");
-					onSummon(c);
+				Card c = null;
+				boolean possibleSelection = false;
+				for(int i = 0;i < 6;i++) {
+					if(manager.getCurrentPlayer().getFieldCards()[i] != null) {
+						possibleSelection = true;							
+					}
+				}
+				if(possibleSelection == false) {
+					System.err.println("Nao existe carta para aplicar o Julgamento");
+					manager.getCurrentPlayer().getHandCards().add(new Card(ModelRegistry.ON_TARGET));
 					return;
 				}
 				
-				if(index > 5 || manager.getCurrentPlayer().getFieldCards()[index] == null) {
-					System.err.println("Invalid input");
-					onSummon(c);
-					return;
+				if(manager.getCurrentPlayer().isAI()) {
+					int maxDamageCard = 0;
+					for(int i = 0;i < manager.getCurrentPlayer().getFieldCards().length;i++) {
+						if(manager.getCurrentPlayer().getFieldCards()[i] != null && manager.getCurrentPlayer().getFieldCards()[i].getDamage() > maxDamageCard) {
+							c = manager.getCurrentPlayer().getFieldCards()[i];
+							maxDamageCard = c.getDamage();
+						}
+					}
+				} else {
+					if(input.equals("done")) {
+						System.err.println("Clique em alguma carta do campo para aplicar o alvo certeiro");
+						onSummon(card);
+						return;
+					}
+					String[] s = input.split(" ");
+					if(Integer.parseInt(s[2]) != manager.getCurrentPlayerIndex()) {
+						System.err.println("Selecione somente suas coisas");
+						onSummon(card);
+						return;
+					} else if(s[0].equals("hand")) {
+						System.err.println("Selecione alguma carta do campo");
+						onSummon(card);
+						return;
+					} else {
+						int index = Integer.parseInt(s[1]);
+						if(manager.getCurrentPlayer().getFieldCards()[index] == null) {
+							System.err.println("Campo vazio");
+							onSummon(card);
+							return;
+						} else {
+							c = manager.getCurrentPlayer().getFieldCards()[index];							
+						}
+					}
 				}
 				
-				Card attacking = manager.getCurrentPlayer().getFieldCards()[index];
+				Card attacking = c;
 				
 				for(int i = 0; i < 6; i++)
 					if(manager.getOpponentPlayer().getFieldCards()[i] != null) {

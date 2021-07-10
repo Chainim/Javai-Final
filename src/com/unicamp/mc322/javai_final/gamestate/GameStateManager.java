@@ -1,5 +1,7 @@
 package com.unicamp.mc322.javai_final.gamestate;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -14,7 +16,9 @@ public class GameStateManager {
 	
 	private GameState currentState;
 	private Player[] players;
-	int currentPlayerIndex;
+	private int currentPlayerIndex;
+	private ArrayList<Card> toRemoveDamage;
+	private ArrayList<Card> toRemoveHealth;
 	
 	private int currentRound;
 	
@@ -30,6 +34,9 @@ public class GameStateManager {
 		players = new Player[2];
 		currentPlayerIndex = 0;
 		currentRound = 1;
+		toRemoveDamage = new ArrayList<Card>();
+		toRemoveHealth = new ArrayList<Card>();
+		
 		
 		initState = new InitState(this);
 		summonState = new SummonState(this);
@@ -52,9 +59,9 @@ public class GameStateManager {
 				players[i] = new Player(false);
 		}
 			
-		players[0].setMana(6);
-		players[1].setMana(6);
-		currentRound = 6;
+		players[0].setMana(8);
+		players[1].setMana(8);
+		currentRound = 8;
 	
 		players[0].getFieldCards()[1] = new Card(ModelRegistry.PORO);
 		players[0].getFieldCards()[1].setOwner(players[0]);
@@ -255,5 +262,31 @@ public class GameStateManager {
 			this.getOpponentPlayer().getFieldCards()[defending.getFieldIndex()] = null;
 		}
 		
+	}
+
+	public void addToRemoveDamage(Card c) {
+		toRemoveDamage.add(c);
+	}
+	
+	public void addToRemoveHealth(Card c) {
+		toRemoveHealth.add(c);
+	}
+	
+	public void clearRemove() {
+		toRemoveDamage.clear();
+		toRemoveHealth.clear();
+	}
+	
+	public void processRemove() {
+		for(Card c : toRemoveHealth) {
+			c.setHealth(c.getHealth() - 1);
+			if(c.getHealth() == 0) {
+				c.getOwner().getFieldCards()[c.getFieldIndex()] = null;
+				c = null;
+			}
+		}
+		for(Card c : toRemoveDamage) {
+			c.setDamage(c.getDamage() - 1);
+		}
 	}
 }

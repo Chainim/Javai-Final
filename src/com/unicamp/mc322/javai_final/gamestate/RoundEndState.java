@@ -47,6 +47,8 @@ public class RoundEndState extends GameState {
 			System.err.println("Jogo encerrado, o jogador " + getManager().getCurrentPlayerIndex() + " venceu");
 			Game.getInstance().stop();
 		}
+		getManager().processRemove();
+		getManager().clearRemove();
 		getManager().advancePlayer();
 		getManager().setState(getManager().summonState);
 	}
