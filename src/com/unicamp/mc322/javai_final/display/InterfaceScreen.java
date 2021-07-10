@@ -33,7 +33,7 @@ public class InterfaceScreen {
 		this.frame = window;
 		handCards = new ArrayList<JButton>();
 		fieldCards = new ArrayList<JButton>();
-		manaBars = new JProgressBar[2];
+		manaBars = new JProgressBar[4];
 		nexusHealth = new JLabel[2];
 		instance = this;
 	}
@@ -65,8 +65,8 @@ public class InterfaceScreen {
 	public void show() {
 
 		buildNexus();
-		buildManaBar();
 		buildButton();
+		buildManaBar();
 		buildHandCards();
 		buildFieldCards();
 		
@@ -220,7 +220,8 @@ public class InterfaceScreen {
 		for (int j = 0; j < 2; j++) {
 			JProgressBar manaBar = new JProgressBar(0, 10);
 			manaBar.setLocation(frame.getWidth() - 200, frame.getHeight() / 2 + 10 + j * (-100));
-			manaBar.setSize(100, 20);
+			manaBar.setPreferredSize(new Dimension(100, 20));
+			manaBar.setSize(manaBar.getPreferredSize());
 			manaBar.setValue(0);
 			manaBar.setString("Mana: " + 0);
 			manaBar.setStringPainted(true);
@@ -228,6 +229,19 @@ public class InterfaceScreen {
 			frame.add(manaBar);
 			
 			manaBars[j] = manaBar;
+		}
+		
+		for (int j = 0; j < 2; j++) {
+			JProgressBar spellManaBar = new JProgressBar(0, 3);
+			
+			spellManaBar.setLocation(frame.getWidth() - 200 + 110, frame.getHeight() / 2 + 10 + j * (-100));
+			spellManaBar.setPreferredSize(new Dimension(30, 20));
+			spellManaBar.setSize(spellManaBar.getPreferredSize());
+			spellManaBar.setValue(0);
+			
+			//frame.add(spellManaBar);
+			
+			manaBars[j + 2] = spellManaBar;
 		}
 	}
 	

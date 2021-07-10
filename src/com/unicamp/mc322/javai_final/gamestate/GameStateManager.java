@@ -135,7 +135,8 @@ public class GameStateManager {
 		
 		for(int i = 0;i < players.length;i++) {
 			InterfaceScreen.getInterfaceScreen().getManaBars()[i].setValue(players[i].getMana());
-			InterfaceScreen.getInterfaceScreen().getManaBars()[i].setString("Mana: " + players[i].getMana());
+			InterfaceScreen.getInterfaceScreen().getManaBars()[i].setString("Mana: " + players[i].getMana() + " (+" + players[i].getSpellMana() + ")");
+			InterfaceScreen.getInterfaceScreen().getManaBars()[i + 2].setValue(players[i].getSpellMana());
 			
 			InterfaceScreen.getInterfaceScreen().getNexusHealth()[i].setText("Nexus: " + players[i].getNexusHealth());
 			
