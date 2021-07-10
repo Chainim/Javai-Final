@@ -65,6 +65,8 @@ public class GameStateManager {
 		players[0].getFieldCards()[2].setOwner(players[0]);
 		players[0].getFieldCards()[4] = new Card(ModelRegistry.DEFENDER);
 		players[0].getFieldCards()[4].setOwner(players[0]);
+		players[0].getHandCards().add(new Card(ModelRegistry.HEAD_TO_HEAD));
+		players[0].getHandCards().get(players[0].getHandCards().size() - 1).setOwner(players[0]);
 		
 		players[1].getFieldCards()[2] = new Card(ModelRegistry.DEFENDER);
 		players[1].getFieldCards()[2].setOwner(players[1]);

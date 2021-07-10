@@ -20,34 +20,39 @@ public class HeadToHeadModel extends SpellCardModel {
 		g.addListener(new InputListener() {
 			@Override
 			public void onInput(String input) {
+				Card attacking = null;
+				Card defending = null;
+				boolean possibleAttackSelection = false;
+				boolean possibleDefendSelection = false;
+				for(int i = 0;i < 6;i++) {
+					if(manager.getCurrentPlayer().getFieldCards()[i] != null)
+						possibleAttackSelection = true;
+					if(manager.getOpponentPlayer().getFieldCards()[i] != null)
+						possibleDefendSelection = true;
+				}
+				if(!possibleAttackSelection || !possibleDefendSelection) {
+					System.err.println("Sem cartas para fazer o mano a mano");
+					manager.getCurrentPlayer().getHandCards().add(new Card(ModelRegistry.HEAD_TO_HEAD));
+					return;
+				}
+				
 				if(manager.getCurrentPlayer().isAI()) {
 					for(int i = 0;i < manager.getCurrentPlayer().getFieldCards().length;i++) {
 						for(int j = 0;j < manager.getOpponentPlayer().getFieldCards().length;j++) {
 							if(manager.getCurrentPlayer().getFieldCards()[i] != null && manager.getOpponentPlayer().getFieldCards()[j] != null) {
-								manager.doCombat(manager.getCurrentPlayer().getFieldCards()[i], manager.getOpponentPlayer().getFieldCards()[j]);
-								return;
+								attacking = manager.getCurrentPlayer().getFieldCards()[i]; 
+								defending = manager.getOpponentPlayer().getFieldCards()[j];
 							}
 						}
 					}
-					
 				} else {
+					int attackID = -1;
+					int defendID = -1;
 					
 					String[] s = input.split(" ");
-					int[] indices = new int[s.length];
-					try {
-						for (int i = 0; i < indices.length; i++)
-							indices[i] = Integer.parseInt(s[i]);
-					} catch (NumberFormatException e) {
-						System.err.println("Invalid input");
-						onSummon(card);
-						return;
-					}
-	
-					Card attacking = manager.getCurrentPlayer().getFieldCards()[indices[0]];
-					Card defending = manager.getOpponentPlayer().getFieldCards()[indices[1]];
-	
-					manager.doCombat(attacking, defending);
+					// TODO
 				}
+				manager.doCombat(attacking, defending);
 			}
 		});
 	}
