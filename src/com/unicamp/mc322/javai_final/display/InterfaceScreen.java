@@ -192,7 +192,11 @@ public class InterfaceScreen {
 
 				JLabel attackLabel = new JLabel("A");
 				JLabel healthLabel = new JLabel("D");
-
+				
+				JLabel nameLabel = new JLabel("Nome");
+				nameLabel.setPreferredSize(new Dimension(40, 40));
+				nameLabel.setSize(nameLabel.getPreferredSize());
+				nameLabel.setFont(new Font("Dialog", Font.PLAIN, 8));
 
 				s.putConstraint(SpringLayout.WEST, attackLabel, 1, SpringLayout.WEST, p);
 				s.putConstraint(SpringLayout.SOUTH, attackLabel, 0, SpringLayout.SOUTH, p);
@@ -200,8 +204,12 @@ public class InterfaceScreen {
 				s.putConstraint(SpringLayout.EAST, healthLabel, -1, SpringLayout.EAST, p);
 				s.putConstraint(SpringLayout.SOUTH, healthLabel, 0, SpringLayout.SOUTH, p);
 				
+				s.putConstraint(SpringLayout.HORIZONTAL_CENTER, nameLabel, 0, SpringLayout.HORIZONTAL_CENTER, p);
+				s.putConstraint(SpringLayout.NORTH, nameLabel, -12, SpringLayout.NORTH, p);
+				
 				p.add(attackLabel);
 				p.add(healthLabel);
+				p.add(nameLabel);
 				
 				fieldCards.add(p);
 				field.add(p);

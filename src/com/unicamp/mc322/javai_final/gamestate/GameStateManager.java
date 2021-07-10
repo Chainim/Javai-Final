@@ -173,11 +173,13 @@ public class GameStateManager {
 				if(c == null) {
 					((JLabel) button.getComponent(0)).setText("");
 					((JLabel) button.getComponent(1)).setText("");
+					((JLabel) button.getComponent(2)).setText("");
 					continue;
 				}	
 				
 				((JLabel) button.getComponent(0)).setText(Integer.toString(c.getDamage()));
 				((JLabel) button.getComponent(1)).setText(Integer.toString(c.getHealth()));
+				((JLabel) button.getComponent(2)).setText("<html>" + c.getLocalizedName() + "</html>");
 			}
 		}
 		
