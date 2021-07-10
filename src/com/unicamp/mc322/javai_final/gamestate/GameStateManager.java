@@ -16,6 +16,8 @@ public class GameStateManager {
 	private Player[] players;
 	int currentPlayerIndex;
 	
+	private int currentRound;
+	
 	InitState initState;
 	SummonState summonState;
 	AttackState attackState;
@@ -27,6 +29,7 @@ public class GameStateManager {
 		
 		players = new Player[2];
 		currentPlayerIndex = 0;
+		currentRound = 1;
 		
 		initState = new InitState(this);
 		summonState = new SummonState(this);
@@ -37,6 +40,10 @@ public class GameStateManager {
 		currentState = initState;
 	}
 	
+	public int getCurrentRound() {
+		return currentRound;
+	}
+	
 	public void init() {
 		for(int i = 0; i < players.length; i++) {
 			if(i == 0)
@@ -44,29 +51,17 @@ public class GameStateManager {
 			else
 				players[i] = new Player(false);
 		}
-		
-		//TODO: Lembrar de tirar esse trecho de codigo
-		players[0].addMana();
-		players[0].addMana();
-		players[0].addMana();
-		players[0].addMana();
-		players[0].addMana();
-		players[0].addMana();
-		players[1].addMana();
-		players[1].addMana();
-		players[1].addMana();
-		players[1].addMana();
-		players[1].addMana();
-		players[1].addMana();
-		
+			
+		players[0].setMana(6);
+		players[1].setMana(6);
+		currentRound = 6;
+	
 		players[0].getFieldCards()[1] = new Card(ModelRegistry.PORO);
 		players[0].getFieldCards()[1].setOwner(players[0]);
 		players[0].getFieldCards()[2] = new Card(ModelRegistry.PORO);
 		players[0].getFieldCards()[2].setOwner(players[0]);
 		players[0].getFieldCards()[4] = new Card(ModelRegistry.DEFENDER);
 		players[0].getFieldCards()[4].setOwner(players[0]);
-		players[0].getHandCards().add(new Card(ModelRegistry.HEAD_TO_HEAD));
-		players[0].getHandCards().get(players[0].getHandCards().size() - 1).setOwner(players[0]);
 		
 		players[1].getFieldCards()[2] = new Card(ModelRegistry.DEFENDER);
 		players[1].getFieldCards()[2].setOwner(players[1]);
@@ -115,6 +110,8 @@ public class GameStateManager {
 	
 	
 	public void advancePlayer() {
+		if(currentPlayerIndex == players.length - 1)
+			currentRound++;
 		currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
 	}
 	

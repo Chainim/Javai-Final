@@ -8,11 +8,10 @@ import java.util.Stack;
 
 import com.unicamp.mc322.javai_final.cards.Card;
 import com.unicamp.mc322.javai_final.cards.MinionCardModel;
-import com.unicamp.mc322.javai_final.cards.SpellCardModel;
 
 public class Player {
 	private int nexusHealth;
-	private int mana, curManaBuffer;
+	private int mana;
 	private int spellMana;
 	private Card[] fieldCards;
 	private List<Card> handCards;
@@ -21,7 +20,6 @@ public class Player {
 	
 	public Player(boolean isAI) {
 		
-		curManaBuffer = 1;
 		this.mana = 0;
 		this.spellMana = 0;
 		this.nexusHealth = 20;
@@ -63,6 +61,7 @@ public class Player {
 	public void drawCardsFromPile(int count) {
 		for(int i = 0; i < count; i++) {
 			if(drawPile.empty()) {
+				System.err.println("O jogador nao possui cartas na pilha de compra");
 				return;
 			}
 			Card top = drawPile.pop();
@@ -99,10 +98,8 @@ public class Player {
 		return true;
 	}
 	
-	public void addMana() { 
-		mana = curManaBuffer;
-		curManaBuffer++;
-		curManaBuffer = Math.min(10, curManaBuffer);
+	public void setMana(int amount) { 
+		mana = Math.min(amount, 10);
 	}
 	
 	public List<Card> getHandCards() {

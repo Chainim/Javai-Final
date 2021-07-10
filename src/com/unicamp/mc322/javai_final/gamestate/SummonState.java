@@ -29,7 +29,7 @@ public class SummonState extends GameState {
 		toSummonFieldIndex = -1;
 		summonConfirmed = false;
 		summonEnd = false;
-		getManager().getCurrentPlayer().addMana();
+		getManager().getCurrentPlayer().setMana(getManager().getCurrentRound());
 		getManager().getCurrentPlayer().drawCardsFromPile();
 	}
 	
