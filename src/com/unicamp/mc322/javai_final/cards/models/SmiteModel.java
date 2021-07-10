@@ -32,7 +32,7 @@ public class SmiteModel extends SpellCardModel {
 				}
 				if(possibleSelection == false) {
 					System.err.println("Nao existe carta para aplicar o Julgamento");
-					manager.getCurrentPlayer().getHandCards().add(new Card(ModelRegistry.ON_TARGET));
+					manager.getCurrentPlayer().getHandCards().add(new Card(ModelRegistry.SMITE));
 					return;
 				}
 				
