@@ -24,6 +24,18 @@ public class DoubledValueModel extends SpellCardModel {
 			@Override
 			public void onInput(String input) {
 				Card c = null;
+				boolean possibleSelection = false;
+				for(int i = 0;i < 6;i++) {
+					if(manager.getCurrentPlayer().getFieldCards()[i] != null) {
+						possibleSelection = true;							
+					}
+				}
+				if(possibleSelection == false) {
+					System.err.println("Nao existe carta para aplicar o valor redobrado");
+					manager.getCurrentPlayer().getHandCards().add(new Card(ModelRegistry.DOUBLED_VALUE));
+					return;
+				}
+				
 				if(manager.getCurrentPlayer().isAI()) {
 					int maxDamageCard = 0;
 					for(int i = 0;i < manager.getCurrentPlayer().getFieldCards().length;i++) {
@@ -32,25 +44,20 @@ public class DoubledValueModel extends SpellCardModel {
 							maxDamageCard = c.getDamage();
 						}
 					}
-					if(c == null)
-						return;
 				} else {
-					int index;
-					try {
-						index = Integer.parseInt(input);
-					} catch (NumberFormatException e)  {
-						System.err.println("Invalid input");
-						onSummon(card);
-						return;
+					String[] s = input.split(" ");
+					if(Integer.parseInt(s[2]) != manager.getCurrentPlayerIndex()) {
+						System.err.println("Selecione somente suas coisas");
+					} else if(s[0].equals("hand")) {
+						System.err.println("Selecione alguma carta do campo");
+					} else {
+						int index = Integer.parseInt(s[1]);
+						if(manager.getCurrentPlayer().getFieldCards()[index] == null) {
+							System.err.println("Campo vazio");
+						} else {
+							c = manager.getCurrentPlayer().getFieldCards()[index];							
+						}
 					}
-					
-					if(index > 5 || manager.getCurrentPlayer().getFieldCards()[index] == null) {
-						System.err.println("Invalid input");
-						onSummon(card);
-						return;
-					}
-					
-					c = manager.getCurrentPlayer().getFieldCards()[index];
 				}
 				
 				MinionCardModel cModel = (MinionCardModel)c.getModel();
