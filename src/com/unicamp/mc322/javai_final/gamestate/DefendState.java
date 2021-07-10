@@ -152,7 +152,8 @@ public class DefendState extends GameState {
 			} else {
 				defendButton.setBackground(Color.GRAY);
 			}
-			
+		}
+		for(int i = 0;i < 6;i++) {
 			if(toRenderAttack.contains(i))
 				continue;
 			JButton attackButton = InterfaceScreen.getInterfaceScreen().getFieldCards().get(i + 6*getManager().getCurrentPlayerIndex());
