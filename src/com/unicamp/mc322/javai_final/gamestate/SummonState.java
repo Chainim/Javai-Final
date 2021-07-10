@@ -57,29 +57,18 @@ public class SummonState extends GameState {
 	@Override
 	public void onInput(String input) {
 		if(getManager().getCurrentPlayer().isAI()) {
-			while(true) {
 				
-				int idx = -1;
+			for(int j = 0;j < getManager().getCurrentPlayer().getHandCards().size();j++) {
 				for(int i = 0;i < getManager().getCurrentPlayer().getFieldCards().length;i++) {
-					if(getManager().getCurrentPlayer().getFieldCards()[i] == null) {
-						idx = i;
-						break;
-					}
+					if(getManager().getCurrentPlayer().getFieldCards()[i] == null && 
+					   getManager().getCurrentPlayer().getHandCards().get(j) != null) {
+						if(getManager().getCurrentPlayer().summonCard(j, i)) {
+							break;
+						}
+					}	
 				}
-				
-				if(idx == -1)
-					break;
-				
-				for(int i = 0;i < getManager().getCurrentPlayer().getHandCards().size();i++) {
-					if(getManager().getCurrentPlayer().summonCard(i, idx)) {
-						idx = -1;
-						break;
-					}
-				}
-				
-				if(idx != -1)
-					break;
 			}
+
 			summonEnd = true;
 			return;
 		}
