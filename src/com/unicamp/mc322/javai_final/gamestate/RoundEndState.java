@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.JButton;
 
+import com.unicamp.mc322.javai_final.Game;
 import com.unicamp.mc322.javai_final.cards.Card;
 import com.unicamp.mc322.javai_final.display.InterfaceScreen;
 
@@ -42,6 +43,10 @@ public class RoundEndState extends GameState {
 			}
 		}
 		
+		if(getManager().getOpponentPlayer().getNexusHealth() <= 0) {
+			System.err.println("Jogo encerrado, o jogador " + getManager().getCurrentPlayerIndex() + " venceu");
+			Game.getInstance().stop();
+		}
 		getManager().advancePlayer();
 		getManager().setState(getManager().summonState);
 	}

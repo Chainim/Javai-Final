@@ -14,6 +14,8 @@ import com.unicamp.mc322.javai_final.lang.Localizer;
 
 public class Game {
 
+	private static Game instance;
+	
 	private GameStateManager stateManager;
 	private boolean running;
 
@@ -22,6 +24,7 @@ public class Game {
 	private InterfaceScreen iScreen;
 
 	public Game() {
+		instance = this;
 		stateManager = new GameStateManager();
 		
 		// interface grafica
@@ -34,7 +37,15 @@ public class Game {
 		iScreen = new InterfaceScreen(window);
 		
 	}
+	
+	public static Game getInstance() {
+		return instance;
+	}
 
+	public void stop() {
+		running = false;
+	}
+	
 	public void start() {
 		Localizer.localizerInit(Lang.PT_BR);
 		ModelRegistry.initModels();
