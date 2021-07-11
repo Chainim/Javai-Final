@@ -7,7 +7,6 @@ import java.util.List;
 import javax.swing.JButton;
 
 import com.unicamp.mc322.javai_final.cards.Card;
-import com.unicamp.mc322.javai_final.cards.SpellCardModel;
 import com.unicamp.mc322.javai_final.display.InterfaceScreen;
 
 public class SummonState extends GameState {

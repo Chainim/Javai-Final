@@ -7,10 +7,12 @@ import java.util.List;
 import java.util.Stack;
 
 import com.unicamp.mc322.javai_final.cards.Card;
-import com.unicamp.mc322.javai_final.cards.MinionCardModel;
-import com.unicamp.mc322.javai_final.cards.SpellCardModel;
 
 public class Player {
+	private int previousMana;
+	private int previousSpellMana;
+	
+	
 	private int nexusHealth;
 	private int mana;
 	private int spellMana;
@@ -21,6 +23,9 @@ public class Player {
 	
 	public Player(boolean isAI) {
 		
+		this.previousMana = -1;
+		this.previousSpellMana = -1;
+		
 		this.mana = 0;
 		this.spellMana = 0;
 		this.nexusHealth = 20;
@@ -29,6 +34,16 @@ public class Player {
 		this.handCards = new ArrayList<Card>();
 		this.drawPile = new Stack<Card>();
 		this.AI = isAI;
+	}
+	
+	public void rollbackMana() {
+		if(previousMana == -1) {
+			System.err.println("cannot rollback mana!");
+			return;
+		}
+			
+		mana = previousMana;
+		spellMana = previousSpellMana;
 	}
 	
 	public Card[] getFieldCards() {
@@ -87,11 +102,15 @@ public class Player {
 	}
 	
 	public boolean summonCard(int indice, int fieldIndice) {
-		if(handCards.get(indice).getModel().isSpell())
+		if(handCards.get(indice).getModel().isSpell()) {
 			if(handCards.get(indice).getManaCost() > getMana() + getSpellMana())
 				return false;
+		}
 		else if(handCards.get(indice).getManaCost() > getMana())
 			return false;
+		
+		previousMana = mana;
+		previousSpellMana = spellMana;
 		
 		Card c = handCards.remove(indice);
 		// Ver se o custo de substituicao eh o mesmo de sumonar em um local vazio
