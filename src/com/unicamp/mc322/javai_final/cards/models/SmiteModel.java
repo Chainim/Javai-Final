@@ -13,7 +13,7 @@ public class SmiteModel extends SpellCardModel {
 		super("card.smite.name", "card.smite.desc", 8);
 	}
 	
-	private void combat(Card attacker, Player defender) {
+	private static void combat(Card attacker, Player defender) {
 		for(int i = 0; i < 6; i++)
 			if(defender.getFieldCards()[i] != null) {
 				Card defending = defender.getFieldCards()[i];

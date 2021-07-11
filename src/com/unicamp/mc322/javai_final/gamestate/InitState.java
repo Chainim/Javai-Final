@@ -107,7 +107,7 @@ public class InitState extends GameState{
 			if(Integer.parseInt(s[2]) != (switchingPlayer) || s[0].equals("field")) {
 				System.err.println("Selecione cartas da sua mão para troca!");
 			} else {
-				int idx = Integer.parseInt(s[1]) - Integer.parseInt("0");
+				int idx = Integer.parseInt(s[1]) ;
 				if(cardsIndices.contains(idx)) {
 					cardsIndices.remove(cardsIndices.indexOf(idx));
 				}
