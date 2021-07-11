@@ -87,7 +87,7 @@ public class Player {
 	}
 	
 	public boolean summonCard(int indice, int fieldIndice) {
-		if(handCards.get(indice).getModel() instanceof SpellCardModel)
+		if(handCards.get(indice).getModel().isSpell())
 			if(handCards.get(indice).getManaCost() > getMana() + getSpellMana())
 				return false;
 		else if(handCards.get(indice).getManaCost() > getMana())
@@ -95,7 +95,7 @@ public class Player {
 		
 		Card c = handCards.remove(indice);
 		// Ver se o custo de substituicao eh o mesmo de sumonar em um local vazio
-		if(c.getModel() instanceof MinionCardModel) {			
+		if(c.isMinion()) {			
 			mana -= c.getManaCost();
 			fieldCards[fieldIndice] = c;
 		} else {

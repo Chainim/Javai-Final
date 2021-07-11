@@ -91,7 +91,7 @@ public class SummonState extends GameState {
 			} else if(toSummonFieldIndex != -1 && toSummonIndex != -1) {
 				summonConfirmed = true;
 			} else {
-				if(getManager().getCurrentPlayer().getHandCards().get(toSummonIndex).getModel() instanceof SpellCardModel) {
+				if(getManager().getCurrentPlayer().getHandCards().get(toSummonIndex).isSpell()) {
 					summonConfirmed = true;					
 				}
 				else {
