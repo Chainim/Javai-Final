@@ -3,7 +3,6 @@ package com.unicamp.mc322.javai_final.cards.models;
 import com.unicamp.mc322.javai_final.cards.Card;
 import com.unicamp.mc322.javai_final.cards.SpellCardModel;
 import com.unicamp.mc322.javai_final.gamestate.GameStateManager;
-import com.unicamp.mc322.javai_final.gamestate.InputListener;
 import com.unicamp.mc322.javai_final.gamestate.SummonState;
 import com.unicamp.mc322.javai_final.util.InputUtils;
 
@@ -28,40 +27,37 @@ public class SmiteModel extends SpellCardModel {
 		}
 		
 		SummonState g = (SummonState)manager.getCurrentState();
-		g.addListener(new InputListener() {
-			@Override
-			public boolean onInput(String input) {
-				Card c = null;
-				
-				if(manager.getCurrentPlayer().isAI()) {
-					int maxDamageCard = 0;
-					for(int i = 0;i < manager.getCurrentPlayer().getFieldCards().length;i++) {
-						if(manager.getCurrentPlayer().getFieldCards()[i] != null && manager.getCurrentPlayer().getFieldCards()[i].getDamage() > maxDamageCard) {
-							c = manager.getCurrentPlayer().getFieldCards()[i];
-							maxDamageCard = c.getDamage();
-						}
+		g.addListener((String input) -> {
+			Card c = null;
+			
+			if(manager.getCurrentPlayer().isAI()) {
+				int maxDamageCard = 0;
+				for(int i = 0;i < manager.getCurrentPlayer().getFieldCards().length;i++) {
+					if(manager.getCurrentPlayer().getFieldCards()[i] != null && manager.getCurrentPlayer().getFieldCards()[i].getDamage() > maxDamageCard) {
+						c = manager.getCurrentPlayer().getFieldCards()[i];
+						maxDamageCard = c.getDamage();
 					}
-				} else {
-					int index = InputUtils.expectCardOnCurrentPlayerField(input);
-					if(index == -1)
-						return false;
-					c = manager.getCurrentPlayer().getFieldCards()[index];
 				}
-				
-				Card attacking = c;
-				
-				for(int i = 0; i < 6; i++)
-					if(manager.getOpponentPlayer().getFieldCards()[i] != null) {
-						Card defending = manager.getOpponentPlayer().getFieldCards()[i];
-						defending.takeDamage(attacking.getDamage());
-						if(defending.getHealth() <= 0) {
-							defending.onDeath();
-							attacking.onKill();
-							manager.getOpponentPlayer().getFieldCards()[i] = null;
-						}
-					}
-				return true;
+			} else {
+				int index = InputUtils.expectCardOnCurrentPlayerField(input);
+				if(index == -1)
+					return false;
+				c = manager.getCurrentPlayer().getFieldCards()[index];
 			}
+			
+			Card attacking = c;
+			
+			for(int i = 0; i < 6; i++)
+				if(manager.getOpponentPlayer().getFieldCards()[i] != null) {
+					Card defending = manager.getOpponentPlayer().getFieldCards()[i];
+					defending.takeDamage(attacking.getDamage());
+					if(defending.getHealth() <= 0) {
+						defending.onDeath();
+						attacking.onKill();
+						manager.getOpponentPlayer().getFieldCards()[i] = null;
+					}
+				}
+			return true;
 		});
 	}
 }
