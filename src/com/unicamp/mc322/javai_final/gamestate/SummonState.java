@@ -87,34 +87,25 @@ public class SummonState extends GameState {
 		if(input.equals("done")) {
 			if(toSummonFieldIndex == -1 && toSummonIndex == -1) {
 				summonEnd = true;				
-			} else if(toSummonFieldIndex != -1 && toSummonIndex != -1) {
+			} else if(toSummonIndex != -1 && (toSummonFieldIndex != -1 || getManager().getCurrentPlayer().getHandCards().get(toSummonIndex).isSpell())) {
 				summonConfirmed = true;
-			} else {
-				if(getManager().getCurrentPlayer().getHandCards().get(toSummonIndex).isSpell()) {
-					summonConfirmed = true;					
-				}
-				else {
-					System.err.println("Seleção invalida para sumonar");					
-				}
 			}
-		} else {
-			String[] s = input.split(" ");
-			if(Integer.parseInt(s[2]) != (getManager().getCurrentPlayerIndex())) {
-				System.err.println("Selecione as suas coisas somente");
-			} else if(s[0].equals("hand")) {
-				if(toSummonIndex == Integer.parseInt(s[1])) {
-					toSummonIndex = -1;
-				} else {
-					toSummonIndex = Integer.parseInt(s[1]);
-				}
-			} else if(s[0].equals("field")) {
-				if(toSummonFieldIndex == Integer.parseInt(s[1])) {
-					toSummonFieldIndex = -1;
-				} else {
-					toSummonFieldIndex = Integer.parseInt(s[1]);
-				}
+			else {
+				System.err.println("Seleção invalida para sumonar");					
 			}
+			return;
 		}
+		
+		
+		String[] s = input.split(" ");
+		int s1Int = Integer.parseInt(s[1]);
+		
+		if(Integer.parseInt(s[2]) != (getManager().getCurrentPlayerIndex())) 
+			System.err.println("Selecione as suas coisas somente");
+		else if(s[0].equals("hand"))
+			toSummonIndex = (toSummonIndex == s1Int ? -1 : s1Int);
+		else if(s[0].equals("field"))
+			toSummonFieldIndex = (toSummonFieldIndex == s1Int ? -1 : s1Int);
 	}
 	
 	@Override

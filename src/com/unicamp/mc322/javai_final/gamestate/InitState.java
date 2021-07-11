@@ -21,25 +21,25 @@ public class InitState extends GameState{
 	
 	private void createDeck() {
 		for(int i = 0;i < getManager().getPlayers().length;i++) {
-//			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO));
-//			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO));
-//			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO));
-//			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO));
-//			
-//			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
-//			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
-//			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
-//			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO));
+			
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
 			
 			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DOUBLED_VALUE));
 			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DOUBLED_VALUE));
 			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DOUBLED_VALUE));
 			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DOUBLED_VALUE));
 			
-//			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO_DEFENDER));
-//			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO_DEFENDER));
-//			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO_DEFENDER));
-//			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO_DEFENDER));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO_DEFENDER));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO_DEFENDER));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO_DEFENDER));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO_DEFENDER));
 			
 			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.SMITE));
 			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.SMITE));
