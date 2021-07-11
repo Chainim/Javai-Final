@@ -67,7 +67,8 @@ public class DefendState extends GameState {
 		
 		String[] s = input.split(" ");
 		if(input.equals("done")) {
-			if(attackID != -1 && defendID != -1) {
+			if(attackID != -1 && defendID != -1 && 
+				(getManager().getCurrentPlayer().getFieldCards()[attackID].getElusiveStatus() == false || getManager().getOpponentPlayer().getFieldCards()[defendID].getElusiveStatus() == true)) {
 				toRenderAttack.add(attackID);
 				toRenderDefend.add(defendID);
 				
