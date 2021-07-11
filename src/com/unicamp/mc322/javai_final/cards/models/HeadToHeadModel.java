@@ -60,7 +60,7 @@ public class HeadToHeadModel extends SpellCardModel {
 				int index = InputUtils.expectCardOnOpponentPlayerField(input);
 				if(index == -1)
 					return false;
-				g.defending1v1 = manager.getCurrentPlayer().getFieldCards()[index];
+				g.defending1v1 = manager.getOpponentPlayer().getFieldCards()[index];
 				return true;
 				
 			}		
