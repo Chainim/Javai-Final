@@ -5,6 +5,7 @@ import com.unicamp.mc322.javai_final.cards.SpellCardModel;
 import com.unicamp.mc322.javai_final.gamestate.GameStateManager;
 import com.unicamp.mc322.javai_final.gamestate.InputListener;
 import com.unicamp.mc322.javai_final.gamestate.SummonState;
+import com.unicamp.mc322.javai_final.util.InputUtils;
 
 public class SmiteModel extends SpellCardModel {
 
@@ -39,26 +40,10 @@ public class SmiteModel extends SpellCardModel {
 						}
 					}
 				} else {
-					if(input.equals("done")) {
-						System.err.println("Clique em alguma carta do campo para aplicar o alvo certeiro");
+					int index = InputUtils.expectCardOnCurrentPlayerField(input);
+					if(index == -1)
 						return false;
-					}
-					String[] s = input.split(" ");
-					if(Integer.parseInt(s[2]) != manager.getCurrentPlayerIndex()) {
-						System.err.println("Selecione somente suas coisas");
-						return false;
-					} else if(s[0].equals("hand")) {
-						System.err.println("Selecione alguma carta do campo");
-						return false;
-					} else {
-						int index = Integer.parseInt(s[1]);
-						if(manager.getCurrentPlayer().getFieldCards()[index] == null) {
-							System.err.println("Campo vazio");
-							return false;
-						} else {
-							c = manager.getCurrentPlayer().getFieldCards()[index];							
-						}
-					}
+					c = manager.getCurrentPlayer().getFieldCards()[index];
 				}
 				
 				Card attacking = c;
