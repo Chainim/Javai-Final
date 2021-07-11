@@ -20,16 +20,17 @@ public class SmiteModel extends SpellCardModel {
 		
 		GameStateManager manager = GameStateManager.getInstance();
 		
+		if(!manager.getCurrentPlayer().hasFieldCards()) {
+			System.err.println("Nao existe carta para aplicar o Julgamento");
+			manager.getCurrentPlayer().getHandCards().add(new Card(ModelRegistry.SMITE));
+			return;
+		}
+		
 		SummonState g = (SummonState)manager.getCurrentState();
 		g.addListener(new InputListener() {
 			@Override
 			public boolean onInput(String input) {
 				Card c = null;
-				if(!manager.getCurrentPlayer().hasFieldCards()) {
-					System.err.println("Nao existe carta para aplicar o Julgamento");
-					manager.getCurrentPlayer().getHandCards().add(new Card(ModelRegistry.SMITE));
-					return true;
-				}
 				
 				if(manager.getCurrentPlayer().isAI()) {
 					int maxDamageCard = 0;

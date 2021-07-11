@@ -61,6 +61,11 @@ public class HeadToHeadModel extends SpellCardModel {
 				if(index == -1)
 					return false;
 				g.defending1v1 = manager.getOpponentPlayer().getFieldCards()[index];
+				if(g.attacking1v1 != null && g.defending1v1 != null) {
+					manager.doCombat(g.attacking1v1, g.defending1v1);
+					g.attacking1v1 = null;
+					g.defending1v1 = null;
+				}
 				return true;
 				
 			}		

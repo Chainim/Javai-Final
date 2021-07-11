@@ -83,11 +83,6 @@ public class SummonState extends GameState {
 			InputListener i = listeners.get(0);
 			if(i.onInput(input))
 				listeners.remove(0);
-			if(attacking1v1 != null && defending1v1 != null) {
-				getManager().doCombat(attacking1v1, defending1v1);
-				attacking1v1 = null;
-				defending1v1 = null;
-			}
 			return;
 		}
 		if(input.equals("done")) {
