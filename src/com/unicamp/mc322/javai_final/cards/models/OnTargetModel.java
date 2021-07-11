@@ -20,7 +20,7 @@ public class OnTargetModel extends SpellCardModel {
 		SummonState g = (SummonState)manager.getCurrentState();
 		g.addListener(new InputListener() {
 			@Override
-			public void onInput(String input) {
+			public boolean onInput(String input) {
 				Card c = null;
 				boolean possibleSelection = false;
 				for(int i = 0;i < 6;i++) {
@@ -31,7 +31,7 @@ public class OnTargetModel extends SpellCardModel {
 				if(possibleSelection == false) {
 					System.err.println("Nao existe carta para aplicar o golpe certeiro");
 					manager.getCurrentPlayer().getHandCards().add(new Card(ModelRegistry.ON_TARGET));
-					return;
+					return true;
 				}
 				
 				if(manager.getCurrentPlayer().isAI()) {
@@ -45,24 +45,20 @@ public class OnTargetModel extends SpellCardModel {
 				} else {
 					if(input.equals("done")) {
 						System.err.println("Clique em alguma carta do campo para aplicar o alvo certeiro");
-						onSummon(card);
-						return;
+						return false;
 					}
 					String[] s = input.split(" ");
 					if(Integer.parseInt(s[2]) != manager.getCurrentPlayerIndex()) {
 						System.err.println("Selecione somente suas coisas");
-						onSummon(card);
-						return;
+						return false;
 					} else if(s[0].equals("hand")) {
 						System.err.println("Selecione alguma carta do campo");
-						onSummon(card);
-						return;
+						return false;
 					} else {
 						int index = Integer.parseInt(s[1]);
 						if(manager.getCurrentPlayer().getFieldCards()[index] == null) {
 							System.err.println("Campo vazio");
-							onSummon(card);
-							return;
+							return false;
 						} else {
 							c = manager.getCurrentPlayer().getFieldCards()[index];							
 						}
@@ -73,6 +69,7 @@ public class OnTargetModel extends SpellCardModel {
 				c.setDamage(c.getDamage() + 1);
 				manager.addToRemoveDamage(c);
 				manager.addToRemoveHealth(c);
+				return true;
 			}
 		});
 	}

@@ -15,8 +15,8 @@ public class SummonState extends GameState {
 	private int toSummonIndex, toSummonFieldIndex;
 	private boolean summonConfirmed;
 	private boolean summonEnd;
-	private Card attacking1v1;
-	private Card defending1v1;
+	public Card attacking1v1;
+	public Card defending1v1;
 	
 	private List<InputListener> listeners;
 	
@@ -24,6 +24,7 @@ public class SummonState extends GameState {
 		super(manager);
 		listeners = new LinkedList<InputListener>();
 	}
+
 	
 	@Override
 	public void onStateLoad() {
@@ -32,6 +33,8 @@ public class SummonState extends GameState {
 		toSummonFieldIndex = -1;
 		summonConfirmed = false;
 		summonEnd = false;
+		attacking1v1 = null;
+		defending1v1 = null;
 		getManager().getCurrentPlayer().setMana(getManager().getCurrentRound());
 		getManager().getCurrentPlayer().drawCardsFromPile();
 	}
@@ -77,8 +80,14 @@ public class SummonState extends GameState {
 		}
 		
 		if(!listeners.isEmpty()) {
-			InputListener i = listeners.remove(0);
-			i.onInput(input);
+			InputListener i = listeners.get(0);
+			if(i.onInput(input))
+				listeners.remove(0);
+			if(attacking1v1 != null && defending1v1 != null) {
+				getManager().doCombat(attacking1v1, defending1v1);
+				attacking1v1 = null;
+				defending1v1 = null;
+			}
 			return;
 		}
 		if(input.equals("done")) {
