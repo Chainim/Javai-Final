@@ -249,19 +249,28 @@ public class GameStateManager {
 		defending.takeDamage(attacking.getDamage());
 		attacking.takeDamage(defending.getDamage());
 		
+		boolean attackerDead = false, defenderDead = false;
+		
 		if(attacking.getHealth() <= 0) {
 			attacking.onDeath();
-			defending.onKill();
+			attackerDead = true;
 			this.getCurrentPlayer().getFieldCards()[attacking.getFieldIndex()] = null;
 		} else {
 			attacking.onAttack();			
 		}
 		if(defending.getHealth() <= 0) {
 			defending.onDeath();
-			attacking.onKill();
+			defenderDead = true;
 			this.getOpponentPlayer().getFieldCards()[defending.getFieldIndex()] = null;
 		}
 		
+		if(attackerDead && defenderDead)
+			return;
+		
+		if(attackerDead)
+			defending.onKill();
+		if(defenderDead)
+			attacking.onKill();
 	}
 
 	public void addToRemoveDamage(Card c) {
