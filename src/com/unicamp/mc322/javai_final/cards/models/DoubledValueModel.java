@@ -19,18 +19,18 @@ public class DoubledValueModel extends SpellCardModel {
 		//– Nome: Valor Redobrado. Custo: 6. Efeito: Cure inteiramente um
 		//aliado; Dobre o ataque e defesa deste aliado.
 		GameStateManager manager = GameStateManager.getInstance();
+		if(!manager.getCurrentPlayer().hasFieldCards()) {
+			System.err.println("Nao existe carta para aplicar o valor redobrado");
+			manager.getCurrentPlayer().getHandCards().add(new Card(ModelRegistry.DOUBLED_VALUE));
+			manager.getCurrentPlayer().rollbackMana();
+			return;
+		}
 		
 		SummonState g = (SummonState)manager.getCurrentState();
 		g.addListener(new InputListener() {
 			@Override
 			public boolean onInput(String input) {
 				Card c = null;
-				if(!manager.getCurrentPlayer().hasFieldCards()) {
-					System.err.println("Nao existe carta para aplicar o valor redobrado");
-					manager.getCurrentPlayer().getHandCards().add(new Card(ModelRegistry.DOUBLED_VALUE));
-					manager.getCurrentPlayer().rollbackMana();
-					return true;
-				}
 				
 				if(manager.getCurrentPlayer().isAI()) {
 					int maxDamageCard = 0;
