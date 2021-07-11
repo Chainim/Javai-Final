@@ -21,6 +21,7 @@ public class OnTargetModel extends SpellCardModel {
 		if(!manager.getCurrentPlayer().hasFieldCards()) {
 			System.err.println("Nao existe carta para aplicar o golpe certeiro");
 			manager.getCurrentPlayer().getHandCards().add(new Card(ModelRegistry.ON_TARGET));
+			manager.getCurrentPlayer().rollbackMana();
 			return;
 		}
 		

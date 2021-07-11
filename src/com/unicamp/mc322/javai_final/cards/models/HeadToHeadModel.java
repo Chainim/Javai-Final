@@ -22,6 +22,7 @@ public class HeadToHeadModel extends SpellCardModel {
 		if(!manager.getCurrentPlayer().hasFieldCards() || !manager.getOpponentPlayer().hasFieldCards()) {
 			System.err.println("Sem cartas para fazer o mano a mano");
 			manager.getCurrentPlayer().getHandCards().add(new Card(ModelRegistry.HEAD_TO_HEAD));
+			manager.getCurrentPlayer().rollbackMana();
 			return;
 		}
 		

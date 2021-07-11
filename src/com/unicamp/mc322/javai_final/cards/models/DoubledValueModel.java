@@ -28,6 +28,7 @@ public class DoubledValueModel extends SpellCardModel {
 				if(!manager.getCurrentPlayer().hasFieldCards()) {
 					System.err.println("Nao existe carta para aplicar o valor redobrado");
 					manager.getCurrentPlayer().getHandCards().add(new Card(ModelRegistry.DOUBLED_VALUE));
+					manager.getCurrentPlayer().rollbackMana();
 					return true;
 				}
 				
