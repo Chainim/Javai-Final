@@ -69,6 +69,10 @@ public class Card {
 			((MinionCardModel)model).onDeath(this);
 	}
 	
+	public void onTurnEnd() {
+		model.onTurnEnd(this);
+	}
+	
 	public int getHealth() {
 		return health;
 	}
