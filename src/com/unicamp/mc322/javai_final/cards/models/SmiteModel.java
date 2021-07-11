@@ -4,12 +4,26 @@ import com.unicamp.mc322.javai_final.cards.Card;
 import com.unicamp.mc322.javai_final.cards.SpellCardModel;
 import com.unicamp.mc322.javai_final.gamestate.GameStateManager;
 import com.unicamp.mc322.javai_final.gamestate.SummonState;
+import com.unicamp.mc322.javai_final.player.Player;
 import com.unicamp.mc322.javai_final.util.InputUtils;
 
 public class SmiteModel extends SpellCardModel {
 
 	SmiteModel() {
 		super("card.smite.name", "card.smite.desc", 8);
+	}
+	
+	private void combat(Card attacker, Player defender) {
+		for(int i = 0; i < 6; i++)
+			if(defender.getFieldCards()[i] != null) {
+				Card defending = defender.getFieldCards()[i];
+				defending.takeDamage(attacker.getDamage());
+				if(defending.getHealth() <= 0) {
+					defending.onDeath();
+					attacker.onKill();
+					defender.getFieldCards()[i] = null;
+				}
+			}
 	}
 	
 	@Override
@@ -47,16 +61,7 @@ public class SmiteModel extends SpellCardModel {
 			
 			Card attacking = c;
 			
-			for(int i = 0; i < 6; i++)
-				if(manager.getOpponentPlayer().getFieldCards()[i] != null) {
-					Card defending = manager.getOpponentPlayer().getFieldCards()[i];
-					defending.takeDamage(attacking.getDamage());
-					if(defending.getHealth() <= 0) {
-						defending.onDeath();
-						attacking.onKill();
-						manager.getOpponentPlayer().getFieldCards()[i] = null;
-					}
-				}
+			combat(attacking, manager.getOpponentPlayer());
 			return true;
 		});
 	}
