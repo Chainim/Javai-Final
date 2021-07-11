@@ -8,6 +8,7 @@ import java.util.Stack;
 
 import com.unicamp.mc322.javai_final.cards.Card;
 import com.unicamp.mc322.javai_final.cards.MinionCardModel;
+import com.unicamp.mc322.javai_final.cards.SpellCardModel;
 
 public class Player {
 	private int nexusHealth;
@@ -86,14 +87,23 @@ public class Player {
 	}
 	
 	public boolean summonCard(int indice, int fieldIndice) {
-		if(handCards.get(indice).getManaCost() > getMana())
+		if(handCards.get(indice).getModel() instanceof SpellCardModel)
+			if(handCards.get(indice).getManaCost() > getMana() + getSpellMana())
+				return false;
+		else if(handCards.get(indice).getManaCost() > getMana())
 			return false;
 		
 		Card c = handCards.remove(indice);
 		// Ver se o custo de substituicao eh o mesmo de sumonar em um local vazio
-		mana -= c.getManaCost();
-		if(c.getModel() instanceof MinionCardModel)
+		if(c.getModel() instanceof MinionCardModel) {			
+			mana -= c.getManaCost();
 			fieldCards[fieldIndice] = c;
+		} else {
+			int total = c.getManaCost();
+			total -= spellMana;
+			spellMana -= Math.min(spellMana, c.getManaCost());
+			mana -= total;
+		}
 		c.onSummon();
 		return true;
 	}
