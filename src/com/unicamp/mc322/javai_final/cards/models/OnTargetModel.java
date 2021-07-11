@@ -22,13 +22,7 @@ public class OnTargetModel extends SpellCardModel {
 			@Override
 			public boolean onInput(String input) {
 				Card c = null;
-				boolean possibleSelection = false;
-				for(int i = 0;i < 6;i++) {
-					if(manager.getCurrentPlayer().getFieldCards()[i] != null) {
-						possibleSelection = true;							
-					}
-				}
-				if(possibleSelection == false) {
+				if(!manager.getCurrentPlayer().hasFieldCards()) {
 					System.err.println("Nao existe carta para aplicar o golpe certeiro");
 					manager.getCurrentPlayer().getHandCards().add(new Card(ModelRegistry.ON_TARGET));
 					return true;

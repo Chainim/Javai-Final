@@ -18,15 +18,7 @@ public class HeadToHeadModel extends SpellCardModel {
 
 		SummonState g = (SummonState) manager.getCurrentState();
 		
-		boolean possibleAttackSelection = false;
-		boolean possibleDefendSelection = false;
-		for(int i = 0;i < 6;i++) {
-			if(manager.getCurrentPlayer().getFieldCards()[i] != null)
-				possibleAttackSelection = true;
-			if(manager.getOpponentPlayer().getFieldCards()[i] != null)
-				possibleDefendSelection = true;
-		}
-		if(!possibleAttackSelection || !possibleDefendSelection) {
+		if(!manager.getCurrentPlayer().hasFieldCards() || !manager.getOpponentPlayer().hasFieldCards()) {
 			System.err.println("Sem cartas para fazer o mano a mano");
 			manager.getCurrentPlayer().getHandCards().add(new Card(ModelRegistry.HEAD_TO_HEAD));
 			return;

@@ -124,4 +124,11 @@ public class Player {
 	public boolean isAI() {
 		return AI;
 	}
+	
+	public boolean hasFieldCards() {
+		for(int i = 0; i < 6; i++)
+			if(fieldCards[i] != null)
+				return true;
+		return false;
+	}
 }
