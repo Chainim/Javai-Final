@@ -20,7 +20,7 @@ public class DoubledValueModel extends SpellCardModel {
 		GameStateManager manager = GameStateManager.getInstance();
 		if(!card.getOwner().hasFieldCards()) {
 			System.err.println("Nao existe carta para aplicar o valor redobrado");
-			card.getOwner().getHandCards().add(new Card(ModelRegistry.DOUBLED_VALUE));
+			card.getOwner().addCardOnHand(new Card(ModelRegistry.DOUBLED_VALUE));
 			card.getOwner().rollbackMana();
 			return;
 		}

@@ -18,12 +18,9 @@ public class HeadToHeadModel extends SpellCardModel {
 		GameStateManager manager = GameStateManager.getInstance();
 
 		SummonState g = (SummonState) manager.getCurrentState();
-		if(card == null) {
-			System.err.println("AAAAAAAAAAAAAAAAA");
-		}
 		if(!card.getOwner().hasFieldCards() || !manager.getOpponentPlayer().hasFieldCards()) {
 			System.err.println("Sem cartas para fazer o mano a mano");
-			card.getOwner().getHandCards().add(new Card(ModelRegistry.HEAD_TO_HEAD));
+			card.getOwner().addCardOnHand(new Card(ModelRegistry.HEAD_TO_HEAD));
 			card.getOwner().rollbackMana();
 			return;
 		}

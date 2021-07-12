@@ -71,7 +71,13 @@ public class Player {
 	}
 	
 	public void addCardToPile(Card c) {
+		c.setOwner(this);
 		drawPile.add(c);
+	}
+	
+	public void addCardOnHand(Card c) {
+		c.setOwner(this);
+		handCards.add(c);
 	}
 	
 	public void drawCardsFromPile(int count) {

@@ -15,7 +15,8 @@ public class DuelistModel extends MinionCardModel {
 	public void onKill(Card c) {
 		 //Se a carta destruir um seguidor do inimigo nesta rodada, uma carta “Poro” e colocada em sua mao.
 		Player p = c.getOwner();
-		p.getHandCards().add(new Card(ModelRegistry.PORO));
-		p.getHandCards().get(p.getHandCards().size() - 1).setOwner(p);
+		Card k = new Card(ModelRegistry.PORO);
+		k.setOwner(p);
+		p.getHandCards().add(k);
 	}
 }
