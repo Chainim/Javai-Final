@@ -3,47 +3,47 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_FH1PMMKeEeuRNLxr0-u6Jw">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
-  <packagedElement xmi:type="uml:Class" xmi:id="_Pbkv4MKeEeu6yuIUXVYsAA" name="Card"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_YyD-IMKeEeu6yuIUXVYsAA" name="SpellCard">
+  <packagedElement xmi:type="uml:Class" xmi:id="_Pbkv4MKeEeu6yuIUXVYsAA" name="CardModel"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_YyD-IMKeEeu6yuIUXVYsAA" name="SpellCardModel">
     <generalization xmi:type="uml:Generalization" xmi:id="_ke7_gMKfEeu6yuIUXVYsAA" general="_Pbkv4MKeEeu6yuIUXVYsAA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_aAguQMKeEeu6yuIUXVYsAA" name="MinionCard">
+  <packagedElement xmi:type="uml:Class" xmi:id="_aAguQMKeEeu6yuIUXVYsAA" name="MinionCardModel">
     <generalization xmi:type="uml:Generalization" xmi:id="_w-zZgMKfEeu6yuIUXVYsAA" general="_Pbkv4MKeEeu6yuIUXVYsAA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_cXRxUMKeEeu6yuIUXVYsAA" name="HeroCard">
+  <packagedElement xmi:type="uml:Class" xmi:id="_cXRxUMKeEeu6yuIUXVYsAA" name="HeroCardModel">
     <generalization xmi:type="uml:Generalization" xmi:id="_yEvt4MKfEeu6yuIUXVYsAA" general="_aAguQMKeEeu6yuIUXVYsAA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_pkHmEMKeEeu6yuIUXVYsAA" name="Garren">
+  <packagedElement xmi:type="uml:Class" xmi:id="_pkHmEMKeEeu6yuIUXVYsAA" name="GarrenModel">
     <generalization xmi:type="uml:Generalization" xmi:id="_zTmGoMKfEeu6yuIUXVYsAA" general="_cXRxUMKeEeu6yuIUXVYsAA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_w62jEMKeEeu6yuIUXVYsAA" name="Tiana">
+  <packagedElement xmi:type="uml:Class" xmi:id="_w62jEMKeEeu6yuIUXVYsAA" name="TianaModel">
     <generalization xmi:type="uml:Generalization" xmi:id="_3vTc8MKfEeu6yuIUXVYsAA" general="_aAguQMKeEeu6yuIUXVYsAA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_ztwIgMKeEeu6yuIUXVYsAA" name="Vanguard">
+  <packagedElement xmi:type="uml:Class" xmi:id="_ztwIgMKeEeu6yuIUXVYsAA" name="VanguardModel">
     <generalization xmi:type="uml:Generalization" xmi:id="_0aO-kMKfEeu6yuIUXVYsAA" general="_aAguQMKeEeu6yuIUXVYsAA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_8YS2wMKeEeu6yuIUXVYsAA" name="Duelist">
+  <packagedElement xmi:type="uml:Class" xmi:id="_8YS2wMKeEeu6yuIUXVYsAA" name="DuelistModel">
     <generalization xmi:type="uml:Generalization" xmi:id="_3J6Q4MKfEeu6yuIUXVYsAA" general="_aAguQMKeEeu6yuIUXVYsAA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_GgRMUMKfEeu6yuIUXVYsAA" name="Defender">
+  <packagedElement xmi:type="uml:Class" xmi:id="_GgRMUMKfEeu6yuIUXVYsAA" name="DefenderModel">
     <generalization xmi:type="uml:Generalization" xmi:id="_MbNrUMKgEeu6yuIUXVYsAA" general="_aAguQMKeEeu6yuIUXVYsAA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_IbSukMKfEeu6yuIUXVYsAA" name="Poro">
+  <packagedElement xmi:type="uml:Class" xmi:id="_IbSukMKfEeu6yuIUXVYsAA" name="PoroModel">
     <generalization xmi:type="uml:Generalization" xmi:id="_50Q-UMKfEeu6yuIUXVYsAA" general="_aAguQMKeEeu6yuIUXVYsAA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_M9OBoMKfEeu6yuIUXVYsAA" name="DefenderPoro">
+  <packagedElement xmi:type="uml:Class" xmi:id="_M9OBoMKfEeu6yuIUXVYsAA" name="PoroDefenderModel">
     <generalization xmi:type="uml:Generalization" xmi:id="_5YTbEMKfEeu6yuIUXVYsAA" general="_aAguQMKeEeu6yuIUXVYsAA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_SUr1kMKfEeu6yuIUXVYsAA" name="Judgement">
+  <packagedElement xmi:type="uml:Class" xmi:id="_SUr1kMKfEeu6yuIUXVYsAA" name="SmiteModel">
     <generalization xmi:type="uml:Generalization" xmi:id="_OnFF8MKgEeu6yuIUXVYsAA" general="_YyD-IMKeEeu6yuIUXVYsAA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_U7nbkMKfEeu6yuIUXVYsAA" name="DoubleValue">
+  <packagedElement xmi:type="uml:Class" xmi:id="_U7nbkMKfEeu6yuIUXVYsAA" name="DoubleValueModel">
     <generalization xmi:type="uml:Generalization" xmi:id="_P00rcMKgEeu6yuIUXVYsAA" general="_YyD-IMKeEeu6yuIUXVYsAA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_ZQns8MKfEeu6yuIUXVYsAA" name="Strike">
+  <packagedElement xmi:type="uml:Class" xmi:id="_ZQns8MKfEeu6yuIUXVYsAA" name="OnTargetModel">
     <generalization xmi:type="uml:Generalization" xmi:id="_QNd08MKgEeu6yuIUXVYsAA" general="_YyD-IMKeEeu6yuIUXVYsAA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_b6YkgMKfEeu6yuIUXVYsAA" name="Combat">
+  <packagedElement xmi:type="uml:Class" xmi:id="_b6YkgMKfEeu6yuIUXVYsAA" name="HeadToHeadModel">
     <generalization xmi:type="uml:Generalization" xmi:id="_RcWp8MKgEeu6yuIUXVYsAA" general="_YyD-IMKeEeu6yuIUXVYsAA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_kDQhYMKlEeu6yuIUXVYsAA" name="GameManager">
@@ -51,13 +51,9 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0z9eo-KHEeu0PfCzs5ml5w"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0z9epOKHEeu0PfCzs5ml5w" value="1"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_11cJw-KHEeu0PfCzs5ml5w" name="palyer" type="_DSWQQOKHEeu0PfCzs5ml5w" aggregation="composite" association="_11cJwOKHEeu0PfCzs5ml5w">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_11cw0OKHEeu0PfCzs5ml5w"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_11cw0eKHEeu0PfCzs5ml5w" value="1"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_8apjM-KHEeu0PfCzs5ml5w" name="card" type="_Pbkv4MKeEeu6yuIUXVYsAA" aggregation="shared" association="_8apjMOKHEeu0PfCzs5ml5w">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8apjNOKHEeu0PfCzs5ml5w"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8apjNeKHEeu0PfCzs5ml5w" value="1"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VCu38uKjEeu0PfCzs5ml5w" name="card" type="_JKdCYOKjEeu0PfCzs5ml5w" aggregation="shared" association="_VCuQ4OKjEeu0PfCzs5ml5w">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VCu38-KjEeu0PfCzs5ml5w"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VCu39OKjEeu0PfCzs5ml5w" value="1"/>
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_Wp76YMKmEeu6yuIUXVYsAA" name="GameState" isAbstract="true"/>
@@ -87,9 +83,9 @@
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_DSWQQOKHEeu0PfCzs5ml5w" name="Player">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_63lN8uKHEeu0PfCzs5ml5w" name="card" type="_Pbkv4MKeEeu6yuIUXVYsAA" aggregation="shared" association="_63km4OKHEeu0PfCzs5ml5w">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_63lN8-KHEeu0PfCzs5ml5w"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_63lN9OKHEeu0PfCzs5ml5w" value="1"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_UHKnk-KjEeu0PfCzs5ml5w" name="card" type="_JKdCYOKjEeu0PfCzs5ml5w" aggregation="shared" association="_UHKnkOKjEeu0PfCzs5ml5w">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UHLOoOKjEeu0PfCzs5ml5w"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UHLOoeKjEeu0PfCzs5ml5w" value="1"/>
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_ck888OKHEeu0PfCzs5ml5w" name="InterfaceScreen"/>
@@ -98,12 +94,6 @@
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0z9eoeKHEeu0PfCzs5ml5w" key="nature" value="UML_Nature"/>
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_0z-FsOKHEeu0PfCzs5ml5w" name="gamemanager" type="_kDQhYMKlEeu6yuIUXVYsAA" association="_0z83kOKHEeu0PfCzs5ml5w"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_11cJwOKHEeu0PfCzs5ml5w" memberEnd="_11cJw-KHEeu0PfCzs5ml5w _11cw0uKHEeu0PfCzs5ml5w">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_11cJweKHEeu0PfCzs5ml5w" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_11cJwuKHEeu0PfCzs5ml5w" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_11cw0uKHEeu0PfCzs5ml5w" name="gamemanager" type="_kDQhYMKlEeu6yuIUXVYsAA" association="_11cJwOKHEeu0PfCzs5ml5w"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_4Oj9QOKHEeu0PfCzs5ml5w" memberEnd="_4Oj9Q-KHEeu0PfCzs5ml5w _4OkkUOKHEeu0PfCzs5ml5w">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_4Oj9QeKHEeu0PfCzs5ml5w" source="org.eclipse.papyrus">
@@ -117,17 +107,29 @@
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_4qfEROKHEeu0PfCzs5ml5w" name="game" type="_xiFjIMNXEeuhTI8mFNXbHg" association="_4qedMOKHEeu0PfCzs5ml5w"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_63km4OKHEeu0PfCzs5ml5w" memberEnd="_63lN8uKHEeu0PfCzs5ml5w _63lN9eKHEeu0PfCzs5ml5w">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_63lN8OKHEeu0PfCzs5ml5w" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_63lN8eKHEeu0PfCzs5ml5w" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_63lN9eKHEeu0PfCzs5ml5w" name="palyer" type="_DSWQQOKHEeu0PfCzs5ml5w" association="_63km4OKHEeu0PfCzs5ml5w"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JKdCYOKjEeu0PfCzs5ml5w" name="Card">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Pykl4uKjEeu0PfCzs5ml5w" name="cardmodel" type="_Pbkv4MKeEeu6yuIUXVYsAA" aggregation="composite" association="_Pyj-0OKjEeu0PfCzs5ml5w">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Pykl4-KjEeu0PfCzs5ml5w"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Pykl5OKjEeu0PfCzs5ml5w" value="1"/>
+    </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_8apjMOKHEeu0PfCzs5ml5w" memberEnd="_8apjM-KHEeu0PfCzs5ml5w _8aqKQOKHEeu0PfCzs5ml5w">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8apjMeKHEeu0PfCzs5ml5w" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_8apjMuKHEeu0PfCzs5ml5w" key="nature" value="UML_Nature"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Pyj-0OKjEeu0PfCzs5ml5w" memberEnd="_Pykl4uKjEeu0PfCzs5ml5w _Pykl5eKjEeu0PfCzs5ml5w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Pykl4OKjEeu0PfCzs5ml5w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Pykl4eKjEeu0PfCzs5ml5w" key="nature" value="UML_Nature"/>
     </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_8aqKQOKHEeu0PfCzs5ml5w" name="gamemanager" type="_kDQhYMKlEeu6yuIUXVYsAA" association="_8apjMOKHEeu0PfCzs5ml5w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Pykl5eKjEeu0PfCzs5ml5w" name="card" type="_JKdCYOKjEeu0PfCzs5ml5w" association="_Pyj-0OKjEeu0PfCzs5ml5w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_UHKnkOKjEeu0PfCzs5ml5w" memberEnd="_UHKnk-KjEeu0PfCzs5ml5w _UHLOouKjEeu0PfCzs5ml5w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_UHKnkeKjEeu0PfCzs5ml5w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_UHKnkuKjEeu0PfCzs5ml5w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_UHLOouKjEeu0PfCzs5ml5w" name="player" type="_DSWQQOKHEeu0PfCzs5ml5w" association="_UHKnkOKjEeu0PfCzs5ml5w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_VCuQ4OKjEeu0PfCzs5ml5w" memberEnd="_VCu38uKjEeu0PfCzs5ml5w _VCu39eKjEeu0PfCzs5ml5w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_VCu38OKjEeu0PfCzs5ml5w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_VCu38eKjEeu0PfCzs5ml5w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_VCu39eKjEeu0PfCzs5ml5w" name="gamemanager" type="_kDQhYMKlEeu6yuIUXVYsAA" association="_VCuQ4OKjEeu0PfCzs5ml5w"/>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_FGO_kMNVEeuhTI8mFNXbHg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FGPmoMNVEeuhTI8mFNXbHg" source="http://www.eclipse.org/uml2/2.0.0/UML">

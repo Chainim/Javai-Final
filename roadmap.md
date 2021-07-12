@@ -44,21 +44,21 @@
 
 # Funcionalidades
 
-1.  [ ] Embaralhar baralho
-2.  [ ] Distribuir cartas e fazer substituição
-3.  [ ] Puxar uma carta no inicio de cada rodada
-4.  [ ] Rodadas
-5.  [ ] Invocar cartas
-6.  [ ] Substituir cartas
-7.  [ ] Atacar
-8.  [ ] Defender
-9.  [ ] Fim da rodada
-10. [ ] Mana e "mana de feitiço"
-11. [ ] Combate
+1.  [x] Embaralhar baralho
+2.  [x] Distribuir cartas e fazer substituição
+3.  [x] Puxar uma carta no inicio de cada rodada
+4.  [x] Rodadas
+5.  [x] Invocar cartas
+6.  [x] Substituir cartas
+7.  [x] Atacar
+8.  [x] Defender
+9.  [x] Fim da rodada
+10. [x] Mana e "mana de feitiço"
+11. [x] Combate
 12. [ ] Cartas
 13. [ ] [Traços](#Traços)
 14. [ ] [Efeitos](#Efeitos)
-15. [ ] Jogar contra o computador
+15. [x] Jogar contra o computador
 16. [ ] Mostrar detalhes da situação do jogo
 17. [ ] Gerenciar decks
 18. [ ] [Deck base](#Deck-base)
@@ -68,35 +68,35 @@
 
 # Deck base
 - Campeões
-	- [ ] Garren
+	- [x] Garren
 - Seguidores
-	- [ ] Tiana
-	- [ ] Vanguarda
-	- [ ] Duelista
-	- [ ] Defensor
-	- [ ] Poro
-	- [ ] Poro defensor
+	- [x] Tiana
+	- [x] Vanguarda
+	- [x] Duelista
+	- [x] Defensor
+	- [x] Poro
+	- [x] Poro defensor
 - Feitiços
-	- [ ] Julgamento
-	- [ ] Valor redobrado
-	- [ ] Golpe certeiro
-	- [ ] Combate um-a-um
+	- [x] Julgamento
+	- [x] Valor redobrado
+	- [x] Golpe certeiro
+	- [x] Combate um-a-um
 
 # Traços
-- [ ] Ataque duplo
-- [ ] Elusivo
-- [ ] Fúria
+- [x] Ataque duplo
+- [x] Elusivo
+- [x] Fúria
 
 # Efeitos
-- [ ] Dê +n/ + m a todas as unidades aliadas evocadas.
-- [ ] Dê +n/ + m a uma unidade aliada nesta rodada.
-- [ ] Se a carta destruir uma unidade do inimigo nesta rodada, é colocada uma nova carta de uma unidade especifico na sua mão.
-- [ ] Cure inteiramente uma unidade aliada.
-- [ ] Dobre o ataque e defesa de uma unidade aliada.
-- [ ] Escolha um aliado e um oponente para um combate imediato.
-- [ ] Uma unidade evocada ataca o Nexus do adversário.
-- [ ] Um aliado atacante golpeia todos os oponentes defensores.
-- [ ] Ao ser destruído, voce ganha uma carta.
-- [ ] Altera o poder de uma unidade para 0 nesta rodada.
-- [ ] Cria uma barreira que anula o proximo dano que uma unidade aliada levaria. Dura uma rodada.
-- [ ] Golpeia o Nexus do adversario para n pontos de dano.
+- [x] Dê +n/ + m a todas as unidades aliadas evocadas.
+- [x] Dê +n/ + m a uma unidade aliada nesta rodada.
+- [x] Se a carta destruir uma unidade do inimigo nesta rodada, é colocada uma nova carta de uma unidade especifico na sua mão.
+- [x] Cure inteiramente uma unidade aliada.
+- [x] Dobre o ataque e defesa de uma unidade aliada.
+- [x] Escolha um aliado e um oponente para um combate imediato.
+- [x] Uma unidade evocada ataca o Nexus do adversário.
+- [x] Um aliado atacante golpeia todos os oponentes defensores.
+- [x] Ao ser destruído, voce ganha uma carta.
+- [?] Altera o poder de uma unidade para 0 nesta rodada.
+- [?] Cria uma barreira que anula o proximo dano que uma unidade aliada levaria. Dura uma rodada.
+- [?] Golpeia o Nexus do adversario para n pontos de dano.

@@ -65,6 +65,7 @@ public class InterfaceScreen {
 	public void show() {
 
 		buildNexus();
+		buildSpellManaBar();
 		buildButton();
 		buildManaBar();
 		buildHandCards();
@@ -222,6 +223,21 @@ public class InterfaceScreen {
 		}
 
 	}
+	
+	public void buildSpellManaBar() {
+		for (int j = 0; j < 2; j++) {
+			JProgressBar spellManaBar = new JProgressBar(0, 3);
+			
+			spellManaBar.setLocation(frame.getWidth() - 200 + 130, frame.getHeight() / 2 + 10 + j * (-100));
+			spellManaBar.setPreferredSize(new Dimension(30, 20));
+			spellManaBar.setSize(spellManaBar.getPreferredSize());
+			spellManaBar.setValue(0);
+			
+			frame.add(spellManaBar);
+			
+			manaBars[j + 2] = spellManaBar;
+		}
+	}
 
 	public void buildManaBar() {
 
@@ -237,19 +253,6 @@ public class InterfaceScreen {
 			frame.add(manaBar);
 			
 			manaBars[j] = manaBar;
-		}
-		
-		for (int j = 0; j < 2; j++) {
-			JProgressBar spellManaBar = new JProgressBar(0, 3);
-			
-			spellManaBar.setLocation(frame.getWidth() - 200 + 110, frame.getHeight() / 2 + 10 + j * (-100));
-			spellManaBar.setPreferredSize(new Dimension(30, 20));
-			spellManaBar.setSize(spellManaBar.getPreferredSize());
-			spellManaBar.setValue(0);
-			
-			//frame.add(spellManaBar);
-			
-			manaBars[j + 2] = spellManaBar;
 		}
 	}
 	
