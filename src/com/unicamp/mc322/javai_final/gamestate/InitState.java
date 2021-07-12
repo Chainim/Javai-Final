@@ -95,6 +95,7 @@ public class InitState extends GameState{
 	public void onStateLoad() {
 		System.err.println("entrou loadInit");
 		switchingPlayer = 0;
+//		getManager().turnAIOn();
 		
 		createDeck();
 		shuffleCards();
