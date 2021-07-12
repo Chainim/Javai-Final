@@ -10,7 +10,6 @@ public class OnTargetModel extends SpellCardModel {
 
 	OnTargetModel() {
 		super("card.on_target.name", "card.on_target.desc", 1);
-		// TODO Auto-generated constructor stub
 	}
 	
 	@Override

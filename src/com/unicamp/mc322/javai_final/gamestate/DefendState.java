@@ -24,7 +24,6 @@ public class DefendState extends GameState {
 	
 	@Override
 	public void onStateLoad() {
-		// lembrar de printar attackSelection
 		attackSelection = getManager().attackState.getCardsIndices();
 		defendSelection.clear();
 		toRenderAttack.clear();

@@ -8,7 +8,6 @@ public class DuelistModel extends MinionCardModel {
 
 	DuelistModel() {
 		super("card.duelist.name", "card.duelist.desc", 3, 3, 2);
-		// TODO Auto-generated constructor stub
 	}
 	
 	@Override

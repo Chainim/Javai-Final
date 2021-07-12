@@ -90,7 +90,6 @@ public class InitState extends GameState{
 	private void askForCardsChanges(int[] indices) {
 		getManager().getPlayers()[switchingPlayer].swapCards(indices);
 		shuffleCards();
-//		System.err.printf("Troquei as cartas que o player %d escolheu, vez do proximo player\n", switchingPlayer);
 	}
 	
 	public void onStateLoad() {
@@ -103,7 +102,6 @@ public class InitState extends GameState{
 	}
 	
 	public void update() {
-		// render
 		if(switchingPlayer >= getManager().getPlayers().length || (getManager().getOpponentPlayer().isAI() && switchingPlayer == 1)) {
 			getManager().setState(getManager().summonState);
 			return;
@@ -111,8 +109,6 @@ public class InitState extends GameState{
 
 	}
 	
-	// entrada tem que ser do tipo 0, enter, 1, enter, ...
-	// escrever done quando terminar
 	public void onInput(String input) {	
 		if(input.equals("done") || getManager().getCurrentPlayer().isAI()) {
 			int[] indices = new int[cardsIndices.size()];

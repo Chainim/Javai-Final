@@ -117,13 +117,6 @@ public class GameStateManager {
 	
 	public void draw() {
 		
-		//card.add(costLabel);
-		//card.add(attackLabel);
-		//card.add(healthLabel);
-		//card.add(nameLabel);
-		
-		
-		
 		for(int i = 0;i < players.length;i++) {
 			InterfaceScreen.getInterfaceScreen().getManaBars()[i].setValue(players[i].getMana());
 			InterfaceScreen.getInterfaceScreen().getManaBars()[i].setString("Mana: " + players[i].getMana() + " (+" + players[i].getSpellMana() + ")");

@@ -7,7 +7,6 @@ public class VanguardModel extends MinionCardModel {
 
 	VanguardModel() {
 		super("card.vanguard.name", "card.vanguard.desc", 4, 3, 3);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
