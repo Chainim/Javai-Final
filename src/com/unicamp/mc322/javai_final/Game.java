@@ -53,8 +53,6 @@ public class Game {
 		running = true;
 
 		stateManager.init();
-
-		window.setVisible(true);
 		
 		iScreen.show();
 		textArea = iScreen.getTextArea();
