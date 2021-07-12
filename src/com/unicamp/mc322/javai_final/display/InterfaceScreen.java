@@ -270,8 +270,11 @@ public class InterfaceScreen {
 		card.setLayout(s);
 		
 		JLabel costLabel = new JLabel("C");
+		costLabel.setForeground(Color.MAGENTA);
 		JLabel attackLabel = new JLabel("A");
+		attackLabel.setForeground(Color.RED);
 		JLabel healthLabel = new JLabel("D");
+		healthLabel.setForeground(Color.BLUE);
 		
 		JLabel nameLabel = new JLabel("Name");
 		JLabel descLabel = new JLabel("Description");
