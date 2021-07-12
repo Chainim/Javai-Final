@@ -81,6 +81,10 @@ public class Player {
 	}
 	
 	public void drawCardsFromPile(int count) {
+		if(handCards.size() == 10) {
+			System.err.println("O jogador possui 10 cartas na mao");
+			return;
+		}
 		for(int i = 0; i < count; i++) {
 			if(drawPile.empty()) {
 				System.err.println("O jogador nao possui cartas na pilha de compra");
@@ -91,6 +95,10 @@ public class Player {
 			handCards.add(top);
 			top.onDraw();
 		}
+	}
+	
+	public Stack<Card> getDrawPile() {
+		return drawPile;
 	}
 	
 	public void drawCardsFromPile() {
