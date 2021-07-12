@@ -189,55 +189,6 @@ public class GameStateManager {
 			}
 		}
 		
-		/*//FIXME: Essa eh uma string de depuracao, lembrar de remover ao final do projeto
-		s.drawStringRightAnchored(16, 120, "Estado atual: " + currentState.getClass().getSimpleName());
-		
-		final int xoffset = 18;
-		
-		for(int i = 0; i < players.length; i++) {
-			Player p = players[i];
-			List<Card> playerCards = p.getHandCards();
-			for(int j = 0; j < playerCards.size(); j++) {
-				if(i == 0)
-					s.drawCard(xoffset + j * 15, 40 - 10, playerCards.get(j).getModel());
-				else
-					s.drawCard(xoffset + j * 15, 0, playerCards.get(j).getModel());
-			}
-			for(int j = 0; j < 6; j++) {
-				int yPos;
-				if(i == 0)
-					yPos = 20;
-				else
-					yPos = 20 - 5;
-				s.drawBox(yPos, xoffset + 10 + j * 8, 5, 7);
-				if(p.getFieldCards()[j] != null) {
-					Card c = p.getFieldCards()[j];
-					s.drawStringLeftAnchored(yPos + 1, xoffset + 11 + j * 8, Integer.toString(c.getDamage()));
-					s.drawStringRightAnchored(yPos + 1, xoffset + 10 + (j + 1) * 8 - 3, Integer.toString(c.getHealth()));
-				}
-					
-			}
-			
-			if(i == 0) {
-				s.drawStringLeftAnchored(20 + 3, 100 - 18, "Mana (" + p.getMana() + "):");
-				s.drawProgressBarLeftAnchored(20 + 3, 102 - 10, p.getMana(), 10);
-				
-				s.drawStringLeftAnchored(20 + 3, 100 + 5, "Spell Mana (" + p.getSpellMana() + "):");
-				s.drawProgressBarLeftAnchored(20 + 3, 100 + 20, p.getSpellMana(), 3);
-				
-				s.drawNexus(5, 20 + 0, p.getNexusHealth());
-			} else {
-				s.drawStringLeftAnchored(20 - 5, 100 - 18, "Mana (" + p.getMana() + "):");
-				s.drawProgressBarLeftAnchored(20 - 5, 102 - 10, p.getMana(), 10);
-				
-				s.drawStringLeftAnchored(20 - 5, 100 + 5, "Spell Mana (" + p.getSpellMana() + "):");
-				s.drawProgressBarLeftAnchored(20 - 5, 100 + 20, p.getSpellMana(), 3);
-				
-				s.drawNexus(5, 20 - 5, p.getNexusHealth());
-			}
-		}
-		*/
-		
 		currentState.onRender();
 	}
 	
