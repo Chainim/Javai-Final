@@ -51,12 +51,8 @@ public class GameStateManager {
 	}
 	
 	public void init() {
-		for(int i = 0; i < players.length; i++) {
-			if(i == 0)
-				players[i] = new Player(false);
-			else
-				players[i] = new Player(true);
-		}
+		players[0] = new Player(false);
+		players[1] = new Player(false);
 			
 		players[0].setMana(0);
 		players[1].setMana(0);
@@ -78,6 +74,14 @@ public class GameStateManager {
 	
 	public void update() {
 		currentState.update();
+	}
+	
+	public void turnAIOn() {
+		players[1].turnAIOn();
+	}
+	
+	public void turnAIOff() {
+		players[1].turnAIOff();
 	}
 	
 	Player[] getPlayers() {

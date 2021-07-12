@@ -165,4 +165,12 @@ public class Player {
 				return true;
 		return false;
 	}
+
+	public void turnAIOn() {
+		AI = true;
+	}
+	
+	public void turnAIOff() {
+		AI = false;
+	}
 }
