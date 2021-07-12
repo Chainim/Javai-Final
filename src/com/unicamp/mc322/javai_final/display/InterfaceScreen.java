@@ -280,7 +280,7 @@ public class InterfaceScreen {
 		JLabel descLabel = new JLabel("Description");
 		//System.out.println(nameLabel.getFont().getName());
 		descLabel.setFont(new Font("Dialog", Font.PLAIN, 8));
-		descLabel.setPreferredSize(new Dimension(70, 70));
+		descLabel.setPreferredSize(new Dimension(70, 100));
 		descLabel.setSize(descLabel.getPreferredSize());
 		
 		s.putConstraint(SpringLayout.WEST, costLabel, 1, SpringLayout.WEST, card);
@@ -293,10 +293,10 @@ public class InterfaceScreen {
 		s.putConstraint(SpringLayout.SOUTH, healthLabel, 0, SpringLayout.SOUTH, card);
 		
 		s.putConstraint(SpringLayout.HORIZONTAL_CENTER, nameLabel, 0, SpringLayout.HORIZONTAL_CENTER, card);
-		s.putConstraint(SpringLayout.VERTICAL_CENTER, nameLabel, 0, SpringLayout.VERTICAL_CENTER, card);
+		s.putConstraint(SpringLayout.VERTICAL_CENTER, nameLabel, -46, SpringLayout.VERTICAL_CENTER, card);
 		
 		s.putConstraint(SpringLayout.HORIZONTAL_CENTER, descLabel, 0, SpringLayout.HORIZONTAL_CENTER, card);
-		s.putConstraint(SpringLayout.VERTICAL_CENTER, descLabel, 40, SpringLayout.VERTICAL_CENTER, card);
+		s.putConstraint(SpringLayout.VERTICAL_CENTER, descLabel, 20, SpringLayout.VERTICAL_CENTER, card);
 		
 		card.add(costLabel);
 		card.add(attackLabel);
