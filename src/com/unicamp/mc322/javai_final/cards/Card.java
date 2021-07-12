@@ -12,7 +12,6 @@ public class Card {
 	private Player owner;
 	
 	public Card(CardModel model) {
-		//TODO: Consertar isso aqui
 		this.model = model;
 		if(model.isMinion()) {
 			MinionCardModel mmodel = (MinionCardModel)model;

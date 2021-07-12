@@ -73,11 +73,6 @@ public class InterfaceScreen {
 		
 		frame.setVisible(true);
 		
-		//((JLabel) handCards.get(0).getComponent(1)).setText("ola");
-		
-		// frame.getContentPane().getComponent(1).setVisible(false);
-
-		
 		 textArea = new JTextArea(); textArea.setLocation(4,
 		 frame.getHeight() - 60); textArea.setPreferredSize(new
 		 Dimension(frame.getWidth() - 24, 20));

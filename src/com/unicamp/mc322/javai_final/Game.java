@@ -27,7 +27,6 @@ public class Game {
 		instance = this;
 		stateManager = new GameStateManager();
 		
-		// interface grafica
 		window = new JFrame("Game");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setSize(new Dimension(960, 720));
@@ -83,7 +82,6 @@ public class Game {
 			try {
 				Thread.sleep(16);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

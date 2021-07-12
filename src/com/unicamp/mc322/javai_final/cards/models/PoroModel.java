@@ -6,7 +6,6 @@ public class PoroModel extends MinionCardModel {
 
 	PoroModel() {
 		super("card.poro.name", "card.poro.desc", 1, 2, 1);
-		// TODO Auto-generated constructor stub
 	}
 
 }
