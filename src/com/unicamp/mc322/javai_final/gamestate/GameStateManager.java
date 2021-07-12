@@ -52,7 +52,7 @@ public class GameStateManager {
 	
 	public void init() {
 		players[0] = new Player(false);
-		players[1] = new Player(false);
+		players[1] = new Player(false); // Coloque true para jogar com IA
 			
 		players[0].setMana(0);
 		players[1].setMana(0);
