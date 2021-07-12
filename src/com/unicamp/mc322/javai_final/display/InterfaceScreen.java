@@ -228,7 +228,7 @@ public class InterfaceScreen {
 		for (int j = 0; j < 2; j++) {
 			JProgressBar spellManaBar = new JProgressBar(0, 3);
 			
-			spellManaBar.setLocation(frame.getWidth() - 200 + 110, frame.getHeight() / 2 + 10 + j * (-100));
+			spellManaBar.setLocation(frame.getWidth() - 200 + 130, frame.getHeight() / 2 + 10 + j * (-100));
 			spellManaBar.setPreferredSize(new Dimension(30, 20));
 			spellManaBar.setSize(spellManaBar.getPreferredSize());
 			spellManaBar.setValue(0);
