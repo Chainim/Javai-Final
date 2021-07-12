@@ -37,6 +37,9 @@ public class DefendState extends GameState {
 		defendID = -1;
 		attackID = -1;
 		defendSelectionConfirmed = false;
+		if(attackSelection.size() == 0) {
+			defendSelectionConfirmed = true;
+		}
 		
 	}
 	
@@ -50,6 +53,9 @@ public class DefendState extends GameState {
 	// colocar -1 caso não queira defender ataque
 	// colocar (carta de defesa carta de ataque)
 	public void onInput(String input) {
+		if(defendSelectionConfirmed) {
+			return;
+		}
 		if(getManager().getOpponentPlayer().isAI()) {
 			
 			for(int i : attackSelection) {
@@ -64,6 +70,7 @@ public class DefendState extends GameState {
 			defendSelectionConfirmed = true;
 			return;
 		}
+		
 		
 		String[] s = input.split(" ");
 		if(input.equals("done")) {

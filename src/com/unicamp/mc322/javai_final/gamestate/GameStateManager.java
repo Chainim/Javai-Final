@@ -6,7 +6,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import com.unicamp.mc322.javai_final.cards.Card;
-import com.unicamp.mc322.javai_final.cards.models.ModelRegistry;
 import com.unicamp.mc322.javai_final.display.InterfaceScreen;
 import com.unicamp.mc322.javai_final.player.Player;
 
@@ -56,26 +55,12 @@ public class GameStateManager {
 			if(i == 0)
 				players[i] = new Player(false);
 			else
-				players[i] = new Player(false);
+				players[i] = new Player(true);
 		}
 			
-		players[0].setMana(8);
-		players[1].setMana(8);
-		currentRound = 8;
-	
-		players[0].getFieldCards()[1] = new Card(ModelRegistry.GAREN);
-		players[0].getFieldCards()[1].setOwner(players[0]);
-		players[0].getFieldCards()[2] = new Card(ModelRegistry.PORO);
-		players[0].getFieldCards()[2].setOwner(players[0]);
-		players[0].getFieldCards()[4] = new Card(ModelRegistry.DEFENDER);
-		players[0].getFieldCards()[4].setOwner(players[0]);
-		
-		players[1].getFieldCards()[2] = new Card(ModelRegistry.DEFENDER);
-		players[1].getFieldCards()[2].setOwner(players[1]);
-		players[1].getFieldCards()[3] = new Card(ModelRegistry.DEFENDER);
-		players[1].getFieldCards()[3].setOwner(players[1]);
-		players[1].getFieldCards()[5] = new Card(ModelRegistry.PORO);
-		players[1].getFieldCards()[5].setOwner(players[1]);
+		players[0].setMana(0);
+		players[1].setMana(0);
+		currentRound = 1;
 	
 		currentState.onStateLoad();
 	}
@@ -264,8 +249,8 @@ public class GameStateManager {
 			this.getOpponentPlayer().getFieldCards()[defending.getFieldIndex()] = null;
 		}
 		
-		if(attackerDead && defenderDead)
-			return;
+//		if(attackerDead && defenderDead)
+//			return;
 		
 		if(attackerDead)
 			defending.onKill();

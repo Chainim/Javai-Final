@@ -18,21 +18,23 @@ public class HeadToHeadModel extends SpellCardModel {
 		GameStateManager manager = GameStateManager.getInstance();
 
 		SummonState g = (SummonState) manager.getCurrentState();
-		
-		if(!manager.getCurrentPlayer().hasFieldCards() || !manager.getOpponentPlayer().hasFieldCards()) {
+		if(card == null) {
+			System.err.println("AAAAAAAAAAAAAAAAA");
+		}
+		if(!card.getOwner().hasFieldCards() || !manager.getOpponentPlayer().hasFieldCards()) {
 			System.err.println("Sem cartas para fazer o mano a mano");
-			manager.getCurrentPlayer().getHandCards().add(new Card(ModelRegistry.HEAD_TO_HEAD));
-			manager.getCurrentPlayer().rollbackMana();
+			card.getOwner().getHandCards().add(new Card(ModelRegistry.HEAD_TO_HEAD));
+			card.getOwner().rollbackMana();
 			return;
 		}
 		
 		Card attacking = null;
 		Card defending = null;
-		if(manager.getCurrentPlayer().isAI()) {
-			for(int i = 0;i < manager.getCurrentPlayer().getFieldCards().length;i++) {
+		if(card.getOwner().isAI()) {
+			for(int i = 0;i < card.getOwner().getFieldCards().length;i++) {
 				for(int j = 0;j < manager.getOpponentPlayer().getFieldCards().length;j++) {
-					if(manager.getCurrentPlayer().getFieldCards()[i] != null && manager.getOpponentPlayer().getFieldCards()[j] != null) {
-						attacking = manager.getCurrentPlayer().getFieldCards()[i]; 
+					if(card.getOwner().getFieldCards()[i] != null && manager.getOpponentPlayer().getFieldCards()[j] != null) {
+						attacking = card.getOwner().getFieldCards()[i]; 
 						defending = manager.getOpponentPlayer().getFieldCards()[j];
 						manager.doCombat(attacking, defending);
 						return;
@@ -48,7 +50,7 @@ public class HeadToHeadModel extends SpellCardModel {
 				int index = InputUtils.expectCardOnCurrentPlayerField(input);
 				if(index == -1)
 					return false;
-				g.attacking1v1 = manager.getCurrentPlayer().getFieldCards()[index];
+				g.attacking1v1 = card.getOwner().getFieldCards()[index];
 				return true;
 				
 			}

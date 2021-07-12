@@ -72,6 +72,10 @@ public class Card {
 	public void onTurnEnd() {
 		model.onTurnEnd(this);
 	}
+
+	public void onDraw() {
+		model.onDraw(this);
+	}
 	
 	public int getHealth() {
 		return health;

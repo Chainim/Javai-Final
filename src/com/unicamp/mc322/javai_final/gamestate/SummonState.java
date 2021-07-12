@@ -39,22 +39,22 @@ public class SummonState extends GameState {
 	}
 	
 	@Override
-	public void update() {
-		if(summonEnd) {
-			getManager().getCurrentPlayer().calcSpellMana();
-			getManager().setState(getManager().attackState);
-			return;
-		}
-		
+	public void update() {		
 		if(summonConfirmed) {
 			boolean summoned = getManager().getCurrentPlayer().summonCard(toSummonIndex, toSummonFieldIndex); 
 			if(!summoned) {
 				System.err.println("Couldnt summon this monster");
 			}
-			summonEnd = false;
 			toSummonIndex = -1;
 			toSummonFieldIndex = -1;
 			summonConfirmed = false;
+		}
+		
+		if(summonEnd) {
+			onRender();
+			getManager().getCurrentPlayer().calcSpellMana();
+			getManager().setState(getManager().attackState);
+			return;
 		}
 	}
 	
@@ -85,13 +85,14 @@ public class SummonState extends GameState {
 			return;
 		}
 		if(input.equals("done")) {
-			if(toSummonFieldIndex == -1 && toSummonIndex == -1) {
-				summonEnd = true;				
-			} else if(toSummonIndex != -1 && (toSummonFieldIndex != -1 || getManager().getCurrentPlayer().getHandCards().get(toSummonIndex).isSpell())) {
+			if(toSummonIndex != -1 && (toSummonFieldIndex != -1 || getManager().getCurrentPlayer().getHandCards().get(toSummonIndex).isSpell())) {
 				summonConfirmed = true;
+				summonEnd = true;		
 			}
-			else {
-				System.err.println("Seleção invalida para sumonar");					
+			else if(toSummonIndex == -1){
+				summonEnd = true;
+			} else {
+				System.err.println("Seleção invalida para sumonar");				
 			}
 			return;
 		}

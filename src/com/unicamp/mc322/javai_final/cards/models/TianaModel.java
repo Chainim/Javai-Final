@@ -16,8 +16,8 @@ public class TianaModel extends MinionCardModel {
 	public void onDraw(Card card) {
 		// Uma das cartas sumonadas ataca o nexus inimigo
 		GameStateManager manager = GameStateManager.getInstance();
-
-		if(!manager.getCurrentPlayer().hasFieldCards()) {
+		
+		if(!card.getOwner().hasFieldCards()) {
 			System.err.println("Nao existe carta para aplicar o Efeito de Tiana");
 			return;
 		}
@@ -28,11 +28,11 @@ public class TianaModel extends MinionCardModel {
 			public boolean onInput(String input) {
 				Card c = null;
 				
-				if(manager.getCurrentPlayer().isAI()) {
+				if(card.getOwner().isAI()) {
 					int maxDamageCard = 0;
-					for(int i = 0;i < manager.getCurrentPlayer().getFieldCards().length;i++) {
-						if(manager.getCurrentPlayer().getFieldCards()[i] != null && manager.getCurrentPlayer().getFieldCards()[i].getDamage() > maxDamageCard) {
-							c = manager.getCurrentPlayer().getFieldCards()[i];
+					for(int i = 0;i < card.getOwner().getFieldCards().length;i++) {
+						if(card.getOwner().getFieldCards()[i] != null && card.getOwner().getFieldCards()[i].getDamage() > maxDamageCard) {
+							c = card.getOwner().getFieldCards()[i];
 							maxDamageCard = c.getDamage();
 						}
 					}
@@ -40,7 +40,7 @@ public class TianaModel extends MinionCardModel {
 					int index = InputUtils.expectCardOnCurrentPlayerField(input);
 					if(index == -1)
 						return false;
-					c = manager.getCurrentPlayer().getFieldCards()[index];
+					c = card.getOwner().getFieldCards()[index];
 				}
 				
 				manager.getOpponentPlayer().takeNexusDamage(c.getDamage());

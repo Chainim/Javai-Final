@@ -23,6 +23,7 @@ public class SmiteModel extends SpellCardModel {
 					attacker.onKill();
 					defender.getFieldCards()[i] = null;
 				}
+				attacker.onAttack();
 			}
 	}
 	

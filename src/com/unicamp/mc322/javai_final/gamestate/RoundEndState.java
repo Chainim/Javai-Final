@@ -55,6 +55,10 @@ public class RoundEndState extends GameState {
 		getManager().processRemove();
 		getManager().clearRemove();
 		getManager().advancePlayer();
-		getManager().setState(getManager().summonState);
+		if(getManager().getCurrentPlayer().getHandCards().size() == 0 && getManager().getCurrentPlayer().hasFieldCards() == false) {
+			getManager().setState(getManager().initState);
+		} else {
+			getManager().setState(getManager().summonState);			
+		}
 	}
 }

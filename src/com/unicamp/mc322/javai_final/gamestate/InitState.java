@@ -21,34 +21,16 @@ public class InitState extends GameState{
 	
 	private void createDeck() {
 		for(int i = 0;i < getManager().getPlayers().length;i++) {
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO));
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO));
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO));
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO));
-			
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.GAREN));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.TIANA));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.VANGUARD));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DUELIST));
 			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DEFENDER));
-			
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DOUBLED_VALUE));
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DOUBLED_VALUE));
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DOUBLED_VALUE));
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DOUBLED_VALUE));
-			
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO));
 			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO_DEFENDER));
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO_DEFENDER));
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO_DEFENDER));
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.PORO_DEFENDER));
-			
 			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.SMITE));
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.SMITE));
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.SMITE));
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.SMITE));
-			
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.HEAD_TO_HEAD));
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.HEAD_TO_HEAD));
-			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.HEAD_TO_HEAD));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.DOUBLED_VALUE));
+			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.ON_TARGET));
 			getManager().getPlayers()[i].addCardToPile(new Card(ModelRegistry.HEAD_TO_HEAD));
 		}
 	}
@@ -66,8 +48,8 @@ public class InitState extends GameState{
 	}
 
 	private void askForCardsChanges(int[] indices) {
-		
 		getManager().getPlayers()[switchingPlayer].swapCards(indices);
+		shuffleCards();
 //		System.err.printf("Troquei as cartas que o player %d escolheu, vez do proximo player\n", switchingPlayer);
 	}
 	
